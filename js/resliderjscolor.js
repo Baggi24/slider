@@ -1020,7 +1020,7 @@ var jsc = {
 		this.pointerBorderColor = '#FFFFFF'; // px
         this.pointerBorderWidth = 1; // px
         this.pointerThickness = 2; // px
-		this.zIndex = 1000;
+		this.zIndex = 10000;
 		this.container = null; // where to append the color picker (BODY element by default)
 
 
@@ -1748,30 +1748,6 @@ var jsc = {
 				this.targetElement.onclick = function () { return false; };
 			}
 		}
-
-		/*
-		var elm = this.targetElement;
-		do {
-			// If the target element or one of its offsetParents has fixed position,
-			// then use fixed positioning instead
-			//
-			// Note: In Firefox, getComputedStyle returns null in a hidden iframe,
-			// that's why we need to check if the returned style object is non-empty
-			var currStyle = jsc.getStyle(elm);
-			if (currStyle && currStyle.position.toLowerCase() === 'fixed') {
-				this.fixed = true;
-			}
-
-			if (elm !== this.targetElement) {
-				// attach onParentScroll so that we can recompute the picker position
-				// when one of the offsetParents is scrolled
-				if (!elm._jscEventsAttached) {
-					jsc.attachEvent(elm, 'scroll', jsc.onParentScroll);
-					elm._jscEventsAttached = true;
-				}
-			}
-		} while ((elm = elm.offsetParent) && !jsc.isElementType(elm, 'body'));
-		*/
 
 		// valueElement
 		if (this.valueElement) {

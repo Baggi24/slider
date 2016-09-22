@@ -82,5 +82,5 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 	}
 </style>
 <div id="reslide_loading_overlay" style="display:none;">
-	<div><img src="<?php echo reslide_PLUGIN_PATH_IMAGES . "/loading_1.gif"; ?>"/></div>
+	<div><img src="<?php echo RESLIDE_PLUGIN_PATH_IMAGES . "/loading_1.gif"; ?>"/></div>
 </div>

@@ -2,13 +2,14 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 } // Exit if accessed directly
+
 function reslide_sliders_list_func() {
 	global $wpdb;
 	$s       = 1;
-	$table   = reslide_TABLE_SLIDERS;
+	$table   = RESLIDE_TABLE_SLIDERS;
 	$sliders = array();
 	$row     = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM $table WHERE %d", $s ) );
-	$table   = reslide_TABLE_SLIDES;
+	$table   = RESLIDE_TABLE_SLIDES;
 	foreach ( $row as $rows ) {
 		$count       = $wpdb->get_var( $wpdb->prepare( "SELECT count(*) FROM $table WHERE sliderid = %d", $rows->id ) );
 		$rows->count = $count;
@@ -19,21 +20,19 @@ function reslide_sliders_list_func() {
 	reslide_sliders_view_list( $sliders );
 }
 
-;
 function reslide_edit_slider( $id ) {
-	/***Sllider params***/
 	/***Slider images***/
 	global $wpdb;
 	$s            = 1;
-	$table        = reslide_TABLE_SLIDERS;
+	$table        = RESLIDE_TABLE_SLIDERS;
 	$AllSLidersId = $wpdb->get_results( $wpdb->prepare( "SELECT id FROM $table WHERE %d", $s ), ARRAY_A );
 	if ( ! in_array( array( 'id' => (string) $id ), $AllSLidersId ) ) {
 		wp_die( '<h3 style="color: #FF0011;">R-slider ' . $id . ' does not exist</h3>' );
 		exit;
 	}
-	$table      = reslide_TABLE_SLIDES;
+	$table      = RESLIDE_TABLE_SLIDES;
 	$row        = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM $table  WHERE sliderid = %d order by ordering desc", $id ) );
-	$table      = reslide_TABLE_SLIDERS;
+	$table      = RESLIDE_TABLE_SLIDERS;
 	$slider_row = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM $table  WHERE id = %d", $id ) );
 	reslide_edit_slider_view( $row, $id, $slider_row );
 }
@@ -41,7 +40,7 @@ function reslide_edit_slider( $id ) {
 function reslide_add_slider( $id ) {
 	global $wpdb;
 	$s     = 1;
-	$table = reslide_TABLE_SLIDERS;
+	$table = RESLIDE_TABLE_SLIDERS;
 
 	$now = current_time( 'mysql', false );
 	$wpdb->insert(
@@ -55,7 +54,6 @@ function reslide_add_slider( $id ) {
 			'style'  => '{"background":"blue;","border":"1px solid red;","color":"yellow","width":"800","height":"480","marginLeft":"0","marginRight":"0","marginTop":"0","marginBottom":"0"}',
 			'time'   => $now
 		),
-
 		array(
 			'%s',
 			'%s',
@@ -67,7 +65,7 @@ function reslide_add_slider( $id ) {
 	);
 
 	/**get max id**/
-	$id       = $wpdb->get_var( $wpdb->prepare(
+	$id = $wpdb->get_var( $wpdb->prepare(
 		"
                 SELECT ID 
                 FROM $table WHERE %d
@@ -75,21 +73,22 @@ function reslide_add_slider( $id ) {
             ",
 		$s
 	) );
-	$location = admin_url( 'admin.php?page=reslider&task=editslider&id=' . $id );
-	header( "Location: $location" );
 
-	$row = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM $table WHERE %d", $s ) );
-	reslide_sliders_view_list( $row );
+    $location = admin_url( 'admin.php?page=reslider&task=editslider&id=' . $id);
+    $location = wp_nonce_url( $location, 'reslide_editslider_' . $id );
+    $location = html_entity_decode($location);
+    wp_redirect( wp_sanitize_redirect(  $location )  );
+    exit;
 }
 
 function reslide_remove_slider( $id ) {
 	global $wpdb;
 	$s     = 1;
-	$table = reslide_TABLE_SLIDERS;
+	$table = RESLIDE_TABLE_SLIDERS;
 	$wpdb->delete( $table, array( 'id' => $id ), array( '%d' ) );
-	$wpdb->delete( reslide_TABLE_SLIDES, array( 'sliderid' => $id ), array( '%d' ) );
+	$wpdb->delete( RESLIDE_TABLE_SLIDES, array( 'sliderid' => $id ), array( '%d' ) );
 	$row     = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM $table WHERE %d", $s ) );
-	$table   = reslide_TABLE_SLIDES;
+	$table   = RESLIDE_TABLE_SLIDES;
 	$sliders = array();
 	foreach ( $row as $rows ) {
 		$count       = $wpdb->get_var( $wpdb->prepare( "SELECT count(*) FROM `$table` WHERE sliderid = %d", $rows->id ) );
@@ -101,18 +100,16 @@ function reslide_remove_slider( $id ) {
 
 function reslide_add_slide( $title, $thumbnail, $sliderid, $type ) {
 	global $wpdb;
-	$table = reslide_TABLE_SLIDES;
+	$table = RESLIDE_TABLE_SLIDES;
 
 	$wpdb->insert(
 		$table,
-
 		array(
 			'title'     => $title,
 			'sliderid'  => $sliderid,
 			'thumbnail' => $thumbnail,
 			'type'      => $type
 		),
-
 		array(
 			'%s',
 			'%d',
@@ -122,6 +119,3 @@ function reslide_add_slide( $title, $thumbnail, $sliderid, $type ) {
 	);
 
 }
-
-?>
-			   
