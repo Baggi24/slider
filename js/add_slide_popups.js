@@ -1,5 +1,5 @@
 jQuery(function ($) {
-    /*** Free ***/
+    /*** Pro ***/
 
     $(document).ready(function () {
         if (jQuery('#reslide_sliders_list .id').length > 2) {
@@ -10,29 +10,23 @@ jQuery(function ($) {
                 }
             )
         }
+
         function initSave() {
             jQuery('input.text').each(function () {
                 var val = jQuery(this).val();
                 val = val.ReslideReplaceAll('"', '&#34;');
                 val = val.ReslideReplaceAll("'", '&#39;');
                 val = val.ReslideReplaceAll("\\", '');
-                jQuery(this).val('');
+                jQuery(this).val(val);
             })
-        };
+        }
         initSave();
         jQuery('#reslide_sliders_list .delete').click(function () {
-            var deleteConfirm = confirm("You are going to permanently delete this slider...");
-            if (!deleteConfirm)
+            var t = confirm("You are going to permanently delete this slider...");
+            if (!t)
                 return false;
         });
-		/*
-        jQuery('#reslide_sliders_list .add-sliders-to-free').click(function () {
-            var slider_count = jQuery('#reslide_sliders_list .id').length;
-            if (slider_count == 2) {
-                alert('In free version you can use only two sliders...');
-                return false;
-            }
-        });*/
+
         jQuery('.reslide-nodisplay').submit(function () {
             return false;
         });
@@ -42,8 +36,7 @@ jQuery(function ($) {
 			open_media_window.apply($this,['image',{'slide_image':slideId}]);
 			return false;
 
-		});		
-		
+		});
         $('#reslide_slider_insert_popup select').change(function () {
             var id = $(this).find('option:selected').val();
             id = parseInt(id);
@@ -53,17 +46,6 @@ jQuery(function ($) {
             }
         });
         jQuery('#add_image').click(open_media_window);
-		jQuery('#add_image .other').click(function () {
-			return false;
-        });
-		jQuery('#add_image .other').find('select').on('change',function(){
-						jQuery("#clear_slider_add_post").css('display','block');
-
-			var addImageType = jQuery(this).find('option:selected').val();
-			jQuery(this).val('');
-			addImageType && alert(addImageType);
-			return false;
-		})		
         jQuery('#reslide_insert_video_button').click(function () {
             add_video_popup(jQuery('#reslide_insert_video_input').val(), jQuery("#reslide_slider_images_list"));
         });
@@ -81,33 +63,31 @@ jQuery(function ($) {
             form.toggle(218);
             return false;
         })
-        //jQuery('#add_image').click(function(){alert(5);});
     });
-
-//open_media_window();
 
     /*** sortable ***/
 	if(jQuery("#reslide_slider_images_list").length) {
 		var minHeight = jQuery('#reslide_slider_images_list').height();
-		jQuery("#reslide_slider_images_list").sortable({
-			start: function () {
-			//	var minHeight = jQuery('#reslide_slider_images_list').height();
-			//	alert(minHeight);
-				jQuery('#reslide_slider_images_list').css('min-height', minHeight + 'px');
-			},
-			stop: function () {
-				var allSlidesCount = jQuery('.reslideitem').length, i = 0;
-				jQuery('.reslideitem').each(function () {
-					jQuery(this).find('.reslideitem-ordering').val(allSlidesCount - i);
-					i++;
-				})
-			},
-			revert: true
-		});
+        if( jQuery("#reslide_slider_images_list").length > 1 ){
+            jQuery("#reslide_slider_images_list").sortable({
+                start: function () {
+                    jQuery('#reslide_slider_images_list').css('min-height', minHeight + 'px');
+                },
+                stop: function () {
+                    var allSlidesCount = jQuery('.reslideitem').length, i = 0;
+                    jQuery('.reslideitem').each(function () {
+                        jQuery(this).find('.reslideitem-ordering').val(allSlidesCount - i);
+                        i++;
+                    })
+                },
+                revert: true
+            });
+        }
+
 	}
     jQuery("body").on('click', '.popup-type', function () {
         var type = jQuery(this).attr('data');
-        if (type == 'on') {
+        if (type == 'on') {    
             jQuery(this).find('img').attr('src', _IMAGES + '/light_1.png');
             jQuery(this).attr('data', 'off');
             jQuery(this).parents('.reslide-styling').removeClass('dark');
@@ -124,7 +104,6 @@ jQuery(function ($) {
 
 function open_media_window() {
     var type = '', ordering = 0;
-    //alert(argument[1]);
 	var globalArguments = arguments;
     arguments.indexOf = [].indexOf;
     if (arguments.indexOf("image") > -1)
@@ -133,7 +112,6 @@ function open_media_window() {
     if (this.window === undefined) {
         this.window = wp.media({
             title: 'Insert a media',
-            //  library: {type: 'image'},
             multiple: true,
             button: {text: 'Insert'}
         });
@@ -143,11 +121,9 @@ function open_media_window() {
             self.window.on('select', function () {
                 var attachment = self.window.state().get('selection').toJSON();
                 ordering = jQuery('.reslideitem').length;
-                //attachment.reverse();
                 attachment.forEach(function (item) {
                     if (item.type != 'video') {
                         ordering++;
-                        //	jQuery('.reslide_added_items').append('<div class="item"><img width="50px" height="50px" src="'+item.url+'"></div>');
                         jQuery('#reslide_slider_images_list').prepend(['<li class="reslideitem add">',
                             '<a class="edit" href="?page=reslider&amp;" onclick="return false;">',
                             '<img src="' + item.url + '">',
@@ -163,24 +139,18 @@ function open_media_window() {
                             '</li>'
                         ].join(""));
                         jQuery('#reslide_slider_images_list .noimage').hide();
-
-                    }
-                    else {
+                    } else {
                         jQuery('#reslide_slider_images_list').prepend('<div><input class="title" name="title" hidden value="<?php echo $rows->title;?>" /><input class="description" name="description" hidden value="<?php echo $rows->description;?>" />'
                             + '<input class="type" name="description" hidden value="" /></div>' + '<li class="add-item video"><img style="display:none" src="' + item.url + '"/><a href="' + i18n_obj.editslider_link + '">'
                             + item.title + '</a><iframe  width="150" height="150" src="' + item.url + '" frameborder="0" allowfullscreen=""></iframe>&nbsp;<b>Quick Edit</b></li>');
                     }
                 });
                 jQuery('.reslide_save_all').click();
-
-
             });
-        }
-        else {
+        } else {
             var attachment = {};
             self.window = wp.media({
                 title: 'Insert a media',
-                //  library: {type: 'image'},
                 multiple: false,
                 button: {text: 'Insert'}
             });
@@ -195,27 +165,22 @@ function open_media_window() {
 					jQuery('#reslide_slider_' + currentimage + '_styling').find('.reslide_content img').attr('src', attachment[0]['url']);
 					jQuery('#reslide_slider_' + currentimage + '_styling').find('#custom_alt').val(attachment[0]['alt']);
 					return attachment.url;
-				}
-				else {
+				}  else {
 					jQuery('#reslide_slider_images_list #'+ globalArguments[1]['slide_image']+ ' img').attr('src',attachment[0]['url']);
 					jQuery('#reslide_slider_images_list #'+ globalArguments[1]['slide_image']+ ' form .reslideitem-edit-url').val(attachment[0]['url']);	
 					jQuery('.reslide_save_all').click();
 				}
             });
         }
-
         self.window.open();
     }
     else {
         if (this.window) {
-
             this.window.open();
         }
     }
     return false;
-
 }
-
 
 function add_shortcode(shortcodeID) {
     wp.media.editor.insert('[R-slider id="' + shortcodeID + '"]');
@@ -250,7 +215,7 @@ function add_video_popup(video_url, video_append_element) {
         prefix = "//player.vimeo.com/video/";
     }
     video_append_element.append('<div><input class="title" name="title" hidden value="<?php echo $rows->title;?>" /><input class="description" name="description" hidden value="<?php echo $rows->description;?>" />'
-        + '<input class="type" name="description" hidden value="<?php echo $rows->type;?>" /></div>' + '<li class="add-item video"><img style="display:none" src="' + prefix + new_video_id + showcontrols + '"/><a href="' + i18n_obj.editslider_link + '"></a><iframe  width="150" height="150" src="' + prefix + new_video_id + showcontrols + '" frameborder="0" allowfullscreen=""></iframe>&nbsp;<b>Quick Edit</b></li>');
+        + '<input class="type" name="description" hidden value="" /></div>' + '<li class="add-item video"><img style="display:none" src="' + prefix + new_video_id + showcontrols + '"/><a href="' + i18n_obj.editslider_link + '"></a><iframe  width="150" height="150" src="' + prefix + new_video_id + showcontrols + '" frameborder="0" allowfullscreen=""></iframe>&nbsp;<b>Quick Edit</b></li>');
     tb_remove();
 }
 function getAddedImages() {
@@ -274,7 +239,6 @@ function getExistImagesId() {
     for (var slide in reslider.slides) {
         ids.push(reslider.slides[slide]['id']);
     }
-    ;
     ids = ids.join();
     ids = "(" + ids + ")";
     return ids;
