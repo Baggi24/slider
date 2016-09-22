@@ -160,25 +160,30 @@
 			'id' : reslider.id,
 			'slide' : slideid	
 		};
-		$.ajax({url: reslide_ajax_object.ajax_url,data:data, method:'POST',  beforeSend: function(){
-			reslide_loading();
-   },
-   complete: function(){
-		reslide_loading(false);
-
-     // Handle the complete event
-   }, success: function(result){
-			var newresult = JSON.parse(result);
-			if(newresult.error) {
-				alert(newresult.error);
-				return false;
+		$.ajax({
+			url: reslide_ajax_object.ajax_url,
+			data:data,
+			method:'POST',
+			dataType: 'json',
+			beforeSend: function () {
+				reslide_loading();
+			},
+			complete: function () {
+				reslide_loading(false);
+				// Handle the complete event
+			},
+			success: function (result) {
+				if (result.error) {
+					console.log(result.error);
+					return false;
+				}
+				jQuery('#reslideitem_' + result.slide).remove();
+				if (!jQuery('#reslide_slider_images_list .reslideitem').length)
+					jQuery('#reslide_slider_images_list .noimage').show();
+				delete reslider['slides']['slide' + result.slide];
+				reslider.length--;
 			}
-			jQuery('#reslideitem_'+result).remove();
-			if(!jQuery('#reslide_slider_images_list .reslideitem').length)
-				jQuery('#reslide_slider_images_list .noimage').show();			
-			delete reslider['slides']['slide'+result];
-			reslider.length--;
-		}});
+		});
 		return false;
 	
 	

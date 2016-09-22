@@ -68,7 +68,7 @@ jQuery(function ($) {
     /*** sortable ***/
 	if(jQuery("#reslide_slider_images_list").length) {
 		var minHeight = jQuery('#reslide_slider_images_list').height();
-        if( jQuery("#reslide_slider_images_list").length > 1 ){
+        if( jQuery("#reslide_slider_images_list li").length > 1 ){
             jQuery("#reslide_slider_images_list").sortable({
                 start: function () {
                     jQuery('#reslide_slider_images_list').css('min-height', minHeight + 'px');

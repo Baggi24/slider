@@ -80,8 +80,8 @@ function reslide_text_sanitize($_str ) {
  */
 function reslide_add_media_button($context) {
 	$container_id = 'reslide_slider_insert_popup';
-
-  	$context .=  '<a href="#TB_inline?width=600&inlineId='.$container_id.'" id="insert-reslider-media" class="thickbox button"><img src="' . plugins_url( 'images/edit-icon1.png', __FILE__ ) . '">Add Slider</a>';
+	$title = __("Insert Responsive Slider","reslide");
+  	$context .=  '<a href="#TB_inline?width=600&inlineId='.$container_id.'" title="'.$title.'" id="insert-reslider-media" class="thickbox button"><img src="' . plugins_url( 'images/edit-icon1.png', __FILE__ ) . '">Add Slider</a>';
 	return $context;
 }
 
@@ -92,24 +92,25 @@ function reslide_media_button_popup() {
 	global $wpdb;
 	$screen = get_current_screen();
 	$screen_id = $screen->id;
-	if( $screen_id != 'post' ){
-		return;
-	}
 	$s     = 1;
 	$table = RESLIDE_TABLE_SLIDERS;
 	$row = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM $table WHERE %d", $s ) );
 	?>
 	<!--  add in post popup-->
 	<div id="reslide_slider_insert_popup" style="display:none;">
-		<select id="R-slider" name="ss" class="button-primary" style="width: 80%;display:block;margin:0 auto;">
-			<option value="0">Responsive Sliders</option>
-			<?php
-			if ( $row ) {
-				foreach ( $row as $rows ) { ?>
-					<option value="<?php echo $rows->id; ?>"><?php echo $rows->title; ?></option>
-				<?php }
-			}; ?>
-		</select>
+		<div style="margin-top:20px">
+			<label for="R-slider" style="margin-right:20px"><b><?php _e( 'Choose Responsive Slider', 'reslide' ); ?></b></label>
+			<select id="R-slider" name="ss" class="">
+				<option value="0">Responsive Sliders</option>
+				<?php
+				if ( $row ) {
+					foreach ( $row as $rows ) { ?>
+						<option value="<?php echo $rows->id; ?>"><?php echo $rows->title; ?></option>
+					<?php }
+				}; ?>
+			</select>
+		</div>
+
 	</div>
 <?php 
 } 
@@ -313,7 +314,6 @@ function reslide_admin_scripts( $hook ) {
 	if(!isset($reslide_admin_menu_pages['main_page'])){
 		return;
 	}
-	
 	if (  $hook ==  $reslide_admin_menu_pages['main_page'] ) {
 
 		$suffix = SCRIPT_DEBUG ? '' : '.min';
@@ -368,6 +368,9 @@ function reslide_admin_scripts( $hook ) {
 	}elseif( $hook === $reslide_admin_menu_pages['featured_plugins'] ){
 		wp_enqueue_style( 'reslide_admin_css', RESLIDE_PLUGIN_PATH_CSS . '/featured-plugins.css' );
 		wp_enqueue_script( 'reslide_admin_js', RESLIDE_PLUGIN_PATH_JS . '/admin.js' );
+	}elseif( in_array( $hook, array( 'post.php','post-new.php'  ) ) ){
+		wp_enqueue_script( 'reslide_helper_script', RESLIDE_PLUGIN_PATH_JS . '/helper.js' );
+		wp_enqueue_script( 'add_slide_popups', RESLIDE_PLUGIN_PATH_JS . '/add_slide_popups.js' );
 	}
 }
 
@@ -617,18 +620,22 @@ function reslide_ajax_action_callback() {
 
 			if ( isset( $_POST['slide'] ) ) {
 				$slide = wp_kses_stripslashes( $_POST['slide'] );
-				$slide = trim( $id, '"' );
+				$slide = trim( $slide, '"' );
 				$slide = intval( $slide );
 				if ( $slide <= 0 ) {
-					$slide = 1;
+					die(__("Invalid Slide","reslide"));
 				}
 			} else {
-				$slide = 1;
+				die(__("Invalid Slide","reslide"));
 			}
 
-			$wpdb->delete( RESLIDE_TABLE_SLIDES, array( 'id' => $slide ), array( '%d' ) );
-			echo $slide;
-			wp_die();
+
+			if( !$wpdb->delete( RESLIDE_TABLE_SLIDES, array( 'id' => $slide ), array( '%d' ) ) ){
+				echo json_encode(array("error"=>"Error while deleting image"));
+				die;
+			}
+			echo json_encode(array("success"=>1,'slide'=>$slide));
+			die;
 
 		} elseif ( $reslide_do == 'reslide_on_image' ) {
 			if ( isset( $_POST['id'] ) ) {
