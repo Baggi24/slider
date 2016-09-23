@@ -3,8 +3,8 @@ Contributors: Huge-IT
 Donate link: http://huge-it.com/wordpress-responsive-slider/
 Tags: slider, responsive slider, content slider, image slider, photo slider, slider plugin, layer slider, slideshow, wordpress slider, wordpress slideshow, gallery slider, slide,
 Requires at least: 3.0.1
-Tested up to: 4.5.3
-Stable tag: 2.2.9
+Tested up to: 4.6.1
+Stable tag: 2.3.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -81,7 +81,7 @@ Slider is fully responsive and mobile friendly. All your images will appear as b
 *  **Preview Feature** -  Responsive Slider has a pretty much useful feature,  once you have completed to create your responsive slider and before you press Save button you can always click on Preview this responsive slider to see how it is looking.
 
 
-= Installation =
+== Installation ==
 
 ### How to install the Pro version of Responsive Slider plugin?
 
@@ -153,6 +153,18 @@ Custom arrows can be added in the Professional version of the plugin only.
 If you think, that you found a bug in our [WordPress Responsive Slider](http://huge-it.com/wordpress-responsive-slider) plugin or have any question contact us at [info@huge-it.com](mailto:info@huge-it.com)
 
 == Changelog ==
+
+= 2.3.0 =
+**In the series of updates we continue to go through our plugins one by one and fix all technical issues with our code in order to meet the WordPress Coding Standards. These are the major updates that had been implemented to Responsive Slider plugin in this new version. We strongly recommend to update the plugin.**
+
+* 1) Changed function names, defines and classnames to have unique prefixes
+* 2) Fixed the issue where the plugin was calling files remotely
+* 3) Made further code optimization in order to meet required WordPress coding standards
+* 4) Added nonces for all _POST, _GET requests to prevent unauthorized access
+* 5) Sanitize the user data and validated post/get calls of the plugin
+* 6) Edited wrong links of banners, now leading to the correct products in the back end.
+* 7) Fixed a bug that caused unexpected outputs when users tried to create a new slider
+* 8) Fixed CSS bugs in admin pages
 
 = 2.2.9 =
 * 1) Multiple major grammatical and phonetic review of description page. 
