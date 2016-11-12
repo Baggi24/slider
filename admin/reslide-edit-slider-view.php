@@ -50,6 +50,7 @@ function reslide_edit_slider_view( $_row, $_id, $_slider ) {
         foreach ($_row as $row) {
         $Slidecount ++;
         $customSlideJson = deleteSpacesNewlines( $row->custom );
+        $r_url = esc_js( html_entity_decode( $row->r_url, ENT_COMPAT, 'UTF-8' ) );
         $description = esc_js( html_entity_decode( $row->description, ENT_COMPAT, 'UTF-8' ) );
         $title = esc_js( html_entity_decode( $row->title, ENT_COMPAT, 'UTF-8' ) );
         ?>
@@ -58,6 +59,7 @@ function reslide_edit_slider_view( $_row, $_id, $_slider ) {
         reslider['slides']['slide' + '<?php echo $row->id;?>']['id'] = '<?php echo $row->id;?>';
         reslider.slides['slide' + '<?php echo $row->id;?>']['title'] = '<?php echo $title;?>';
         reslider.slides['slide' + '<?php echo $row->id;?>']['description'] = '<?php echo $description;?>';
+        reslider.slides['slide' + '<?php echo $row->id;?>']['r_url'] = '<?php echo $r_url;?>';
         reslider.slides['slide' + '<?php echo $row->id;?>']['url'] = '<?php echo $row->thumbnail;?>';
         reslider.slides['slide' + '<?php echo $row->id;?>']['type'] = '<?php echo $row->type;?>';
         reslider.slides['slide' + '<?php echo $row->id;?>']['published'] = +'<?php echo $row->published;?>';
@@ -130,6 +132,8 @@ function reslide_edit_slider_view( $_row, $_id, $_slider ) {
                                                    value="<?php echo wp_unslash( $rows->title ); ?>">
                                             <textarea
                                                 class="reslideitem-edit-description"><?php echo reslide_text_sanitize( $rows->description ); ?></textarea>
+                                            <input type="text" class="reslideitem-edit-r_url"  placeholder="URL"
+                                                   value="<?php echo wp_unslash( $rows->r_url); ?>">
                                             <input type="hidden" class="reslideitem-edit-type"
                                                    value="<?php echo esc_attr($rows->type); ?>">
                                             <input type="hidden" class="reslideitem-edit-url"
@@ -397,56 +401,23 @@ function reslide_edit_slider_view( $_row, $_id, $_slider ) {
                                     </form>
                                 </li>
                                 <li class="params">
-                                    <label for="reslide-arrows-background">Background:&nbsp;<span class="reslide-free" style="color:red;">(PRO)&nbsp;</span></label>
+                                    <label for="reslide-arrows-background">Arrows' styles:&nbsp;<span class="reslide-free" style="color:red;">(PRO)&nbsp;</span></label>
                                     <form id="reslide-arrows-background">
-										<span>
-										<input type="radio" id="params-arrows-background0"
-                                               name="params[arrows][style][background][free]" rel="0"
-                                               value='{"width":"60","height":"60","left":"-0px -115px","right":"-57px -57px","hover":{"left":"-0px -115px","right":"-57px -57px"}}' <?php if ( $params->arrows->type == '0' ) {
-                                            echo "checked";
-                                        } ?>>
-										<label for="params-arrows-background1"><img
-                                                src="<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES . '/arrows/arrows-0.png'; ?>"></label>
-										</span>
                                         <span>
-										<input type="radio" id="params-arrows-background1"
-                                               name="params[arrows][style][background][free]" rel="1"
-                                               value='{"width":"49","height":"49","left":"91px 46px","right":"-44px 1px","hover":{"left":"91px 46px","right":"-44px 1px"}}' <?php if ( $params->arrows->type == '1' ) {
-                                            echo "checked";
-                                        } ?>>
-										<label for="params-arrows-background1"><img
-                                                src="<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES . '/arrows/arrows-1.png'; ?>"></label><br>
+                                            <input type="radio" id="params-arrows-background1"
+                                                   name="params[arrows][style][background][free]" rel="1"
+                                                   value='{"width":"49","height":"49","left":"91px 46px","right":"-44px 1px","hover":{"left":"91px 46px","right":"-44px 1px"}}' <?php if ( $params->arrows->type == '1' ) {
+                                                echo "checked";
+                                            } ?>>
+                                            <label for="params-arrows-background1"><img
+                                                    src="<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES . '/arrows/arrows-1.png'; ?>"></label><br>
 										</span>
-                                        <span>
-										<input type="radio" id="params-arrows-background2"
-                                               name="params[arrows][style][background][free]" rel="2"
-                                               value='{"width":"48","height":"48","left":"0px -96px","right":"48px 0px","hover":{"left":"0px -48px","right":"48px -48px"}}' <?php if ( $params->arrows->type == '2' ) {
-                                            echo "checked";
-                                        } ?>>
-										<label for="params-arrows-background1"><img
-                                                src="<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES . '/arrows/arrows-2.png'; ?>"></label>
-										</span>
-                                        <span>
-										<input type="radio" id="params-arrows-background4"
-                                               name="params[arrows][style][background][free]" rel="3"
-                                               value='{"width":"60","height":"60","left":"0px -60px","right":"60px -60px","hover":{"left":"0px -120px","right":"60px -120px"}}' <?php if ( $params->arrows->type == '3' ) {
-                                            echo "checked";
-                                        } ?>>
-										<label for="params-arrows-background1"><img
-                                                src="<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES . '/arrows/arrows-3.png'; ?>"></label>
-										</span>
-                                        <span>
-										<input type="radio" id="params-arrows-background5"
-                                               name="params[arrows][style][background][free]" rel="4"
-                                               value='{"width":"60","height":"60","left":"0px -60px","right":"60px -60px"}' <?php if ( $params->arrows->type == '4' ) {
-                                            echo "checked";
-                                        } ?>>
-										<label for="params-arrows-background1"><img
-                                                src="<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES . '/arrows/arrows-4.png'; ?>"></label>
-										<span>
 										<input type="hidden" id="params-arrows-type" name="params[arrows][type]"
                                                value="<?php echo $params->arrows->type; ?>">
-
+                                        <div id="arrows-info">
+                                            <p>In the lite version of the plugin you can use the default arrow for slider, yet the Pro version offers more arrows.</p>
+                                        </div>
+                                        <img id="arrows_info_img" src="<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES . '/arrows/arrows_style.png'; ?>" />
                                     </form>
                                 </li>
                             </ul>
