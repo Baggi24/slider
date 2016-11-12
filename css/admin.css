@@ -1,3 +1,42 @@
+.reslide_slide_view_wrapper #general-settings-slide > li span[for="reslide-slide-r_url_new_tab"] {
+    float: left;
+    margin-right: 20px;
+}
+
+.reslide_slide_view_wrapper #general-settings-slide > li input#reslide-slide-r_url_new_tab {
+    height: 16px;
+}
+
+a span.duplicate-icon {
+    background: url(../images/fields.opt.png) 0 -43px;
+    background-repeat: no-repeat;
+    display: inline-block;
+    width: 22px;
+    height: 23px;
+    opacity: 0.5;
+    margin-top: 9px;
+}
+
+a span.delete-icon {
+    background: url(../images/fields.opt.png) 0 0;
+    background-repeat: no-repeat;
+    display: inline-block;
+    width: 22px;
+    height: 23px;
+    opacity: 0.5;
+    margin-top: 9px;
+}
+
+a.duplicate-link {
+    margin-left: 18px;
+    box-shadow: none;
+}
+
+a.delete-link {
+    margin-left: 13px;
+    box-shadow: none;
+}
+
 .reslide_sliders_list_wrapper {
     width: 100%;
     margin-top: 0.2vw;
@@ -19,7 +58,7 @@
 }
 
 .reslide_sliders_list_header > div {
-    width: 30%;
+    width: 22.5%;
     height: 100%;
     float: left;
 }
@@ -50,7 +89,7 @@
     line-height: 37px;
     height: 37px;
     font-size: 14px;
-    width: 30%;
+    width: 22.5%;
     display: inline-block;
     float: left;
     position: relative;
@@ -990,7 +1029,25 @@
 
 #reslide-arrows-background {
     padding-top: 4px;
-    background: #F1F1F1;
+    /*background: #F1F1F1;*/
+}
+
+#arrows-info {
+    width: 100%;
+    box-sizing: border-box;
+    clear: both;
+}
+
+#arrows-info > p {
+    font-size:14px;
+    font-weight: 600;
+}
+
+#arrows_info_img {
+    position: relative;
+    width: 80% !important;
+    height: auto;
+    opacity: 0.36;
 }
 
 #reslide-arrows-background > span {
@@ -1024,8 +1081,8 @@
 #reslide_slider_edit .settings .menu-content ul.main-content .bullets #reslide-bullets-background input:checked + label {
     /* -moz-box-shadow: inset 0 0 10px #000000;
      -webkit-box-shadow: inset 0 0 10px #000000;
-     box-shadow: inset 0 0 10px rgba(32, 32, 51, 0.98);*/
-    border: 1px solid #14ABD7;
+     box-shadow: inset 0 0 10px rgba(32, 32, 51, 0.98);
+    border: 1px solid #14ABD7; */
 }
 
 #reslide_slider_edit .settings .menu-content ul.main-content .arrows #reslide-arrows-background label img {
@@ -1072,6 +1129,16 @@
     color: rgb(86, 88, 85);
     font-size: 13px;
     display: inline-block;
+}
+
+#rightMove1 {
+    margin-left: 40px;
+}
+#rightMove2 {
+    margin-left: 25px;
+}
+#rightMove3 {
+    margin-left: 20px;
 }
 
 #reslide_slider_edit #reslide-bullets-position {
@@ -1939,8 +2006,8 @@ body .popup-type img {
     display: inline-block;
     position:relative;
     margin: 3px 3px;
-    width: 30px;
-    height: 30px;
+    width: 32px;
+    height: 32px;
     background:url('../images/f.png') no-repeat;
 }
 
