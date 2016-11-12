@@ -305,6 +305,7 @@ function reslideDrawSlider() {
             if (!reslider["slides"][slide]['published']) continue;
             reslider["slides"][slide]["title"] = reslider["slides"][slide]["title"].ReslideReplaceAll('&quot;', '"');
             reslider["slides"][slide]["description"] = reslider["slides"][slide]["description"].ReslideReplaceAll('&quot;', '"');
+            reslider["slides"][slide]["r_url"] = reslider["slides"][slide]["r_url"].ReslideReplaceAll('&quot;', '"');
             if (reslider["slides"][slide] ["type"] != 'video') {
                 var item = _reslide();
                 item.addClass('reslideitem');
@@ -896,6 +897,10 @@ document.onkeydown = function (evt) {
             reslideGetSliderParams();
         });
 
+        jQuery('#reslide-slide-r_url_new_tab').on('change', function () {
+            jQuery(this).attr('checked') ? jQuery(this).val(1) : jQuery(this).val(0);
+        });
+
         _reslide._('#reslide-effect-type').on('change', function () {
             var value = _reslide(this).value;
             _reslide._('#reslide-effect-type + input')[0].value = value;
@@ -1034,8 +1039,12 @@ function reslideGetSlideParams(slide) {
     });
     var slidetitle = _reslide(_reslide._('#reslide-slide-title')).val();
     var slidedescription = _reslide(_reslide._('#reslide-slide-description')).val();
+    var slider_url = _reslide(_reslide._('#reslide-slide-r_url')).val();
+    var slider_url_new_tab = _reslide(_reslide._('#reslide-slide-r_url_new_tab')).val();
     reslider['slides'][slide]['title'] = slidetitle;
     reslider['slides'][slide]['description'] = slidedescription;
+    reslider['slides'][slide]['r_url'] = slider_url;
+    reslider['slides'][slide]['r_url_new_tab'] = slider_url_new_tab;
 
 }
 
@@ -1561,23 +1570,12 @@ var initDifferX, initDifferY, moveCondition = {type: ''};
             remove.style.left = parseInt(bl.style.left) + bl.offsetWidth - 14 + 'px';
             moveCondition.type = '';
         }
-
-        jQuery(".close_free_banner").on("click",function(){
-            jQuery(".free_version_banner").css("display","none");
-            reslideSetCookie( 'reslideFreeBannerShow', 'no', {expires:3600} );
-        });
-    })
+        
+    });
 
 
 
     /* Cookies */
-    function reslideGetCookie(name) {
-        var matches = document.cookie.match(new RegExp(
-            "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
-        ));
-        return matches ? decodeURIComponent(matches[1]) : undefined;
-    }
-
     function reslideSetCookie(name, value, options) {
         options = options || {};
 
@@ -1609,6 +1607,13 @@ var initDifferX, initDifferY, moveCondition = {type: ''};
 
         document.cookie = updatedCookie;
     }
+    
+    function reslideGetCookie(name) {
+        var matches = document.cookie.match(new RegExp(
+            "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+        ));
+        return matches ? decodeURIComponent(matches[1]) : undefined;
+    }
 
     function reslideDeleteCookie(name) {
         setCookie(name, "", {
@@ -1617,7 +1622,3 @@ var initDifferX, initDifferY, moveCondition = {type: ''};
     }
 })
 (jQuery);
-
-
-
-
