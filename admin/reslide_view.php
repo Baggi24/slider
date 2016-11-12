@@ -46,11 +46,15 @@ function reslide_edit_slide_view( $_slider, $_slides, $_mainslide ) { // Slider'
 			$customSlideJson = deleteSpacesNewlines( $row->custom );
 			$description = esc_js( html_entity_decode( $row->description, ENT_COMPAT, 'UTF-8' ) );
 			$title = esc_js( html_entity_decode( $row->title, ENT_COMPAT, 'UTF-8' ) );
+			$r_url = esc_js( html_entity_decode( $row->r_url, ENT_COMPAT, 'UTF-8' ) );
+			$r_url_new_tab = esc_js( $row->r_url );
 			?>
 			reslider['slides']['slide' + '<?php echo $row->id;?>'] = {};
 			reslider['slides']['slide' + '<?php echo $row->id;?>']['id'] = '<?php echo $row->id;?>';
 			reslider.slides['slide' + '<?php echo $row->id;?>']['title'] = '<?php echo $title;?>';
 			reslider.slides['slide' + '<?php echo $row->id;?>']['description'] = '<?php echo $description;?>';
+			reslider.slides['slide' + '<?php echo $row->id;?>']['r_url'] = '<?php echo $r_url;?>';
+			reslider.slides['slide' + '<?php echo $row->id;?>']['r_url_new_tab'] = '<?php echo $r_url_new_tab;?>';
 			reslider.slides['slide' + '<?php echo $row->id;?>']['url'] = '<?php echo $row->thumbnail;?>';
 			reslider.slides['slide' + '<?php echo $row->id;?>']['type'] = '<?php echo $row->type;?>';
 			reslider.slides['slide' + '<?php echo $row->id;?>']['published'] = +'<?php echo $row->published;?>';
@@ -128,6 +132,18 @@ function reslide_edit_slide_view( $_slider, $_slides, $_mainslide ) { // Slider'
 									<label for="reslide-slide-description">Description</label>
 									<textarea type="text"
 									          id="reslide-slide-description"><?php echo reslide_text_sanitize( $_mainslide[0]->description ); ?></textarea>
+								</li>
+								<li class="reslide-slide-r_url">
+									<label for="reslide-slide-r_url">URL</label>
+									<input type="text" id="reslide-slide-r_url"
+									       value="<?php echo wp_unslash( $_mainslide[0]->r_url); ?>"/><br/>
+								</li>
+								<li class="reslide-slide-r_url_new_tab">
+									<span for="reslide-slide-r_url_new_tab">Open in new tab</span>
+									<input id="reslide-slide-r_url_new_tab" type="checkbox"
+									       value="<?php echo esc_attr( $_mainslide[0]->r_url_new_tab ); ?>" <?php if ( $_mainslide[0]->r_url_new_tab ) {
+										echo "checked";
+									} ?> />
 								</li>
 								<li class="reslide-custom">
 									<label for="reslide-custom">Slide Element:</label>
