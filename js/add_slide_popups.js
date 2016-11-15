@@ -5,7 +5,13 @@ jQuery(function ($) {
         if (jQuery('#reslide_sliders_list .id').length > 2) {
             jQuery('.add-slider').click(
                 function () {
-                    alert('Your sliders\' limit was ended...');
+                    alert('There is a 3 sliders limit in lite version of the plugin.');
+                    return false;
+                }
+            )
+            jQuery('.duplicate-icon').click(
+                function () {
+                    alert('There is a 3 sliders limit in lite version of the plugin.');
                     return false;
                 }
             )
@@ -245,16 +251,57 @@ function getExistImagesId() {
 }
 function getSlidesInput() {
     jQuery('#reslide_slider_images_list li.reslideitem').not('.add').each(function () {
-        var id = jQuery(this).attr('id'), type, title, description, url, ordering;
+        var id = jQuery(this).attr('id'), type, title, description, r_url, url, ordering;
         id = id.replace('reslideitem_', '');
         title = jQuery(this).find('.reslideitem-edit-title').val();
         description = jQuery(this).find('.reslideitem-edit-description').val();
+        r_url = jQuery(this).find('.reslideitem-edit-r_url').val();
         ordering = jQuery(this).find('.reslideitem-ordering').val();
         url = jQuery(this).find('.reslideitem-edit-url').val();
         reslider['slides']['slide' + id]['title'] = title;
         reslider['slides']['slide' + id]['description'] = description;
+        reslider['slides']['slide' + id]['r_url'] = r_url;
         reslider['slides']['slide' + id]['id'] = id;
         reslider['slides']['slide' + id]['url'] = url;
         reslider['slides']['slide' + id]['ordering'] = ordering;
     })
 }
+jQuery(window).load(function(){
+    jQuery(".close_free_banner").on("click",function(){
+        jQuery(".free_version_banner").css("display","none");
+        reslideSetCookie( 'reslideFreeBannerShow', 'no', {expires:3600} );
+    });
+    
+    function reslideSetCookie(name, value, options) {
+        options = options || {};
+
+        var expires = options.expires;
+
+        if (typeof expires == "number" && expires) {
+            var d = new Date();
+            d.setTime(d.getTime() + expires * 1000);
+            expires = options.expires = d;
+        }
+        if (expires && expires.toUTCString) {
+            options.expires = expires.toUTCString();
+        }
+
+
+        if(typeof value == "object"){
+            value = JSON.stringify(value);
+        }
+        value = encodeURIComponent(value);
+        var updatedCookie = name + "=" + value;
+
+        for (var propName in options) {
+            updatedCookie += "; " + propName;
+            var propValue = options[propName];
+            if (propValue !== true) {
+                updatedCookie += "=" + propValue;
+            }
+        }
+
+        document.cookie = updatedCookie;
+    }
+    
+});

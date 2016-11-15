@@ -45,6 +45,7 @@ define( "RESLIDE_TABLE_SLIDES", $wpdb->prefix . 'huge_it_reslider_slides', true 
 add_action( 'media_buttons_context', 'reslide_add_media_button' );
 add_action( 'admin_footer', 'reslide_media_button_popup' );
 add_action( "wp_loaded", "reslide_loaded_slider_callback" );
+add_action( "wp_loaded", "reslide_duplicate_slider" );
 add_action( 'admin_menu', 'reslide_slider_options_panels' );
 add_action( 'admin_enqueue_scripts', 'reslide_admin_scripts' );
 add_action( 'wp_enqueue_scripts', 'reslide_frontend_scripts' );
@@ -231,6 +232,58 @@ function reslide_loaded_slider_callback() {
 	}
 }
 
+function reslide_duplicate_slider() {
+
+	global $wpdb;
+
+
+	if(isset($_GET['page']) && $_GET['page'] == 'reslider') {
+		if(isset($_GET['task']) && $_GET['task'] == 'duplicateslider'){
+			$id       = absint($_GET['id']);
+			if ( isset( $_REQUEST['reslider_duplicate_nonce'] ) ) {
+				if ( ! wp_verify_nonce( $_REQUEST['reslider_duplicate_nonce'], 'reslider_duplicateslider_' . $id ) ) {
+					die( __( 'Security check failed', 'reslide' ) );
+				}
+			}
+			$table    = RESLIDE_TABLE_SLIDERS;
+			$query    = $wpdb->prepare( "SELECT * FROM " . $table . " WHERE id=%d", $id );
+			$r_slider = $wpdb->get_results( $query );
+			$wpdb->insert(
+				$table,
+				array(
+					'title'  => $r_slider[0]->title . ' Copy',
+					'type'   => $r_slider[0]->type,
+					'params' => $r_slider[0]->params,
+					'time'   => $r_slider[0]->time,
+					'slide'  => $r_slider[0]->slide,
+					'style'  => $r_slider[0]->style,
+					'custom' => $r_slider[0]->custom
+				)
+			);
+
+			$last_key      = $wpdb->insert_id;
+			$table         = RESLIDE_TABLE_SLIDES;
+			$query         = $wpdb->prepare( "SELECT * FROM " . $table . " WHERE sliderid=%d", $id );
+			$r_sliders     = $wpdb->get_results( $query );
+			$r_slider_list = '';
+			foreach ( $r_sliders as $key => $r_slider ) {
+				$new_r_slider = "('";
+				$new_r_slider .= $r_slider->title . "','" . $last_key . "','" . $r_slider->published . "','" . $r_slider->slide . "','" .
+				                 $r_slider->description . "','" . $r_slider->r_url . "','" . $r_slider->r_url_new_tab . "','" . $r_slider->thumbnail . "','" . $r_slider->custom . "','" .
+				                 $r_slider->ordering . "','" . $r_slider->type . "')";
+				$r_slider_list .= $new_r_slider . ",";
+			}
+			$r_slider_list = substr( $r_slider_list, 0, strlen( $r_slider_list ) - 1 );
+			$query         = "INSERT into " . $table . " (title,sliderid,published,slide,description,r_url,r_url_new_tab,thumbnail,custom,ordering,type)
+			VALUES " . $r_slider_list;
+			$wpdb->query( $query );
+
+			wp_redirect( 'admin.php?page=reslider' );
+		}
+	}
+
+}
+
 /**
  * Print out banner notice for free version
  */
@@ -291,7 +344,7 @@ function reslide_slider_licensing(){
 			general options of the Slider.
 		</p>
 		<br/><br/>
-		<a href="http://huge-it.com/wordpress-responsive-slider-faq/" class="button-primary" target="_blank">Purchase a License</a>
+		<a href="http://huge-it.com/wordpress-responsive-slider/" class="button-primary" target="_blank">Purchase a License</a>
 		<br/><br/><br/>
 		<p>After the purchasing the commercial version follow this steps:</p>
 		<ol>
@@ -505,6 +558,10 @@ function reslide_ajax_action_callback() {
 
 			if ( isset( $slides ) ) {
 				foreach ( $slides as $slide ) {
+					$r_url = $slide['r_url'];
+					$r_url = esc_html( $r_url );
+					$r_url_new_tab = $slide['r_url_new_tab'];
+					$r_url_new_tab = esc_html( $r_url_new_tab );
 					$description = $slide['description'];
 					$description = esc_html( $description );
 					$title       = $slide['title'];
@@ -517,12 +574,16 @@ function reslide_ajax_action_callback() {
 						array(
 							'title'       => $title,
 							'description' => $description,
+							'r_url'         => $r_url,
+							'r_url_new_tab' => $r_url_new_tab,
 							'thumbnail'   => $slide['url'],
 							'ordering'    => $ordering
 
 						),
 						array( 'sliderid' => $id, 'id' => $slide['id'] ),
 						array(
+							'%s',
+							'%s',
 							'%s',
 							'%s',
 							'%s',
@@ -536,7 +597,7 @@ function reslide_ajax_action_callback() {
 			$myrows = $wpdb->get_results( "SELECT * FROM " . RESLIDE_TABLE_SLIDES . " WHERE sliderid = " . $id . " order by ordering desc" );
 			$str    = array();
 			foreach ( $myrows as $row ) {
-				$st                        = '{"description":"' . wp_unslash( esc_js( $row->description ) ) . '","id":"' . $row->id . '","title":"' . wp_unslash( esc_js( $row->title ) ) . '","type":"' . $row->type . '","url":"' . $row->thumbnail . '","ordering":' . $row->ordering . ',"published":' . $row->published . '}';
+				$st                        = '{"description":"' . wp_unslash( esc_js( $row->description ) ) . '","id":"' . $row->id . '","title":"' . wp_unslash( esc_js( $row->title ) ) . '","r_url":"' . wp_unslash( esc_js( $row->r_url ) ). '","r_url_new_tab":"' . wp_unslash( esc_js( $row->r_url_new_tab ) ) . '","type":"' . $row->type . '","url":"' . $row->thumbnail . '","ordering":' . $row->ordering . ',"published":' . $row->published . '}';
 				$str[ 'slide' . $row->id ] = $st;
 			};
 			echo json_encode( $str );
@@ -584,16 +645,30 @@ function reslide_ajax_action_callback() {
 			} else {
 				$description = "";
 			}
+			if ( isset( $_POST['r_url'] ) ) {
+				$r_url = esc_html( $_POST['r_url'] );
+			} else {
+				$r_url = "";
+			}
+			if ( isset( $_POST['r_url_new_tab'] ) ) {
+				$r_url_new_tab = esc_html( $_POST['r_url_new_tab'] );
+			} else {
+				$r_url_new_tab = "";
+			}
 			$wpdb->update(
 				RESLIDE_TABLE_SLIDES,
 
 				array(
 					'custom'      => $custom,
 					'title'       => $title,
-					'description' => $description
+					'description' => $description,
+					'r_url'         => $r_url,
+					'r_url_new_tab' => $r_url_new_tab
 				),
 				array( 'sliderid' => $id, 'id' => $slide ),
 				array(
+					'%s',
+					'%s',
 					'%s',
 					'%s',
 					'%s'
@@ -752,4 +827,12 @@ INSERT INTO `$table` (`title`, `sliderid`, `published`, `slide`, `description`, 
 			$wpdb->query( $sql_slides_Table_init );
 		}
 	}
+
+	$table                  = RESLIDE_TABLE_SLIDES;
+	$sql_slides_Table_update_0 = "   ALTER TABLE `$table` ADD `r_url` TEXT NOT NULL AFTER `description`, ADD `r_url_new_tab` BOOLEAN NOT NULL AFTER `r_url` ";
+	$wpdb->query($sql_slides_Table_update_0);
+
+	$table                  = RESLIDE_TABLE_SLIDES;
+	$sql_slides_Table_update_1 = "UPDATE `$table` SET r_url='http://huge-it.com', r_url_new_tab='1' WHERE sliderid=1";
+	$wpdb->query($sql_slides_Table_update_1);
 }

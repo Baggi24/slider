@@ -100,6 +100,7 @@
 							'<form class="reslide-nodisplay">',
 								'<input type="text" class="reslideitem-edit-title" value="' + result[res]["title"] + '">',
 								'<textarea class="reslideitem-edit-description">' + result[res]["description"] + '</textarea>',
+								'<input type="text" placeholder="URL" class="reslideitem-edit-r_url" value="' + result[res]["r_url"] + '">',
 								'<input type="hidden" class="reslideitem-edit-type" value="">',
 								'<input type="hidden" class="reslideitem-edit-url" value="' + result[res]["url"] + '">',
 								'<input type="hidden" class="reslideitem-ordering" value="' + result[res]["ordering"] + '">',
@@ -131,6 +132,8 @@
 			 'custom': _reslide.parseJSON(reslider['slides'][slide])['custom'],
 			 'title': reslider['slides'][slide]['title'],
 			 'description': reslider['slides'][slide]['description'],
+			 'r_url': reslider['slides'][slide]['r_url'],
+			 'r_url_new_tab': reslider['slides'][slide]['r_url_new_tab'],
 			 'slide': getparamsFromUrl('slideid', location.href)
 		 };
 		 $.ajax({

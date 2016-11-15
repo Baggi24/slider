@@ -16,6 +16,7 @@ function reslide_sliders_view_list( $rows ) { ?>
 			<div class="id"><h3>&nbsp;&nbsp;<?php _e('ID', 'reslide'); ?></h3></div>
 			<div class="name"><h3><?php _e('Name', 'reslide') ?></h3></div>
 			<div class="count"><h3><?php _e('Slides Count', 'reslide'); ?></h3></div>
+			<div class="copy"><h3><?php _e('Duplicate', 'reslide'); ?></h3></div>
 			<div class="attr"><h3><?php _e('Remove', 'reslide'); ?></h3></div>
 		</div>
 		<ul id="reslide_sliders_list">
@@ -30,11 +31,24 @@ function reslide_sliders_view_list( $rows ) { ?>
 					<div class="name"><a
 							href="<?php echo wp_nonce_url( admin_url('admin.php?page=reslider&task=editslider&id=' . $row->id),'reslide_editslider_'.$row->id ); ?>"><?php echo stripslashes_deep($row->title); ?></a>&nbsp;
 					</div>
-					<div class="count"><?php echo $row->count; ?></div>
+					<div class="count">
+						<div id="rightMove1">
+							<?php echo $row->count; ?>
+						</div>
+					</div>
+					<div class="copy">
+						<div id="rightMove2">
+							<a title="duplicate" class="duplicate"
+						   href="<?php echo wp_nonce_url( admin_url('admin.php?page=reslider&task=duplicateslider&id=' . $row->id), 'reslider_duplicateslider_' . $row->id , 'reslider_duplicate_nonce') ?>"><span
+								class="duplicate-icon"></span></a>
+						</div>
+					</div>
 					<div class="properties">
-						<a title="delete" class="delete"
-						   href="<?php echo wp_nonce_url( admin_url('admin.php?page=reslider&task=removeslider&id=' . $row->id), 'reslider_removeslider_' . $row->id ) ?>"><i
-								class="fa fa-times"></i></a>
+						<div id="rightMove3">
+							<a title="delete" class="delete"
+						   href="<?php echo wp_nonce_url( admin_url('admin.php?page=reslider&task=removeslider&id=' . $row->id), 'reslider_removeslider_' . $row->id ) ?>"><span
+								class="delete-icon"></span></a>
+						</div>
 					</div>
 				</li>
 			<?php } ?>
