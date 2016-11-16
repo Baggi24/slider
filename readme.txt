@@ -4,7 +4,7 @@ Donate link: http://huge-it.com/wordpress-responsive-slider/
 Tags: slider, responsive slider, content slider, image slider, photo slider, slider plugin, layer slider, slideshow, wordpress slider, wordpress slideshow, gallery slider, slide,
 Requires at least: 3.0.1
 Tested up to: 4.6.1
-Stable tag: 2.3.0
+Stable tag: 2.3.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -153,6 +153,11 @@ Custom arrows can be added in the Professional version of the plugin only.
 If you think, that you found a bug in our [WordPress Responsive Slider](http://huge-it.com/wordpress-responsive-slider) plugin or have any question contact us at [info@huge-it.com](mailto:info@huge-it.com)
 
 == Changelog ==
+
+= 2.3.1 =
+* 1) Now users can add URLs to slides leading to the page they mention
+* 2) 3. We have added new package of arrows for sliders, now users can use variety of them.
+* 3) We have added an options allowing to duplicate sliders easily.
 
 = 2.3.0 =
 **In the series of updates we continue to go through our plugins one by one and fix all technical issues with our code in order to meet the WordPress Coding Standards. These are the major updates that had been implemented to Responsive Slider plugin in this new version. We strongly recommend to update the plugin.**
