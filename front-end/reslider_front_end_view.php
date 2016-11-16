@@ -64,7 +64,7 @@ function reslider_front_end($_id,$_slider,$_reslides) {
 		reslider<?php echo $sliderID;?>['slides']['slide'+'<?php echo $row->id;?>']['id'] = '<?php echo $row->id;?>';
 		reslider<?php echo $sliderID;?>.slides['slide'+'<?php echo $row->id;?>']['title'] = '<?php echo $row->title;?>';
 		reslider<?php echo $sliderID;?>.slides['slide'+'<?php echo $row->id;?>']['description'] = '<?php echo str_replace("\n", '<br>', $row->description);?>';
-		reslider<?php echo $sliderID;?>.slides['slide'+'<?php echo $row->id;?>']['r_url'] = '<?php echo str_replace("\n", '<br>', $row->r_url);?>';
+		reslider<?php echo $sliderID;?>.slides['slide'+'<?php echo $row->id;?>']['image_link'] = '<?php echo str_replace("\n", '<br>', $row->image_link);?>';
 		reslider<?php echo $sliderID;?>.slides['slide'+'<?php echo $row->id;?>']['url'] = '<?php echo $row->thumbnail;?>';
 		reslider<?php echo $sliderID;?>.slides['slide'+'<?php echo $row->id;?>']['type'] = '<?php echo $row->type;?>';
 		reslider<?php echo $sliderID;?>.slides['slide'+'<?php echo $row->id;?>']['custom'] = JSON.parse('<?php echo $slideCustum; ?>');
@@ -84,8 +84,8 @@ function reslider_front_end($_id,$_slider,$_reslides) {
 				$customSlide = json_decode($slide->custom);
 			?>
             <div class="slide<?php echo $sliderID ;?>_<?php echo $slide->id;?>">
-	            <?php if(!empty($slide->r_url)){ ?>
-		            <a href="<?php echo reslide_text_sanitize($slide->r_url);?>" <?php if($slide->r_url_new_tab){ echo 'target="_blank"'; }?>>
+	            <?php if(!empty($slide->image_link)){ ?>
+		            <a href="<?php echo reslide_text_sanitize($slide->image_link);?>" <?php if($slide->image_link_new_tab){ echo 'target="_blank"'; }?>>
 			            <img u="image" src="<?php  echo esc_url($slide->thumbnail);?>" alt="<?php  echo esc_attr($slide->thumbnail);?>"/>
 			            <img u="thumb" src="<?php  echo esc_url($slide->thumbnail);?>" alt="<?php  echo esc_attr($slide->thumbnail);?>"/>
 		            </a>

@@ -251,16 +251,16 @@ function getExistImagesId() {
 }
 function getSlidesInput() {
     jQuery('#reslide_slider_images_list li.reslideitem').not('.add').each(function () {
-        var id = jQuery(this).attr('id'), type, title, description, r_url, url, ordering;
+        var id = jQuery(this).attr('id'), type, title, description, image_link, url, ordering;
         id = id.replace('reslideitem_', '');
         title = jQuery(this).find('.reslideitem-edit-title').val();
         description = jQuery(this).find('.reslideitem-edit-description').val();
-        r_url = jQuery(this).find('.reslideitem-edit-r_url').val();
+        image_link = jQuery(this).find('.reslideitem-edit-image_link').val();
         ordering = jQuery(this).find('.reslideitem-ordering').val();
         url = jQuery(this).find('.reslideitem-edit-url').val();
         reslider['slides']['slide' + id]['title'] = title;
         reslider['slides']['slide' + id]['description'] = description;
-        reslider['slides']['slide' + id]['r_url'] = r_url;
+        reslider['slides']['slide' + id]['image_link'] = image_link;
         reslider['slides']['slide' + id]['id'] = id;
         reslider['slides']['slide' + id]['url'] = url;
         reslider['slides']['slide' + id]['ordering'] = ordering;

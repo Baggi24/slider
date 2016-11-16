@@ -1,9 +1,9 @@
-.reslide_slide_view_wrapper #general-settings-slide > li span[for="reslide-slide-r_url_new_tab"] {
+.reslide_slide_view_wrapper #general-settings-slide > li span[for="reslide-slide-image_link_new_tab"] {
     float: left;
     margin-right: 20px;
 }
 
-.reslide_slide_view_wrapper #general-settings-slide > li input#reslide-slide-r_url_new_tab {
+.reslide_slide_view_wrapper #general-settings-slide > li input#reslide-slide-image_link_new_tab {
     height: 16px;
 }
 
