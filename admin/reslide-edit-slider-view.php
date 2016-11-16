@@ -50,7 +50,7 @@ function reslide_edit_slider_view( $_row, $_id, $_slider ) {
         foreach ($_row as $row) {
         $Slidecount ++;
         $customSlideJson = deleteSpacesNewlines( $row->custom );
-        $r_url = esc_js( html_entity_decode( $row->r_url, ENT_COMPAT, 'UTF-8' ) );
+        $image_link = esc_js( html_entity_decode( $row->image_link, ENT_COMPAT, 'UTF-8' ) );
         $description = esc_js( html_entity_decode( $row->description, ENT_COMPAT, 'UTF-8' ) );
         $title = esc_js( html_entity_decode( $row->title, ENT_COMPAT, 'UTF-8' ) );
         ?>
@@ -59,7 +59,7 @@ function reslide_edit_slider_view( $_row, $_id, $_slider ) {
         reslider['slides']['slide' + '<?php echo $row->id;?>']['id'] = '<?php echo $row->id;?>';
         reslider.slides['slide' + '<?php echo $row->id;?>']['title'] = '<?php echo $title;?>';
         reslider.slides['slide' + '<?php echo $row->id;?>']['description'] = '<?php echo $description;?>';
-        reslider.slides['slide' + '<?php echo $row->id;?>']['r_url'] = '<?php echo $r_url;?>';
+        reslider.slides['slide' + '<?php echo $row->id;?>']['image_link'] = '<?php echo $image_link;?>';
         reslider.slides['slide' + '<?php echo $row->id;?>']['url'] = '<?php echo $row->thumbnail;?>';
         reslider.slides['slide' + '<?php echo $row->id;?>']['type'] = '<?php echo $row->type;?>';
         reslider.slides['slide' + '<?php echo $row->id;?>']['published'] = +'<?php echo $row->published;?>';
@@ -132,8 +132,8 @@ function reslide_edit_slider_view( $_row, $_id, $_slider ) {
                                                    value="<?php echo wp_unslash( $rows->title ); ?>">
                                             <textarea
                                                 class="reslideitem-edit-description"><?php echo reslide_text_sanitize( $rows->description ); ?></textarea>
-                                            <input type="text" class="reslideitem-edit-r_url"  placeholder="URL"
-                                                   value="<?php echo wp_unslash( $rows->r_url); ?>">
+                                            <input type="text" class="reslideitem-edit-image_link"  placeholder="URL"
+                                                   value="<?php echo wp_unslash( $rows->image_link); ?>">
                                             <input type="hidden" class="reslideitem-edit-type"
                                                    value="<?php echo esc_attr($rows->type); ?>">
                                             <input type="hidden" class="reslideitem-edit-url"
