@@ -75,6 +75,12 @@ function reslide_edit_slider_view( $_row, $_id, $_slider ) {
                 <a id="add_image"><span>Add Image</span><span><i class="fa fa-plus-circle"
                                                                  aria-hidden="true"></i></span></a>
             </div>
+            <div class="add_slide_container_video">
+                <a id="add_video">
+                    <input id="reslide_insert_video_input" placeholder="Insert video link" value="">
+                    <span class="video-pro reslide-free" style="color:red;">(PRO)&nbsp;</span>
+                </a>
+            </div>
             <div class="reslide_slider_images_list_wrapper">
                 <ul id="reslide_slider_images_list">
                     <?php if ( ! count( $_row ) ) {
@@ -202,6 +208,14 @@ function reslide_edit_slider_view( $_row, $_id, $_slider ) {
                                                                                                  type="checkbox"
                                                                                                  name="params[autoplay]"
                                                                                                  value="<?php echo esc_attr($params->autoplay); ?>" <?php if ( $params->autoplay ) {
+                                        echo "checked";
+                                    } ?> />
+                                </li>
+                                <li class="params">
+                                    <label for="reslide-pauseonhover">Pause On Hover:</label><input id="reslide-pauseonhover"
+                                                                                                 type="checkbox"
+                                                                                                 name="params[pauseonhover]"
+                                                                                                 value="<?php echo esc_attr($params->pauseonhover); ?>" <?php if ( $params->pauseonhover ) {
                                         echo "checked";
                                     } ?> />
                                 </li>

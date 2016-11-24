@@ -243,6 +243,7 @@ function reslider_front_end($_id,$_slider,$_reslides) {
             var options = {
                 $AutoPlay: (reslider<?php echo $sliderID;?>["params"]["autoplay"]==1)?true:false,                                   //[Optional] Whether to auto play, to enable slideshow, this option must be set to true, default value is false
 				$SlideDuration: 500,
+	            $PauseOnHover: reslider<?php echo $sliderID;?>["params"]["pauseonhover"],
 				$AutoPlayInterval: reslider<?php echo $sliderID;?>["params"]["effect"]["interval"],   
 				//$AutoPlaySteps : -1,			
 	//[Optional] Specifies default duration (swipe) for slide in milliseconds, default value is 500

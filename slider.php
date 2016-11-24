@@ -336,21 +336,96 @@ function reslide_slider_options_panels() {
  * Outputs the licensing page
  */
 function reslide_slider_licensing(){
+	wp_enqueue_style( 'reslide_admin_css', RESLIDE_PLUGIN_PATH_CSS . '/admin.css' );
+
 	?>
 	<div style="width:95%">
-		<p>
+		<p class="textLicense">
 			This plugin is the LITE version of the Responsive Slider. If you want to customize to the styles and colors of your
 			website,than you need to buy Full License. Purchasing Full License will add possibility to customize the
 			general options of the Slider.
 		</p>
-		<br/><br/>
-		<a href="http://huge-it.com/wordpress-responsive-slider/" class="button-primary" target="_blank">Purchase a License</a>
-		<br/><br/><br/>
-		<p>After the purchasing the commercial version follow this steps:</p>
-		<ol>
-			<li>Deactivate Huge-IT Responsive Slider Plugin</li>
-			<li>Delete Huge-IT Responsive Slider Plugin</li>
-			<li>Install the downloaded commercial version of the plugin</li>
+		<div class="licensing">
+			<div class="licensing-block">
+				<div class="licens">
+					<a href="http://huge-it.com/wordpress-responsive-slider/">
+						<span class="icon unlimited-slider"></span>
+						<span class="text">unlimited slider</span>
+					</a>
+				</div>
+				<div class="licens">
+					<a href="http://huge-it.com/wordpress-responsive-slider/">
+						<span class="icon youtube"></span>
+						<span class="text">Youtube video sliders</span>
+					</a>
+				</div>
+				<div class="licens">
+					<a href="http://huge-it.com/wordpress-responsive-slider/">
+						<span class="icon vimeo"></span>
+						<span class="text">Vimeo video sliders</span>
+					</a>
+				</div>
+				<div class="licens">
+					<a href="http://huge-it.com/wordpress-responsive-slider/">
+						<span class="icon description"></span>
+						<span class="text">Title and Description styles</span>
+					</a>
+				</div>
+				<div class="licens">
+					<a href="http://huge-it.com/wordpress-responsive-slider/">
+						<span class="icon thumbnail-navigation"></span>
+						<span class="text">Slider’s Thumbnail navigation</span>
+					</a>
+				</div>
+				<div class="licens">
+					<a href="http://huge-it.com/wordpress-responsive-slider/">
+						<span class="icon custom-thumbnails"></span>
+						<span class="text">Slider custom thumbnails</span>
+					</a>
+				</div>
+				<div class="licens">
+					<a href="http://huge-it.com/wordpress-responsive-slider/">
+						<span class="icon custom-buttons"></span>
+						<span class="text">Slide custom buttons</span>
+					</a>
+				</div>
+				<div class="licens">
+					<a href="http://huge-it.com/wordpress-responsive-slider/">
+						<span class="icon custom-texts"></span>
+						<span class="text">Slide custom texts</span>
+					</a>
+				</div>
+				<div class="licens">
+					<a href="http://huge-it.com/wordpress-responsive-slider/">
+						<span class="icon arrows"></span>
+						<span class="text">20+ arrows styles</span>
+					</a>
+				</div>
+				<div class="licens">
+					<a href="http://huge-it.com/wordpress-responsive-slider/">
+						<span class="icon bullets"></span>
+						<span class="text">bullets customisation</span>
+					</a>
+				</div>
+				<div class="licens">
+					<a href="http://huge-it.com/wordpress-responsive-slider/">
+						<span class="icon full-video"></span>
+						<span class="text">Full video Settings</span>
+					</a>
+				</div>
+				<div class="licens">
+					<a href="http://huge-it.com/wordpress-responsive-slider/">
+						<span class="icon advanced"></span>
+						<span class="text">advanced customization</span>
+					</a>
+				</div>
+			</div>
+		</div>
+		<p class="textLicense">After the purchasing the commercial version follow this steps:</p>
+		<ol class="textLicense">
+			<li class="textLicense">Deactivate Huge-IT Responsive Slider Plugin</li>
+			<li class="textLicense">Delete Huge-IT Responsive Slider Plugin</li>
+			<li class="textLicense">Install the downloaded commercial version of the plugin</li>
 		</ol>
 	</div>
 	<?php
@@ -805,7 +880,7 @@ CREATE TABLE IF NOT EXISTS  `$table`  (
 */	
 	$sql_sliders_Table_init = <<<query1
 INSERT INTO `$table` (`title`, `type`, `params`, `time`, `slide`, `style`, `custom`) VALUES
-( 'First Slider', 'simple', '{"autoplay":1,"effect":{"type":3,"duration":1500,"interval":1000},"thumbnails":{"show":0,"positioning":0},"custom":{"type":"text"},"title":{"show":1,"position":"1","style":{"width":213,"height":61,"left":"571.375px","top":"14.7031px","color":"FFFFFF","opacity":0,"font":{"size":18},"border":{"color":"FFFFFF","width":1,"radius":2},"background":{"color":"FFFFFF","hover":"30FF4F"}}},"description":{"show":1,"position":"1","style":{"width":768,"height":116,"left":"16.375px","top":"345.703px","color":"FFFFFF","opacity":80,"font":{"size":14},"border":{"color":"3478FF","width":0,"radius":2},"background":{"color":"000000","hover":"000000"}}},"arrows":{"show":2,"type":1,"style":{"background":{"width":"49","height":"49","left":"91px 46px","right":"-44px 1px","hover":{"left":"91px 46px","right":"-44px 1px"}}}},"bullets":{"show":0,"type":"0","position":0,"autocenter":"0","rows":1,"s_x":10,"s_y":10,"orientation":1,"style":{"background":{"width":"60","height":"60","color":{"hover":"646464","active":"30FF4F","link":"CCCCCC"}},"position":{"top":"16px","left":"10px"}}}}', '2016-05-02 10:58:58', NULL, '{"background":"blue;","border":"1px solid red;","color":"yellow","width":"800","height":"480","marginLeft":"0","marginRight":"0","marginTop":"0","marginBottom":"0"}', '{}');
+( 'First Slider', 'simple', '{"autoplay":1,"pauseonhover":1,"effect":{"type":3,"duration":1500,"interval":1000},"thumbnails":{"show":0,"positioning":0},"custom":{"type":"text"},"title":{"show":1,"position":"1","style":{"width":213,"height":61,"left":"571.375px","top":"14.7031px","color":"FFFFFF","opacity":0,"font":{"size":18},"border":{"color":"FFFFFF","width":1,"radius":2},"background":{"color":"FFFFFF","hover":"30FF4F"}}},"description":{"show":1,"position":"1","style":{"width":768,"height":116,"left":"16.375px","top":"345.703px","color":"FFFFFF","opacity":80,"font":{"size":14},"border":{"color":"3478FF","width":0,"radius":2},"background":{"color":"000000","hover":"000000"}}},"arrows":{"show":2,"type":1,"style":{"background":{"width":"49","height":"49","left":"91px 46px","right":"-44px 1px","hover":{"left":"91px 46px","right":"-44px 1px"}}}},"bullets":{"show":0,"type":"0","position":0,"autocenter":"0","rows":1,"s_x":10,"s_y":10,"orientation":1,"style":{"background":{"width":"60","height":"60","color":{"hover":"646464","active":"30FF4F","link":"CCCCCC"}},"position":{"top":"16px","left":"10px"}}}}', '2016-05-02 10:58:58', NULL, '{"background":"blue;","border":"1px solid red;","color":"yellow","width":"800","height":"480","marginLeft":"0","marginRight":"0","marginTop":"0","marginBottom":"0"}', '{}');
 query1;
 	$table                  = RESLIDE_TABLE_SLIDES;
 
@@ -828,11 +903,27 @@ INSERT INTO `$table` (`title`, `sliderid`, `published`, `slide`, `description`, 
 		}
 	}
 
-	$table                  = RESLIDE_TABLE_SLIDES;
-	$sql_slides_Table_update_0 = "   ALTER TABLE `$table` ADD `image_link` TEXT NOT NULL AFTER `description`, ADD `image_link_new_tab` BOOLEAN NOT NULL AFTER `image_link` ";
-	$wpdb->query($sql_slides_Table_update_0);
+    
+    
+    
+    
+    function r_slider_isset_table_column($table_name, $column_name){
+		global $wpdb;
+		$columns = $wpdb->get_results("SHOW COLUMNS FROM  " . $table_name, ARRAY_A);
+		foreach ($columns as $column) {
+			if ($column['Field'] == $column_name) {
+				return true;
+			}
+		}
+	}
 
-	$table                  = RESLIDE_TABLE_SLIDES;
-	$sql_slides_Table_update_1 = "UPDATE `$table` SET image_link='http://huge-it.com', image_link_new_tab='1' WHERE sliderid=1";
-	$wpdb->query($sql_slides_Table_update_1);
+	if ( ! r_slider_isset_table_column( RESLIDE_TABLE_SLIDES, 'image_link' ) ) {
+		$table                     = RESLIDE_TABLE_SLIDES;
+		$sql_slides_Table_update_0 = "ALTER TABLE `$table` ADD `image_link` TEXT NOT NULL AFTER `description`, ADD `image_link_new_tab` BOOLEAN NOT NULL AFTER `image_link` ";
+		$wpdb->query( $sql_slides_Table_update_0 );
+
+		$table                     = RESLIDE_TABLE_SLIDES;
+		$sql_slides_Table_update_1 = "UPDATE `$table` SET image_link='http://huge-it.com', image_link_new_tab='1' WHERE sliderid=1";
+		$wpdb->query( $sql_slides_Table_update_1 );
+	}
 }
