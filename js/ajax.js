@@ -9,6 +9,10 @@
 	}
 	jQuery('.reslide_save_all').on('click',function(e){
 		jQuery("#save_slider").click();
+        if(jQuery('input#reslider-name').val() == ''){
+            alert("Don't save slider if it doesn't have a name.");
+            return false;
+        }
 		if(!_reslide._('.reslideitem').length) {
 			alert('Firstly add slides in your slider!');
 			return false;
@@ -152,7 +156,7 @@
 	
 	/***  remove images from slider ***/
 	jQuery('#reslide_slider_images_list').on('click','.reslide_remove_image',function(e){
-		var t = confirm("Approve Image Remove action...");
+		var t = confirm("Are you sure you want to delete this item?");
 			if(!t)
 					return false;		
 		var slideid = jQuery(this).attr('data-slide-id');

@@ -240,6 +240,7 @@ function reslideDrawSlider() {
     var options = {
         $AutoPlay: (reslider["params"]["autoplay"] == 1) ? true : false,                                   //[Optional] Whether to auto play, to enable slideshow, this option must be set to true, default value is false
         $SlideDuration: 500,
+        $PauseOnHover: reslider["params"]["pauseonhover"],
         $AutoPlayInterval: reslider["params"]["effect"]["interval"],                               //[Optional] Specifies default duration (swipe) for slide in milliseconds, default value is 500
 
         $BulletNavigatorOptions: {                                //[Optional] Options to specify and enable navigator or not
@@ -893,6 +894,11 @@ document.onkeydown = function (evt) {
 
         /*** slider general options ***/
         jQuery('#reslide-autoplay').on('change', function () {
+            jQuery(this).attr('checked') ? jQuery(this).val(1) : jQuery(this).val(0);
+            reslideGetSliderParams();
+        });
+        
+        jQuery('#reslide-pauseonhover').on('change', function () {
             jQuery(this).attr('checked') ? jQuery(this).val(1) : jQuery(this).val(0);
             reslideGetSliderParams();
         });
