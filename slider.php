@@ -928,7 +928,7 @@ INSERT INTO `$table` (`title`, `sliderid`, `published`, `slide`, `description`, 
 				'style'=>'{"background":"blue;","border":"1px solid red;","color":"yellow","width":"800","height":"480","marginLeft":"0","marginRight":"0","marginTop":"0","marginBottom":"0"}',
 				'custom'=>'{}'
 			),
-			array('s','s','s','s','s','s','s')
+			array('%s','%s','%s','%s','%s','%s','%s')
 		);
 		if ( ! $wpdb->get_var( "select count(*) from " . RESLIDE_TABLE_SLIDES ) ) {
 			$wpdb->query( $sql_slides_Table_init );
