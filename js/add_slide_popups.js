@@ -271,6 +271,17 @@ jQuery(window).load(function(){
         jQuery(".free_version_banner").css("display","none");
         reslideSetCookie( 'reslideFreeBannerShow', 'no', {expires:3600} );
     });
+    jQuery('.close-black-friday').on('click',function () {
+        jQuery(".backend-banner").css("display","none");
+        reslideSetCookie( 'reSliderBlackFridayShow', 'no', {expires:345600} );
+    });
+    jQuery('.banner-block').on('click',function () {
+        window.open('http://huge-it.com','_blank');
+    });
+    jQuery('.share-block >ul > li > a').on('click',function (e) {
+        e.preventDefault();
+        window.open(jQuery(this).attr('href'),'_blank');
+    });
     
     function reslideSetCookie(name, value, options) {
         options = options || {};

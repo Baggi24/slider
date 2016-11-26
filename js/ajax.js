@@ -10,11 +10,11 @@
 	jQuery('.reslide_save_all').on('click',function(e){
 		jQuery("#save_slider").click();
         if(jQuery('input#reslider-name').val() == ''){
-            alert("Don't save slider if it doesn't have a name.");
+            alert(reslide_ajax_object.emptyNameAlert);
             return false;
         }
 		if(!_reslide._('.reslideitem').length) {
-			alert('Firstly add slides in your slider!');
+			alert(reslide_ajax_object.noImageAlert);
 			return false;
 		}		
 		jQuery('#reslide_preview').click();
