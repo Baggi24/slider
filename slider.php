@@ -981,7 +981,7 @@ INSERT INTO `$table` (`title`, `sliderid`, `published`, `slide`, `description`, 
 
 
 require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
-$plugin_info = get_plugin_data( ABSPATH . 'wp-content/plugins/slider/slider.php',false, false );
+$plugin_info = get_plugin_data( __FILE__ ,false, false );
 if($plugin_info['Version'] > '2.3.1'){
 	reslide_slider_activate();
 }
