@@ -4,7 +4,7 @@ Donate link: http://huge-it.com/wordpress-responsive-slider/
 Tags: slider, responsive slider, content slider, image slider, photo slider, slider plugin, layer slider, slideshow, wordpress slider, wordpress slideshow, gallery slider, slide,
 Requires at least: 3.0.1
 Tested up to: 4.6.1
-Stable tag: 2.3.1
+Stable tag: 2.3.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -153,6 +153,12 @@ Custom arrows can be added in the Professional version of the plugin only.
 If you think, that you found a bug in our [WordPress Responsive Slider](http://huge-it.com/wordpress-responsive-slider) plugin or have any question contact us at [info@huge-it.com](mailto:info@huge-it.com)
 
 == Changelog ==
+
+= 2.3.2 =
+* 1) We have added requested new option of pause on hover in Lite version
+* 2) Updated licensing page with more vivid demonstration of all features of the plugin
+* 3) Added YouTube and Vimeo video slideshow support (Pro)
+* 4) Overall backend UI/UX optimization 
 
 = 2.3.1 =
 * 1) Now users can add URLs to slides leading to the page they mention
