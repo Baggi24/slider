@@ -72,12 +72,12 @@ function reslide_edit_slider_view( $_row, $_id, $_slider ) {
     <div class="reslide_slider_view_wrapper">
         <div id="reslide_slider_view">
             <div class="add_slide_container">
-                <a id="add_image"><span>Add Image</span><span><i class="fa fa-plus-circle"
+                <a id="add_image"><span><?php _e( 'Add Image', 'reslide' ); ?></span><span><i class="fa fa-plus-circle"
                                                                  aria-hidden="true"></i></span></a>
             </div>
             <div class="add_slide_container_video">
                 <a id="add_video">
-                    <input id="reslide_insert_video_input" placeholder="Insert video link" value="">
+                    <input id="reslide_insert_video_input" placeholder="<?php _e( 'Insert video link', 'reslide' ); ?>" value="">
                     <span class="video-pro reslide-free" style="color:red;">(PRO)&nbsp;</span>
                 </a>
             </div>
@@ -204,23 +204,19 @@ function reslide_edit_slider_view( $_row, $_id, $_slider ) {
                                     </div>
                                 </li>
                                 <li class="params">
-                                    <label for="reslide-autoplay">Slider Autoplay:</label><input id="reslide-autoplay"
+                                    <label for="reslide-autoplay"><?php _e('Slider Autoplay', 'reslide'); ?>:</label><input id="reslide-autoplay"
                                                                                                  type="checkbox"
                                                                                                  name="params[autoplay]"
-                                                                                                 value="<?php echo esc_attr($params->autoplay); ?>" <?php if ( $params->autoplay ) {
-                                        echo "checked";
-                                    } ?> />
+                                                                                                 value="<?php echo esc_attr($params->autoplay); ?>" <?php checked( $params->autoplay ); ?> />
                                 </li>
                                 <li class="params">
-                                    <label for="reslide-pauseonhover">Pause On Hover:</label><input id="reslide-pauseonhover"
+                                    <label for="reslide-pauseonhover"><?php _e('Pause On Hover', 'reslide'); ?>:</label><input id="reslide-pauseonhover"
                                                                                                  type="checkbox"
                                                                                                  name="params[pauseonhover]"
-                                                                                                 value="<?php echo esc_attr($params->pauseonhover); ?>" <?php if ( $params->pauseonhover ) {
-                                        echo "checked";
-                                    } ?> />
+                                                                                                 value="<?php echo esc_attr($params->pauseonhover); ?>" <?php checked( $params->pauseonhover ); ?> />
                                 </li>
                                 <li class="params">
-                                    <label for="reslide-effect-type">Slider Effect:</label>
+                                    <label for="reslide-effect-type"><?php _e('Slider Effect', 'reslide'); ?>:</label>
                                     <select id="reslide-effect-type">
                                         <option
                                             value="0" <?php echo ( $params->effect->type == 0 ) ? "selected" : ""; ?>>
