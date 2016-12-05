@@ -284,25 +284,30 @@ function reslide_duplicate_slider() {
 
 }
 
-function reslide_black_friday() { ?>
-	<div class="backend-banner" <?php if( isset($_COOKIE['reSliderBlackFridayShow']) && $_COOKIE['reSliderBlackFridayShow'] == "no" ){ echo 'style="display:none"'; } ?>>
-		<a class="close-black-friday">+</a>
-		<div class="banner-block">
-			<div class="image-block"></div>
-			<div class="text-block">
-				<p>Upgrade your plugin and get Developer's License for 13 WordPress plugins worth <span>$760 for <strong>$149 only.</strong> </span>
-					Plus, we add 12 months of FREE support and updates. The deal is available for a limited time only.</p>
+function reslide_christmas() { ?>
+	<div class="backend-christmas-banner" <?php if( isset($_COOKIE['reSliderChristmasShow']) && $_COOKIE['reSliderChristmasShow'] == "no" ){ echo 'style="display:none"'; } ?>>
+			<div class="banner-block">
+				<div class="image-block">
+					<a href="http://huge-it.com/"></a>
+				</div>
+				<div class="text-block">
+					<a href="http://huge-it.com/" target="_blank">
+						<p>Upgrade your plugin and get Developer's License for 13 WordPress plugins worth <span>$760 for <strong>$149</strong> </span>
+							Plus, we add 12 months of FREE support and updates. The deal is available for a limited time only.</p>
+						<button>Get Sale Now</button>
+					</a>
+				</div>
+				<div class="share-block">
+					<span>Follow us</span>
+					<ul>
+						<li><a href="" class="facebook"></a></li>
+						<li><a href="" class="twitter"></a></li>
+						<li><a href="" class="google"></a></li>
+						<li><a href="" class="youtube"></a></li>
+					</ul>
+				</div>
 			</div>
-			<div class="share-block">
-				<span>Follow us</span>
-				<ul>
-					<li><a href="https://www.facebook.com/hugeit/"" class="facebook"></a></li>
-					<li><a href="https://twitter.com/HugeITcom" class="twitter"></a></li>
-					<li><a href="https://plus.google.com/111845940220835549549" class="google"></a></li>
-					<li><a href="https://www.youtube.com/channel/UCueCH_ulkgQZhSuc0L5rS5Q" class="instagram"></a></li>
-				</ul>
-			</div>
-		</div>
+			<a href="" class="close-christmas"></a>
 	</div>
 <?php }
 
@@ -370,73 +375,73 @@ function reslide_slider_licensing(){
 		<div class="licensing">
 			<div class="licensing-block">
 				<div class="licens">
-					<a href="http://huge-it.com/wordpress-responsive-slider/">
+					<a href="http://huge-it.com/wordpress-responsive-slider/" target="_blank">
 						<span class="icon unlimited-slider"></span>
 						<span class="text"><?php _e('unlimited slider','reslider'); ?></span>
 					</a>
 				</div>
 				<div class="licens">
-					<a href="http://huge-it.com/wordpress-responsive-slider/">
+					<a href="http://huge-it.com/wordpress-responsive-slider/" target="_blank">
 						<span class="icon youtube"></span>
 						<span class="text"><?php _e('Youtube video sliders','reslider'); ?></span>
 					</a>
 				</div>
 				<div class="licens">
-					<a href="http://huge-it.com/wordpress-responsive-slider/">
+					<a href="http://huge-it.com/wordpress-responsive-slider/" target="_blank">
 						<span class="icon vimeo"></span>
 						<span class="text"><?php _e('Vimeo video sliders','reslider'); ?></span>
 					</a>
 				</div>
 				<div class="licens">
-					<a href="http://huge-it.com/wordpress-responsive-slider/">
+					<a href="http://huge-it.com/wordpress-responsive-slider/" target="_blank">
 						<span class="icon description"></span>
 						<span class="text"><?php _e('Title and Description styles','reslider'); ?></span>
 					</a>
 				</div>
 				<div class="licens">
-					<a href="http://huge-it.com/wordpress-responsive-slider/">
+					<a href="http://huge-it.com/wordpress-responsive-slider/" target="_blank">
 						<span class="icon thumbnail-navigation"></span>
 						<span class="text"><?php _e('Slider’s Thumbnail navigation','reslider'); ?></span>
 					</a>
 				</div>
 				<div class="licens">
-					<a href="http://huge-it.com/wordpress-responsive-slider/">
+					<a href="http://huge-it.com/wordpress-responsive-slider/" target="_blank">
 						<span class="icon custom-thumbnails"></span>
 						<span class="text"><?php _e('Slider custom thumbnails','reslider'); ?></span>
 					</a>
 				</div>
 				<div class="licens">
-					<a href="http://huge-it.com/wordpress-responsive-slider/">
+					<a href="http://huge-it.com/wordpress-responsive-slider/" target="_blank">
 						<span class="icon custom-buttons"></span>
 						<span class="text"><?php _e('Slide custom buttons','reslider'); ?></span>
 					</a>
 				</div>
 				<div class="licens">
-					<a href="http://huge-it.com/wordpress-responsive-slider/">
+					<a href="http://huge-it.com/wordpress-responsive-slider/" target="_blank">
 						<span class="icon custom-texts"></span>
 						<span class="text"><?php _e('Slide custom texts','reslider'); ?></span>
 					</a>
 				</div>
 				<div class="licens">
-					<a href="http://huge-it.com/wordpress-responsive-slider/">
+					<a href="http://huge-it.com/wordpress-responsive-slider/" target="_blank">
 						<span class="icon arrows"></span>
 						<span class="text"><?php _e('20+ arrows styles','reslider'); ?></span>
 					</a>
 				</div>
 				<div class="licens">
-					<a href="http://huge-it.com/wordpress-responsive-slider/">
+					<a href="http://huge-it.com/wordpress-responsive-slider/" target="_blank">
 						<span class="icon bullets"></span>
 						<span class="text"><?php _e('bullets customisation','reslider'); ?></span>
 					</a>
 				</div>
 				<div class="licens">
-					<a href="http://huge-it.com/wordpress-responsive-slider/">
+					<a href="http://huge-it.com/wordpress-responsive-slider/" target="_blank">
 						<span class="icon full-video"></span>
 						<span class="text"><?php _e('Full video Settings','reslider'); ?></span>
 					</a>
 				</div>
 				<div class="licens">
-					<a href="http://huge-it.com/wordpress-responsive-slider/">
+					<a href="http://huge-it.com/wordpress-responsive-slider/" target="_blank">
 						<span class="icon advanced"></span>
 						<span class="text"><?php _e('advanced customization','reslider'); ?></span>
 					</a>

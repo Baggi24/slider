@@ -245,18 +245,22 @@ function reslide_edit_slider_view( $_row, $_id, $_slider ) {
                                         <option
                                             value="6" <?php echo ( $params->effect->type == 6 ) ? "selected" : ""; ?>>
                                             Collapse stairs
+                                        </option> 
+                                        <option
+                                            value="7" <?php echo ( $params->effect->type == 7 ) ? "selected" : ""; ?>>
+                                            Slide Left
                                         </option>
                                     </select>
                                     <input type="hidden" name="params[effect][type]"
                                            value="<?php echo esc_attr($params->effect->type); ?>">
                                 </li>
                                 <li class="params">
-                                    <label for="reslide-effect-duration">Effect Duration:</label>
+                                    <label for="reslide-effect-duration"><?php _e('Change Speed', 'reslide'); ?>:</label>
                                     <input type="number" name="params[effect][duration]"
                                            value="<?php echo esc_attr($params->effect->duration); ?>">
                                 </li>
                                 <li class="params">
-                                    <label for="reslide-effect-interval">Effect Interval:</label>
+                                    <label for="reslide-effect-interval"><?php _e('Pause Time', 'reslide'); ?>:</label>
                                     <input type="number" name="params[effect][interval]"
                                            value="<?php echo esc_attr($params->effect->interval); ?>">
                                 </li>

@@ -11,7 +11,7 @@ include_once('reslide-edit-slider-view.php');
  */
 function reslide_sliders_view_list( $rows ) { ?>
 	<?php reslide_free_version_banner(); ?>
-	<?php reslide_black_friday(); ?>
+	<?php reslide_christmas(); ?>
 	<div class="reslide_sliders_list_wrapper">
 		<div class="reslide_sliders_list_header">
 			<div class="id"><h3>&nbsp;&nbsp;<?php _e('ID', 'reslide'); ?></h3></div>

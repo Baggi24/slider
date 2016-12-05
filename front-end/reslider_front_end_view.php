@@ -224,7 +224,10 @@ function reslider_front_end($_id,$_slider,$_reslides) {
 						break;		
 						case 6: 
 							 reslide_effect ={$Duration:reslider<?php echo $sliderID;?>["params"]["effect"]["duration"],$Delay:30,$Cols:8,$Rows:4,$Clip:15,$SlideOut:true,$Formation:$JssorSlideshowFormations$.$FormationStraightStairs,$Easing:$JssorEasing$.$EaseOutQuad,$Assembly:2049}				
-						break;									
+						break;
+						case 7:
+							reslide_effect ={$Duration:reslider<?php echo $sliderID;?>["params"]["effect"]["duration"],x:-1,$Easing:$JssorEasing$.$EaseInQuad};
+						break;
 					};
 				
 				
