@@ -227,6 +227,13 @@ function reslideDrawSlider() {
                 $Assembly: 2049
             }
             break;
+        case 7:
+            reslide_effect = {
+                $Duration: reslider["params"]["effect"]["duration"],
+                x:-1,
+                $Easing:$JssorEasing$.$EaseInQuad
+            }
+            break;
     }
 
     var _SlideshowTransitions = [
