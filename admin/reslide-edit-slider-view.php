@@ -77,7 +77,7 @@ function reslide_edit_slider_view( $_row, $_id, $_slider ) {
             </div>
             <div class="add_slide_container_video">
                 <a id="add_video">
-                    <input id="reslide_insert_video_input" placeholder="<?php _e( 'Insert video link', 'reslide' ); ?>" value="">
+                    <p id="reslide_insert_video_input"><?php _e( 'Add Video', 'reslide' ); ?></p>
                     <span class="video-pro reslide-free" style="color:red;">(PRO)&nbsp;</span>
                 </a>
             </div>
@@ -220,35 +220,35 @@ function reslide_edit_slider_view( $_row, $_id, $_slider ) {
                                     <select id="reslide-effect-type">
                                         <option
                                             value="0" <?php echo ( $params->effect->type == 0 ) ? "selected" : ""; ?>>
-                                            Fade
+                                            <?php _e('Fade','reslide');?>
                                         </option>
                                         <option
                                             value="1" <?php echo ( $params->effect->type == 1 ) ? "selected" : ""; ?>>
-                                            Rotate
+                                            <?php _e('Rotate','reslide');?>
                                         </option>
                                         <option
                                             value="2" <?php echo ( $params->effect->type == 2 ) ? "selected" : ""; ?>>
-                                            Switch
+                                            <?php _e('Switch','reslide');?>
                                         </option>
                                         <option
                                             value="3" <?php echo ( $params->effect->type == 3 ) ? "selected" : ""; ?>>
-                                            Doors
+                                            <?php _e('Doors','reslide');?>
                                         </option>
                                         <option
                                             value="4" <?php echo ( $params->effect->type == 4 ) ? "selected" : ""; ?>>
-                                            Rotate Axis down
+                                            <?php _e('Rotate Axis down','reslide');?>
                                         </option>
                                         <option
                                             value="5" <?php echo ( $params->effect->type == 5 ) ? "selected" : ""; ?>>
-                                            Jump in square
+                                            <?php _e('Jump in square','reslide');?>
                                         </option>
                                         <option
                                             value="6" <?php echo ( $params->effect->type == 6 ) ? "selected" : ""; ?>>
-                                            Collapse stairs
+                                            <?php _e('Collapse stairs','reslide');?>
                                         </option> 
                                         <option
                                             value="7" <?php echo ( $params->effect->type == 7 ) ? "selected" : ""; ?>>
-                                            Slide Left
+                                            <?php _e('Slide Left','reslide');?>
                                         </option>
                                     </select>
                                     <input type="hidden" name="params[effect][type]"

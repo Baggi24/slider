@@ -52,9 +52,7 @@ jQuery(function ($) {
             }
         });
         jQuery('#add_image').click(open_media_window);
-        jQuery('#reslide_insert_video_button').click(function () {
-            add_video_popup(jQuery('#reslide_insert_video_input').val(), jQuery("#reslide_slider_images_list"));
-        });
+        
 
         /****    edit items ***/
 
