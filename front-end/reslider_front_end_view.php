@@ -86,12 +86,10 @@ function reslider_front_end($_id,$_slider,$_reslides) {
             <div class="slide<?php echo $sliderID ;?>_<?php echo $slide->id;?>">
 	            <?php if(!empty($slide->image_link)){ ?>
 		            <a href="<?php echo reslide_text_sanitize($slide->image_link);?>" <?php if($slide->image_link_new_tab){ echo 'target="_blank"'; }?>>
-			            <img u="image" src="<?php  echo esc_url($slide->thumbnail);?>" alt="<?php  echo esc_attr($slide->thumbnail);?>"/>
-			            <img u="thumb" src="<?php  echo esc_url($slide->thumbnail);?>" alt="<?php  echo esc_attr($slide->thumbnail);?>"/>
+			            <img class="image_<?php echo $slide->id; ?>" src="<?php  echo esc_url($slide->thumbnail);?>" alt="<?php  echo esc_attr($slide->thumbnail);?>"/>
 		            </a>
 	            <?php } else { ?>
-		            <img u="image" src="<?php  echo esc_url($slide->thumbnail);?>" alt="<?php  echo esc_attr($slide->thumbnail);?>"/>
-		            <img u="thumb" src="<?php  echo esc_url($slide->thumbnail);?>" alt="<?php  echo esc_attr($slide->thumbnail);?>"/>
+		            <img class="image_<?php echo $slide->id; ?>" src="<?php  echo esc_url($slide->thumbnail);?>" alt="<?php  echo esc_attr($slide->thumbnail);?>"/>
 	            <?php } ?>
 				<?php if($slide->title AND $params->title->show) {
 				?>
@@ -228,10 +226,16 @@ function reslider_front_end($_id,$_slider,$_reslides) {
 						case 7:
 							reslide_effect ={$Duration:reslider<?php echo $sliderID;?>["params"]["effect"]["duration"],x:-1,$Easing:$JssorEasing$.$EaseInQuad};
 						break;
+						case 8:
+							reslide_effect ={$Duration:reslider<?php echo $sliderID;?>["params"]["effect"]["duration"],x:1,$Easing:$JssorEasing$.$EaseInQuad};
+							break;
+						case 9:
+							reslide_effect ={$Duration:reslider<?php echo $sliderID;?>["params"]["effect"]["duration"],y:-1,$Easing:$JssorEasing$.$EaseInQuad};
+							break;
+						case 10:
+							reslide_effect ={$Duration:reslider<?php echo $sliderID;?>["params"]["effect"]["duration"],y:1,$Easing:$JssorEasing$.$EaseInQuad};
+							break;
 					};
-				
-				
-										//	reslide_effect ={$Duration:1000,$Delay:30,$Cols:8,$Rows:4,$Clip:15,$SlideOut:true,$Formation:$JssorSlideshowFormations$.$FormationStraightStairs,$Easing:$JssorEasing$.$EaseOutQuad,$Assembly:2049}				
 
 				
 	        var _SlideshowTransitions = [
@@ -396,7 +400,75 @@ function reslider_front_end($_id,$_slider,$_reslides) {
 					jQuery('.reslide_arrow_right').click(function(){
 						c_slider<?php echo $sliderID;?>.$PrevPlay();
 					});							
-		})
+		});
+
+		<?php if($slide->type !== 'video'){ ?>
+
+		if(reslider<?php echo $sliderID;?>['params']['behavior'] === 0){
+
+			jQuery('#slider<?php echo $sliderID ;?>_container img[class*=image_]').each(function () {
+				jQuery(this).css({
+					height: '100%',
+					width: '100%'
+				});
+			});
+		} else if(reslider<?php echo $sliderID;?>['params']['behavior'] === 1){
+			jQuery('#slider<?php echo $sliderID ;?>_container img[class*=image_]').each(function () {
+				var naturalWidth  = jQuery(this).prop('naturalWidth'),
+				    naturalHeight = jQuery(this).prop('naturalHeight'),
+				    contWidth     = '<?php echo absint($style->width);?>',
+				    contHeight    = '<?php echo absint($style->height);?>',
+				    naturalRatio  = naturalWidth / naturalHeight,
+				    defaultRatio  = contWidth / contHeight;
+
+				if(naturalRatio > defaultRatio){
+					jQuery(this).css({
+						width: '100%',
+						top: '50%',
+						transform: 'translateY(-50%)',
+						position: 'relative'
+					});
+				}
+				else {
+					jQuery(this).css({
+						height: '100%',
+						left: '50%',
+						transform: 'translateX(-50%)',
+						position: 'relative'
+					});
+				}
+
+			});
+		} else if(reslider<?php echo $sliderID;?>['params']['behavior'] === 2){
+			jQuery('#slider<?php echo $sliderID ;?>_container img[class*=image_]').each(function () {
+				var naturalWidth  = jQuery(this).prop('naturalWidth'),
+				    naturalHeight = jQuery(this).prop('naturalHeight'),
+				    contWidth     = '<?php echo absint($style->width);?>',
+				    contHeight    = '<?php echo absint($style->height);?>',
+				    naturalRatio  = naturalWidth / naturalHeight,
+				    defaultRatio  = contWidth / contHeight;
+				jQuery(this).css({
+					position: "absolute",
+					maxWidth: "none"
+				});
+
+				if (naturalRatio <= defaultRatio) {
+					jQuery(this).css({
+						width: '100%',
+						top: '50%',
+						transform: 'translateY(-50%)'
+					});
+				} else {
+					jQuery(this).css({
+						height: '100%',
+						left: '50%',
+						transform: 'translateX(-50%)'
+					});
+				}
+			});
+		}
+
+		<?php } ?>
         </script>
 	<?php
 	return ob_get_clean();

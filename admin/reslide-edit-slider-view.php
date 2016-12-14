@@ -249,10 +249,41 @@ function reslide_edit_slider_view( $_row, $_id, $_slider ) {
                                         <option
                                             value="7" <?php echo ( $params->effect->type == 7 ) ? "selected" : ""; ?>>
                                             <?php _e('Slide Left','reslide');?>
+                                        </option> 
+                                        <option
+                                            value="8" <?php echo ( $params->effect->type == 8 ) ? "selected" : ""; ?>>
+                                            <?php _e('Slide Right','reslide');?>
+                                        </option>
+                                        <option
+                                            value="9" <?php echo ( $params->effect->type == 9 ) ? "selected" : ""; ?>>
+                                            <?php _e('Slide Up','reslide');?>
+                                        </option>
+                                        <option
+                                            value="10" <?php echo ( $params->effect->type == 10 ) ? "selected" : ""; ?>>
+                                            <?php _e('Slide Down','reslide');?>
                                         </option>
                                     </select>
                                     <input type="hidden" name="params[effect][type]"
                                            value="<?php echo esc_attr($params->effect->type); ?>">
+                                </li>
+                                <li class="params">
+                                    <label for="reslide-behavior" name="params[behavior]"><?php _e('Image Behavior', 'reslide'); ?>:</label>
+                                    <select id="reslide-behavior">
+                                        <option
+                                            value="0" <?php echo ( $params->behavior == 0 ) ? "selected" : ""; ?>>
+                                            Stretch
+                                        </option>
+                                        <option
+                                            value="1" <?php echo ( $params->behavior == 1 ) ? "selected" : ""; ?>>
+                                            Fit
+                                        </option>
+                                        <option
+                                            value="2" <?php echo ( $params->behavior == 2 ) ? "selected" : ""; ?>>
+                                            Fill
+                                        </option>
+                                    </select>
+                                    <input type="hidden" name="params[behavior]"
+                                           value="<?php echo esc_attr($params->behavior); ?>">
                                 </li>
                                 <li class="params">
                                     <label for="reslide-effect-duration"><?php _e('Change Speed', 'reslide'); ?>:</label>

@@ -234,6 +234,27 @@ function reslideDrawSlider() {
                 $Easing:$JssorEasing$.$EaseInQuad
             }
             break;
+        case 8:
+            reslide_effect = {
+                $Duration: reslider["params"]["effect"]["duration"],
+                x:1,
+                $Easing:$JssorEasing$.$EaseInQuad
+            }
+            break;
+        case 9:
+            reslide_effect = {
+                $Duration: reslider["params"]["effect"]["duration"],
+                y:-1,
+                $Easing:$JssorEasing$.$EaseInQuad
+            }
+            break;
+        case 10:
+            reslide_effect = {
+                $Duration: reslider["params"]["effect"]["duration"],
+                y:1,
+                $Easing:$JssorEasing$.$EaseInQuad
+            }
+            break;
     }
 
     var _SlideshowTransitions = [
@@ -320,7 +341,23 @@ function reslideDrawSlider() {
                 item.id = slide;
                 var itemimg = _reslide('img');
                 var itemThumbnail = _reslide('img');
-                itemimg.addStyle('width: 100%;height:100%').addAttr('src', reslider["slides"][slide]["url"]);
+                itemimg.addAttr('src', reslider["slides"][slide]["url"]);
+
+                        if(reslider['params']['behavior'] === 0){
+                            jQuery('div[class*=reslideitem]').each(function () {
+                                itemimg.addStyle('width: 100%; height: 100%;');
+                            });
+                        } else if(reslider['params']['behavior'] === 1){
+                            jQuery('div[class*=reslideitem]').each(function () {
+                                itemimg.addStyle('height: 100%; width: auto; left: 50%; transform: translateX(-50%); position: relative;');
+                            });
+                        } else if(reslider['params']['behavior'] === 2){
+                            jQuery('div[class*=reslideitem]').each(function () {
+                                itemimg.addStyle('position: absolute; max-width: none; width: 100%; top: 50%; transform: translateY(-50%);');
+                            });
+                        }
+
+
                 itemThumbnail.addAttr('src', reslider["slides"][slide]["url"], 'u', 'thumb');
                 /*** title ***/
 
@@ -914,6 +951,11 @@ document.onkeydown = function (evt) {
             jQuery(this).attr('checked') ? jQuery(this).val(1) : jQuery(this).val(0);
         });
 
+        jQuery('#reslide-behavior').on('change', function () {
+            var value = jQuery(this).find(":selected").val();
+            jQuery('#reslide-behavior + input').val(value);
+        });
+        
         _reslide._('#reslide-effect-type').on('change', function () {
             var value = _reslide(this).value;
             _reslide._('#reslide-effect-type + input')[0].value = value;
