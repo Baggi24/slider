@@ -315,6 +315,41 @@ function reslideDrawSlider() {
                 $Opacity:2
             }
             break;
+        case 14:
+            reslide_effect = {
+                $Duration: reslider["params"]["effect"]["duration"],
+                x:0.3,
+                y:0.3,
+                $Cols:2,
+                $Rows:2,
+                $During:{
+                    $Left:[0.3,0.7],
+                    $Top:[0.3,0.7]},
+                $ChessMode:{
+                    $Column:3,
+                    $Row:12},
+                $Easing:{
+                    $Left:$JssorEasing$.$EaseInCubic,
+                    $Top:$JssorEasing$.$EaseInCubic,
+                    $Opacity:$JssorEasing$.$EaseLinear
+                },
+                $Opacity:2
+            }
+            break;
+        case 15:
+            reslide_effect = {
+                $Duration: reslider["params"]["effect"]["duration"],
+                $Delay:20,
+                $Clip:3,
+                $SlideOut:true,
+                $Easing:{
+                    $Clip:$JssorEasing$.$EaseOutCubic,
+                    $Opacity:$JssorEasing$.$EaseLinear
+                },
+                $Assembly:260,
+                $Opacity:2
+            }
+            break;
     }
 
     var _SlideshowTransitions = [
