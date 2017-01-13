@@ -274,6 +274,14 @@ function reslide_edit_slider_view( $_row, $_id, $_slider ) {
                                             value="13" <?php echo ( $params->effect->type == 13 ) ? "selected" : ""; ?>>
                                             <?php _e('Zoom in','reslide');?>
                                         </option>
+                                        <option
+                                            value="14" <?php echo ( $params->effect->type == 14 ) ? "selected" : ""; ?>>
+                                            <?php _e('Fade in Corners','reslide');?>
+                                        </option>
+                                        <option
+                                            value="15" <?php echo ( $params->effect->type == 15 ) ? "selected" : ""; ?>>
+                                            <?php _e('Fade Clip out','reslide');?>
+                                        </option>
                                     </select>
                                     <input type="hidden" name="params[effect][type]"
                                            value="<?php echo esc_attr($params->effect->type); ?>">
