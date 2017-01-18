@@ -73,11 +73,11 @@ function reslider_front_end($_id,$_slider,$_reslides) {
 ?>
 </script>
 <div id="slider<?php echo $sliderID ;?>_container"  style="width: <?php echo  $style->width;?>px; height: <?php echo  $style->height;?>px;">
-    <div u="loading" class="reslide_loading">
+    <div data-u="loading" class="reslide_loading">
 		<div></div>
     </div>
       <!-- Slides Container --> 
-        <div u="slides" class="reslide_slides">
+        <div data-u="slides" class="reslide_slides">
 		<?php foreach($_reslides as $slide){ 
 					if($slide->published == 0) continue;
 
@@ -143,7 +143,7 @@ function reslider_front_end($_id,$_slider,$_reslides) {
 			<?php switch($custom->type) {
 						case 'h3':
 					?>
-					<h3 u="any" class="reslideh3<?php echo $custom->id; ?> reslideh3 reslide_any">
+					<h3 data-u="any" class="reslideh3<?php echo $custom->id; ?> reslideh3 reslide_any">
 						<span></span>
 						<span class="gg"><?php echo esc_html($custom->text); ?></span>
 					</h3>
@@ -151,7 +151,7 @@ function reslider_front_end($_id,$_slider,$_reslides) {
 						break; 
 						case 'button':
 					?>
-					<button u="any"  class="reslidebutton<?php echo $custom->id;?> reslidebutton reslide_any">
+					<button data-u="any"  class="reslidebutton<?php echo $custom->id;?> reslidebutton reslide_any">
 						<div></div>
 						<a class="gg" href="<?php echo esc_url($custom->link);?>"><span><?php echo esc_html($custom->text);?></span></a>
 					</button>
@@ -159,7 +159,7 @@ function reslider_front_end($_id,$_slider,$_reslides) {
 						break; 
 						case 'img':
 					?>
-					<div u="any" class="reslideimg<?php echo $custom->id;?> reslideimg reslide_any">
+					<div data-u="any" class="reslideimg<?php echo $custom->id;?> reslideimg reslide_any">
 						<img src="<?php echo esc_url($custom->src);?>" alt="<?php echo esc_attr($custom->alt);?>">
 					</div>
 					
@@ -170,23 +170,23 @@ function reslider_front_end($_id,$_slider,$_reslides) {
 
 
         <!-- bullet navigator container -->
-        <div u="navigator" class=" reslide_navigator" style="bottom: 16px; right: 10px;">
+        <div data-u="navigator" class=" reslide_navigator" style="bottom: 16px; right: 10px;">
             <!-- bullet navigator item prototype -->
-            <div u="prototype" class="reslide_dot"></div>
+            <div data-u="prototype" class="reslide_dot"></div>
         </div>
         <!--#endregion Bullet Navigator Skin End -->
         <!-- Arrow Left -->
-        <span u="arrowleft" class=" reslide_arrow_left" style="top: 123px; left: 8px;">
+        <span data-u="arrowleft" class=" reslide_arrow_left" style="top: 123px; left: 8px;">
         </span>
         <!-- Arrow Right -->
-        <span u="arrowright" class=" reslide_arrow_right" style="top: 123px; right: 8px;">
+        <span data-u="arrowright" class=" reslide_arrow_right" style="top: 123px; right: 8px;">
         </span>
         <!-- Trigger --> 
-            <div u="thumbnavigator" class="reslide-thumbnail<?php echo $sliderID;?>" style="right: 0px; bottom: 0px;">
+            <div data-u="thumbnavigator" class="reslide-thumbnail<?php echo $sliderID;?>" style="right: 0px; bottom: 0px;">
                 <!-- Thumbnail Item Skin Begin -->
-                <div u="slides" style=" bottom: 25px; right: 30px;cursor: default;">
-                    <div u="prototype" class="p">
-                        <div class=w><div u="thumbnailtemplate" class="t"></div></div>
+                <div data-u="slides" style=" bottom: 25px; right: 30px;cursor: default;">
+                    <div data-u="prototype" class="p">
+                        <div class=w><div data-u="thumbnailtemplate" class="t"></div></div>
                         <div class=c></div>
                     </div>
                 </div>
