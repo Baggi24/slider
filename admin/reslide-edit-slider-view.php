@@ -216,6 +216,12 @@ function reslide_edit_slider_view( $_row, $_id, $_slider ) {
                                                                                                  value="<?php echo esc_attr($params->pauseonhover); ?>" <?php checked( $params->pauseonhover ); ?> />
                                 </li>
                                 <li class="params">
+                                    <label for="reslide-right-click-protection"><?php _e('Right Click Protection', 'reslide'); ?>:</label>
+                                    <input id="reslide-right-click-protection" type="checkbox"
+                                           name="params[rightclickprotection]"
+                                           value="<?php echo esc_attr($params->rightclickprotection); ?>" <?php checked( $params->rightclickprotection ); ?> />
+                                </li>
+                                <li class="params">
                                     <label for="reslide-effect-type"><?php _e('Slider Effect', 'reslide'); ?>:</label>
                                     <select id="reslide-effect-type">
                                         <option

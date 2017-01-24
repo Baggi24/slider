@@ -51,6 +51,7 @@ add_action( 'admin_enqueue_scripts', 'reslide_admin_scripts' );
 add_action( 'wp_enqueue_scripts', 'reslide_frontend_scripts' );
 add_action( 'wp_ajax_reslide_actions', 'reslide_ajax_action_callback' );
 add_action( 'wp_ajax_nopriv_reslide_actions', 'reslide_ajax_action_callback' );
+add_action('widgets_init', 'hugeit_reslider_register_widget' );
 
 /**
  * shortcode hooks
@@ -85,6 +86,13 @@ function reslide_add_media_button($context) {
   	$context .=  '<a href="#TB_inline?width=600&inlineId='.$container_id.'" title="'.$title.'" id="insert-reslider-media" class="thickbox button"><img src="' . plugins_url( 'images/edit-icon1.png', __FILE__ ) . '">Add Slider</a>';
 	return $context;
 }
+
+include_once("widget.php");
+
+function hugeit_reslider_register_widget() {
+	register_widget('Hugeit_ReSlider_Widget');
+}
+
 
 /**
  * popup for media button in editor
@@ -284,33 +292,6 @@ function reslide_duplicate_slider() {
 
 }
 
-function reslide_christmas() { ?>
-	<div class="backend-christmas-banner" <?php if( isset($_COOKIE['reSliderChristmasShow']) && $_COOKIE['reSliderChristmasShow'] == "no" ){ echo 'style="display:none"'; } ?>>
-			<div class="banner-block">
-				<div class="image-block">
-					<a href="http://huge-it.com/"></a>
-				</div>
-				<div class="text-block">
-					<a href="http://huge-it.com/" target="_blank">
-						<p>Upgrade your plugin and get Developer's License for 13 WordPress plugins worth <span>$760 for <strong>$149</strong> </span>
-							Plus, we add 12 months of FREE support and updates. The deal is available for a limited time only.</p>
-						<button>Get Sale Now</button>
-					</a>
-				</div>
-				<div class="share-block">
-					<span>Follow us</span>
-					<ul>
-						<li><a href="" class="facebook"></a></li>
-						<li><a href="" class="twitter"></a></li>
-						<li><a href="" class="google"></a></li>
-						<li><a href="" class="youtube"></a></li>
-					</ul>
-				</div>
-			</div>
-			<a href="" class="close-christmas"></a>
-	</div>
-<?php }
-
 /**
  * Print out banner notice for free version
  */
@@ -346,7 +327,7 @@ function reslide_free_version_banner() {
  * Print out featured plugins page
  */
 function reslide_slider_FP() {
-	include_once("admin/huge_it_featured_plugins.php");	
+	include_once("admin/huge_it_featured_plugins.php");
 }
 /**
  * Add admin menu/sub-menu pages
@@ -368,10 +349,11 @@ function reslide_slider_licensing(){
 	?>
 	<div style="width:95%">
 		<p class="textLicense">
-			<?php _e('This plugin is the LITE version of the Responsive Slider. If you want to customize to the styles and colors of your
-			website,than you need to buy Full License. Purchasing Full License will add possibility to customize the
-			general options of the Slider.','reslider'); ?>
+			<?php _e('You are using the Lite version of the Responsive Slider for WordPress. If you want to get more awesome options,
+			 advanced features, settings to customize every area of the plugin, then check out the Full License. The full version
+			  of the plugin is available in 3 different packages of one-time payment.','reslider'); ?>
 		</p>
+		<a target="_blank" href="http://huge-it.com/wordpress-responsive-slider/" class="button-primary"><?php _e('Purchase a License', 'reslider'); ?></a>
 		<div class="licensing">
 			<div class="licensing-block">
 				<div class="licens">
@@ -927,7 +909,7 @@ INSERT INTO `$table` (`title`, `sliderid`, `published`, `slide`, `description`, 
 			array(
 				'title'=>'First Slider',
 				'type'=>'simple',
-				'params'=>'{"autoplay":1,"pauseonhover":1,"behavior":"1","effect":{"type":3,"duration":1500,"interval":1000},"thumbnails":{"show":0,"positioning":0},"custom":{"type":"text"},"title":{"show":1,"position":"1","style":{"width":213,"height":61,"left":"571.375px","top":"14.7031px","color":"FFFFFF","opacity":0,"font":{"size":18},"border":{"color":"FFFFFF","width":1,"radius":2},"background":{"color":"FFFFFF","hover":"30FF4F"}}},"description":{"show":1,"position":"1","style":{"width":768,"height":116,"left":"16.375px","top":"345.703px","color":"FFFFFF","opacity":80,"font":{"size":14},"border":{"color":"3478FF","width":0,"radius":2},"background":{"color":"000000","hover":"000000"}}},"arrows":{"show":2,"type":1,"style":{"background":{"width":"49","height":"49","left":"91px 46px","right":"-44px 1px","hover":{"left":"91px 46px","right":"-44px 1px"}}}},"bullets":{"show":0,"type":"0","position":0,"autocenter":"0","rows":1,"s_x":10,"s_y":10,"orientation":1,"style":{"background":{"width":"60","height":"60","color":{"hover":"646464","active":"30FF4F","link":"CCCCCC"}},"position":{"top":"16px","left":"10px"}}}}',
+				'params'=>'{"autoplay":1,"pauseonhover":1,"rightclickprotection":1,"behavior":"1","effect":{"type":3,"duration":1500,"interval":1000},"thumbnails":{"show":0,"positioning":0},"custom":{"type":"text"},"title":{"show":1,"position":"1","style":{"width":213,"height":61,"left":"571.375px","top":"14.7031px","color":"FFFFFF","opacity":0,"font":{"size":18},"border":{"color":"FFFFFF","width":1,"radius":2},"background":{"color":"FFFFFF","hover":"30FF4F"}}},"description":{"show":1,"position":"1","style":{"width":768,"height":116,"left":"16.375px","top":"345.703px","color":"FFFFFF","opacity":80,"font":{"size":14},"border":{"color":"3478FF","width":0,"radius":2},"background":{"color":"000000","hover":"000000"}}},"arrows":{"show":2,"type":1,"style":{"background":{"width":"49","height":"49","left":"91px 46px","right":"-44px 1px","hover":{"left":"91px 46px","right":"-44px 1px"}}}},"bullets":{"show":0,"type":"0","position":0,"autocenter":"0","rows":1,"s_x":10,"s_y":10,"orientation":1,"style":{"background":{"width":"60","height":"60","color":{"hover":"646464","active":"30FF4F","link":"CCCCCC"}},"position":{"top":"16px","left":"10px"}}}}',
 				'time'=>'2016-05-02 10:58:58',
 				'slide'=>'NULL',
 				'style'=>'{"background":"blue;","border":"1px solid red;","color":"yellow","width":"800","height":"480","marginLeft":"0","marginRight":"0","marginTop":"0","marginBottom":"0"}',
@@ -965,10 +947,42 @@ INSERT INTO `$table` (`title`, `sliderid`, `published`, `slide`, `description`, 
 		$wpdb->update(
 			$table,
 			array(
-				'image_link' => 'http://huge-it.com',
+				'image_link' => 'http://huge-it.com/wordpress-responsive-slider-demo/#plugin_demo_wrapper',
 				'image_link_new_tab' => 1,
 			),
-			array('sliderid' => 1)
+			array('id' => 1, 'sliderid' => 1)
+		);
+		$wpdb->update(
+			$table,
+			array(
+				'image_link' => 'http://huge-it.com/wordpress-wordpress-responsive-slider-demo-2-thumbnails/#plugin_demo_wrapper',
+				'image_link_new_tab' => 1,
+			),
+			array('id' => 2, 'sliderid' => 1)
+		);
+		$wpdb->update(
+			$table,
+			array(
+				'image_link' => 'http://huge-it.com/wordpress-responsive-slider-demo-3-no-controls/#plugin_demo_wrapper',
+				'image_link_new_tab' => 1,
+			),
+			array('id' => 3, 'sliderid' => 1)
+		);
+		$wpdb->update(
+			$table,
+			array(
+				'image_link' => 'http://huge-it.com/wordpress-responsive-slider-demo-4-elements/#plugin_demo_wrapper',
+				'image_link_new_tab' => 1,
+			),
+			array('id' => 4, 'sliderid' => 1)
+		);
+		$wpdb->update(
+			$table,
+			array(
+				'image_link' => 'http://huge-it.com/wordpress-responsive-slider-demo/#plugin_demo_wrapper',
+				'image_link_new_tab' => 1,
+			),
+			array('id' => 5, 'sliderid' => 1)
 		);
 	}
 
@@ -996,6 +1010,18 @@ INSERT INTO `$table` (`title`, `sliderid`, `published`, `slide`, `description`, 
 		}
 	}
 
+	$query2 = "SELECT id, params FROM ".RESLIDE_TABLE_SLIDERS." ";
+	$rows2 = $wpdb->get_results($query2);
+	foreach($rows2 as $row2){
+		if( strpos( $row2->params, 'rightclickprotection' ) === false ) {
+			$new_param2 = substr_replace( $row2->params, '"rightclickprotection":1,', 1, 0 );
+			$wpdb->update(
+				RESLIDE_TABLE_SLIDERS,
+				array( 'params' => $new_param2),
+				array( 'id' => $row2->id )
+			);
+		}
+	}
 
 }
 
