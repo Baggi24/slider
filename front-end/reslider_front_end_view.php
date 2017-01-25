@@ -195,7 +195,13 @@ function reslider_front_end($_id,$_slider,$_reslides) {
 	</div>		
        	<?php require( RESLIDE_PLUGIN_PATH_FRONTEND.'/reslide-front-end.css.php' ) ?>
         <script>
-		
+
+		if(reslider<?php echo $sliderID;?>["params"]["rightclickprotection"]) {
+			jQuery('div[id*=slider]').bind("contextmenu",function(e) {
+				e.preventDefault();
+			});
+		}
+			
 		var $PlayCondition = 1;
 		var c_slider<?php echo $sliderID;?>;	
 

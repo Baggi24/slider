@@ -1041,7 +1041,12 @@ document.onkeydown = function (evt) {
             jQuery(this).attr('checked') ? jQuery(this).val(1) : jQuery(this).val(0);
             reslideGetSliderParams();
         });
-
+        
+        jQuery('#reslide-right-click-protection').on('change', function () {
+            jQuery(this).attr('checked') ? jQuery(this).val(1) : jQuery(this).val(0);
+            reslideGetSliderParams();
+        });
+        
         jQuery('#reslide-slide-image_link_new_tab').on('change', function () {
             jQuery(this).attr('checked') ? jQuery(this).val(1) : jQuery(this).val(0);
         });
