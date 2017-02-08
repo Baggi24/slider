@@ -166,11 +166,12 @@ function reslide_edit_slider_view( $_row, $_id, $_slider ) {
             <div class="settings">
                 <div class="menu">
                     <ul>
-                        <li rel="general"><a href="#" class="active">General</a></li>
-                        <li rel="arrows"><a href="#">Arrows</a></li>
-                        <li rel="thumbnails"><a href="#">Thumbnails</a></li>
-                        <li rel="bullets"><a href="#">Bullets</a></li>
-                        <li rel="shortcodes"><a href="#">Shortcode</a></li>
+                        <li rel="general"><a href="#" class="active"><?php _e('General','reslide');?></a></li>
+                        <li rel="arrows"><a href="#"><?php _e('Arrows','reslide');?></a></li>
+                        <li rel="thumbnails"><a href="#"><?php _e('Thumbnails','reslide');?></a></li>
+                        <li rel="bullets"><a href="#"><?php _e('Bullets','reslide');?></a></li>
+                        <li rel="sharing"><a href="#"><?php _e('Social Sharing','reslide');?></a></li>
+                        <li rel="shortcodes"><a href="#"><?php _e('Shortcode','reslide');?></a></li>
                     </ul>
                 </div>
                 <div class="menu-content">
@@ -681,6 +682,94 @@ function reslide_edit_slider_view( $_row, $_id, $_slider ) {
                                             <input type="number" id="params-bullets-space-y" name="params[bullets][s_y][free]"
                                                    rel="0" size="5" value='<?php echo esc_attr($params->bullets->s_y); ?>'>
                                         </div>
+                                    </form>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="sharing">
+                            <ul id="sharing-settings">
+                                <li class="params" id="reslide-sharing-show">
+                                    <label for="reslide-sharing-show"><?php _e('Share Buttons:','reslide');?></label>
+                                    <ul id="reslide-sharing-show">
+                                        <li class='social_media'>
+                                            <input id="ui" type="checkbox" name="params[sharing][show][facebook]" value="<?php echo esc_attr($params->sharing->show->facebook); ?>"
+                                                <?php if ( $params->sharing->show->facebook == '1' ) {
+                                                    echo "checked";
+                                                } ?>>
+                                            <label><?php _e( 'Facebook', 'reslide' ); ?></label>
+                                        </li>
+                                        <li class='social_media'>
+                                            <input id="ui" type="checkbox" name="params[sharing][show][twitter]" value="<?php echo esc_attr($params->sharing->show->twitter); ?>"
+                                                <?php if ( $params->sharing->show->twitter == '1' ) {
+                                                    echo "checked";
+                                                } ?>>
+                                            <label><?php _e('Twitter','reslide');?></label>
+                                        </li>
+                                        <li class='social_media'>
+                                            <input id="ui" type="checkbox" name="params[sharing][show][googleplus]" value="<?php echo esc_attr($params->sharing->show->googleplus); ?>"
+                                                <?php if ( $params->sharing->show->googleplus == '1' ) {
+                                                    echo "checked";
+                                                } ?>>
+                                            <label><?php _e('Google Plus','reslide');?></label>
+                                        </li>
+                                        <li class='social_media'>
+                                            <input id="ui" type="checkbox" name="params[sharing][show][pinterest]" value="<?php echo esc_attr($params->sharing->show->pinterest); ?>"
+                                                <?php if ( $params->sharing->show->pinterest == '1' ) {
+                                                    echo "checked";
+                                                } ?>>
+                                            <label><?php _e('Pinterest','reslide');?></label>
+                                        </li>
+                                        <li class='social_media'>
+                                            <input id="ui" type="checkbox" name="params[sharing][show][linkedin]" value="<?php echo esc_attr($params->sharing->show->linkedin); ?>"
+                                                <?php if ( $params->sharing->show->linkedin == '1' ) {
+                                                    echo "checked";
+                                                } ?>>
+                                            <label><?php _e('Linkedin','reslide');?></label>
+                                        </li>
+                                        <li class='social_media'>
+                                            <input id="ui" type="checkbox" name="params[sharing][show][tumblr]" value="<?php echo esc_attr($params->sharing->show->tumblr); ?>"
+                                                <?php if ( $params->sharing->show->tumblr == '1' ) {
+                                                    echo "checked";
+                                                } ?>>
+                                            <label><?php _e('Tumblr','reslide');?></label>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="params">
+                                    <label for="reslide-sharing-background"><?php _e('Share buttons styles:','reslide');?>&nbsp;</label>
+                                    <form id="reslide-sharing-background">
+                                        <span>
+                                            <input type="radio" id="params-sharing-background0"
+                                                   name="params[sharing][type]" rel="0"
+                                                   value='0' <?php if ( $params->sharing->type == '0' ) {
+                                                echo "checked";
+                                            } ?>>
+                                            <label for="params-sharing-background0"><img
+                                                    src="<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES . '/sharing/sharing-0.png'; ?>"></label>
+										</span>
+                                        <span>
+                                            <label class="pro_option" for="params-sharing-background1"><img
+                                                    src="<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES . '/sharing/sharing-1.png'; ?>"></label>
+										</span>
+                                        <span>
+                                            <label class="pro_option" for="params-sharing-background2"><img
+                                                    src="<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES . '/sharing/sharing-2.png'; ?>"></label>
+										</span>
+                                        <span>
+                                            <label class="pro_option" for="params-sharing-background3"><img
+                                                    src="<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES . '/sharing/sharing-3.png'; ?>"></label>
+										</span>
+                                        <span>
+                                            <label class="pro_option" for="params-sharing-background4"><img
+                                                    src="<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES . '/sharing/sharing-4.png'; ?>"></label>
+										</span>
+                                        <span>
+                                            <label class="pro_option" for="params-sharing-background5"><img
+                                                    src="<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES . '/sharing/sharing-5.png'; ?>"></label>
+										</span>
+                                        <input type="hidden" id="params-sharing-type" name="params[sharing][type]"
+                                               value="<?php echo $params->sharing->type; ?>">
+
                                     </form>
                                 </li>
                             </ul>

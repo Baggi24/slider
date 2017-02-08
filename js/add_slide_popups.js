@@ -2,21 +2,7 @@ jQuery(function ($) {
     /*** Pro ***/
 
     $(document).ready(function () {
-        if (jQuery('#reslide_sliders_list .id').length > 2) {
-            jQuery('.add-slider').click(
-                function () {
-                    alert('There is a 3 sliders limit in lite version of the plugin.');
-                    return false;
-                }
-            )
-            jQuery('.duplicate-icon').click(
-                function () {
-                    alert('There is a 3 sliders limit in lite version of the plugin.');
-                    return false;
-                }
-            )
-        }
-
+       
         function initSave() {
             jQuery('input.text').each(function () {
                 var val = jQuery(this).val();

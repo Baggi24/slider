@@ -195,7 +195,56 @@ function reslider_front_end($_id,$_slider,$_reslides) {
 	</div>		
        	<?php require( RESLIDE_PLUGIN_PATH_FRONTEND.'/reslide-front-end.css.php' ) ?>
         <script>
+			jQuery(window).load(function(){
+				var shareButtons;
+				if (reslider<?php echo $sliderID;?>["params"]["sharing"]["show"]["facebook"] === 1 || reslider<?php echo $sliderID;?>["params"]["sharing"]["show"]["twitter"] === 1 || reslider<?php echo $sliderID;?>["params"]["sharing"]["show"]["googleplus"] === 1 || reslider<?php echo $sliderID;?>["params"]["sharing"]["show"]["pinterest"] === 1 || reslider<?php echo $sliderID;?>["params"]["sharing"]["show"]["linkedin"] === 1 || reslider<?php echo $sliderID;?>["params"]["sharing"]["show"]["tumblr"] === 1) {
+					jQuery('<div class="socialIcons"></div>').insertAfter('#slider<?php echo $sliderID;?>_container');
 
+					var type = reslider<?php echo $sliderID;?>["params"]["sharing"]["type"];
+
+					shareButtons = '<ul class="share-buttons style_' + type + '"></ul>';
+					jQuery('.socialIcons').append(shareButtons);
+				}
+
+				if (reslider<?php echo $sliderID;?>["params"]["sharing"]["show"]["facebook"] === 1) {
+					jQuery('.share-buttons').append('<li><a title="Facebook" id="share-facebook" target="_blank"></a></li>');
+					setTimeout(function(){
+						jQuery('#share-facebook').attr('href', 'https://www.facebook.com/sharer/sharer.php?u=' + (encodeURIComponent(window.location.href)));
+					}, 200);
+				}
+				if (reslider<?php echo $sliderID;?>["params"]["sharing"]["show"]["twitter"] === 1) {
+					jQuery('.share-buttons').append('<li><a title="Twitter" id="share-twitter" target="_blank"></a></li>');
+					setTimeout(function(){
+						jQuery('#share-twitter').attr('href', 'https://twitter.com/intent/tweet?text=&url=' + (encodeURIComponent(window.location.href)));
+					}, 200);
+				}
+				if (reslider<?php echo $sliderID;?>["params"]["sharing"]["show"]["googleplus"] === 1) {
+					jQuery('.share-buttons').append('<li><a title="Pinterest" id="share-googleplus" target="_blank"></a></li>');
+					setTimeout(function(){
+						jQuery('#share-googleplus').attr('href', 'https://plus.google.com/share?url=' + (encodeURIComponent(window.location.href)));
+					}, 200);
+				}
+				if (reslider<?php echo $sliderID;?>["params"]["sharing"]["show"]["pinterest"] === 1) {
+					jQuery('.share-buttons').append('<li><a title="Pinterest" id="share-pinterest" target="_blank"></a></li>');
+					setTimeout(function(){
+						jQuery('#share-pinterest').attr('href', 'http://www.pinterest.com/pin/create/button/?url=' + (encodeURIComponent(window.location.href)));
+					}, 200);
+				}
+				if (reslider<?php echo $sliderID;?>["params"]["sharing"]["show"]["linkedin"] === 1) {
+					jQuery('.share-buttons').append('<li><a title="Linkedin" id="share-linkedin" target="_blank"></a></li>');
+					setTimeout(function(){
+						jQuery('#share-linkedin').attr('href', 'http://www.linkedin.com/shareArticle?mini=true&url=' + (encodeURIComponent(window.location.href)));
+					}, 200);
+				}
+				if (reslider<?php echo $sliderID;?>["params"]["sharing"]["show"]["tumblr"] === 1) {
+					jQuery('.share-buttons').append('<li><a title="Tumblr" id="share-tumblr" target="_blank"></a></li></ul>');
+					setTimeout(function(){
+						jQuery('#share-tumblr').attr('href', 'http://www.tumblr.com/share/link?url=' + (encodeURIComponent(window.location.href)));
+					}, 200);
+				}
+
+			});
+			
 		if(reslider<?php echo $sliderID;?>["params"]["rightclickprotection"]) {
 			jQuery('div[id*=slider]').bind("contextmenu",function(e) {
 				e.preventDefault();
