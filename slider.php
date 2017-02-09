@@ -1023,6 +1023,19 @@ INSERT INTO `$table` (`title`, `sliderid`, `published`, `slide`, `description`, 
 		}
 	}
 
+	$query3 = "SELECT id, params FROM ".RESLIDE_TABLE_SLIDERS." ";
+	$rows3 = $wpdb->get_results($query3);
+	foreach($rows3 as $row3){
+		if( strpos( $row3->params, 'sharing' ) === false ) {
+			$new_param3 = substr_replace( $row3->params, '"sharing":{"show":{"facebook":0,"twitter":0,"googleplus":0,"pinterest":0,"linkedin":0,"tumblr":0},"type":0},', 1, 0 );
+			$wpdb->update(
+				RESLIDE_TABLE_SLIDERS,
+				array( 'params' =>  $new_param3),
+				array( 'id' => $row3->id )
+			);
+		}
+	}
+
 }
 
 

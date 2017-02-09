@@ -1083,6 +1083,19 @@ document.onkeydown = function (evt) {
             }
         });
 
+        /*** sharing settings ***/
+        jQuery('#reslide-sharing-background input[type="radio"]').on('change', function () {
+            if (jQuery(this).attr('checked')) {
+                jQuery('#params-sharing-type').val(jQuery(this).attr('rel'));
+                reslideGetSliderParams();
+            }
+        });
+        jQuery('#reslide-sharing-show input[type="checkbox"]').each(function () {
+            jQuery(this).on('change', function () {
+                jQuery(this).attr('checked') ? jQuery(this).val(1) : jQuery(this).val(0);
+                reslideGetSliderParams();
+            });
+        });
 
     });
 })(jQuery);

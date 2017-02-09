@@ -14,6 +14,101 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
     display: none;
     overflow:hidden;
 }
+
+.socialIcons {
+    width: <?php echo  absint($style->width);?>px;
+    margin: 0 auto
+}
+
+.share-buttons{
+    list-style-type:none;
+    position:relative;
+    top:5px;
+    padding:0 !important;
+    margin: 0 !important;
+}
+
+.share-buttons li,.share-buttons li a{
+    display:inline-block;
+    width:35px;
+    height:35px;
+    margin-right:5px;
+    outline: none;    
+}
+
+a#share-facebook {
+    display: block;
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+    background-image: url(<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES;?>/sharing/sharing-<?php echo $params->sharing->type;?>.png);
+    background-position: 0 0;
+    background-size: 200px 35px;
+    overflow: hidden;
+    z-index: 9999;
+}
+a#share-twitter {
+    display: block;
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+    background-image: url(<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES;?>/sharing/sharing-<?php echo $params->sharing->type;?>.png);
+    background-position: -35px 0;
+    background-size: 200px 35px;
+    overflow: hidden;
+    z-index: 9999;
+}
+a#share-googleplus {
+    display: block;
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+    background-image: url(<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES;?>/sharing/sharing-<?php echo $params->sharing->type;?>.png);
+    background-position: -67px 0;
+    background-size: 200px 35px;
+    overflow: hidden;
+    z-index: 9999;
+}
+a#share-pinterest {
+    display: block;
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+    background-image: url(<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES;?>/sharing/sharing-<?php echo $params->sharing->type;?>.png);
+    background-position: -99px 0;
+    background-size: 200px 35px;
+    overflow: hidden;
+    z-index: 9999;
+}
+a#share-linkedin {
+    display: block;
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+    background-image: url(<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES;?>/sharing/sharing-<?php echo $params->sharing->type;?>.png);
+    background-position: -131px 0;
+    background-size: 200px 35px;
+    overflow: hidden;
+    z-index: 9999;
+}
+a#share-tumblr {
+    display: block;
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+    background-image: url(<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES;?>/sharing/sharing-<?php echo $params->sharing->type;?>.png);
+    background-position: -164px 0;
+    background-size: 200px 35px;
+    overflow: hidden;
+    z-index: 9999;
+}
+
 #slider<?php echo $sliderID;?>_container .reslide_slides img {
     display: none;
 }
