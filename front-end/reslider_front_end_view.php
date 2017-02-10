@@ -474,7 +474,7 @@ function reslider_front_end($_id,$_slider,$_reslides) {
 
 		<?php if($slide->type !== 'video'){ ?>
 
-		if(reslider<?php echo $sliderID;?>['params']['behavior'] === 0){
+		if(+reslider<?php echo $sliderID;?>['params']['behavior'] === 0){
 
 			jQuery('#slider<?php echo $sliderID ;?>_container img[class*=image_]').each(function () {
 				jQuery(this).css({
@@ -482,7 +482,7 @@ function reslider_front_end($_id,$_slider,$_reslides) {
 					width: '100%'
 				});
 			});
-		} else if(reslider<?php echo $sliderID;?>['params']['behavior'] === 1){
+		} else if(+reslider<?php echo $sliderID;?>['params']['behavior'] === 1){
 			jQuery('#slider<?php echo $sliderID ;?>_container img[class*=image_]').each(function () {
 				var naturalWidth  = jQuery(this).prop('naturalWidth'),
 				    naturalHeight = jQuery(this).prop('naturalHeight'),
@@ -508,7 +508,7 @@ function reslider_front_end($_id,$_slider,$_reslides) {
 				}
 
 			});
-		} else if(reslider<?php echo $sliderID;?>['params']['behavior'] === 2){
+		} else if(+reslider<?php echo $sliderID;?>['params']['behavior'] === 2){
 			jQuery('#slider<?php echo $sliderID ;?>_container img[class*=image_]').each(function () {
 				var naturalWidth  = jQuery(this).prop('naturalWidth'),
 				    naturalHeight = jQuery(this).prop('naturalHeight'),
