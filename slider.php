@@ -1035,7 +1035,6 @@ INSERT INTO `$table` (`title`, `sliderid`, `published`, `slide`, `description`, 
 			);
 		}
 	}
-
 }
 
 
