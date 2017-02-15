@@ -1,12 +1,12 @@
 === Responsive Slider ===
 Contributors: Huge-IT
-Donate link: http://huge-it.com/wordpress-responsive-slider/
+Donate link: https://huge-it.com/wordpress-responsive-slider/
 Tags: slider, responsive slider, content slider, image slider, photo slider, slider plugin, layer slider, slideshow, wordpress slider, wordpress slideshow, gallery slider, slide,
 Requires at least: 3.0.1
-Tested up to: 4.7.1
-Stable tag: 2.3.7
+Tested up to: 4.7.2
+Stable tag: 2.3.8
 License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
 Responsive Slider - best free wordpress tool for slideshow. Use responsive slider to create slideshow, wordpress slider widget, gallery and more.
 
@@ -14,11 +14,12 @@ Responsive Slider - best free wordpress tool for slideshow. Use responsive slide
 
 ### Check out useful links and demo page, get support or contribute for Responsive Slider.
 
-* [Wordpress Responsive Slider](http://huge-it.com/wordpress-responsive-slider/)
-* [Responsive Slider Demo](http://huge-it.com/wordpress-responsive-slider-demo/)
-* [Responsive Slider FAQ](http://huge-it.com/wordpress-responsive-slider-faq/)
-* [Responsive Slider User Manual](http://huge-it.com/wordpress-responsive-slider-user-manual/)
-* [Responsive Slider Support](http://huge-it.com/contact-us/)
+* [Wordpress Responsive Slider](https://huge-it.com/wordpress-responsive-slider/)
+* [Responsive Slider Demo](https://huge-it.com/wordpress-responsive-slider-demo/)
+* [Responsive Slider FAQ](https://huge-it.com/wordpress-responsive-slider-faq/)
+* [Responsive Slider User Manual](https://huge-it.com/wordpress-responsive-slider-user-manual/)
+* [Responsive Slider Support](https://huge-it.com/contact-us/)
+* [Responsive Slider Forum](https://huge-it.com/forums/forum/wordpress/wordpress-responsive-slider/)
 * [Responsive Slider GitHub Project](https://github.com/Huge-IT/slider)
 
 Responsive Slider is a completely new and advanced way to represent your images in slides . Responsive Slider is the best way to promote your website by creating amazing sliders with beautiful transition effects. So be creative with Huge-IT team, use the WordPress Responsive Slider for making your website more competitive. 
@@ -104,17 +105,17 @@ The second way to install the Pro version of Responsive using is via FTP
 * You will find the plugin installed on your WordPress toolbar in the back end of your website.
 
 
-If you think, that you found a bug in our [WordPress Responsive Slider](http://huge-it.com/wordpress-responsive-slider) plugin or have any question contact us at [info@huge-it.com](mailto:info@huge-it.com)
+If you think, that you found a bug in our [WordPress Responsive Slider](https://huge-it.com/wordpress-responsive-slider) plugin or have any question contact us at [info@huge-it.com](mailto:info@huge-it.com)
 
 == Screenshots ==
 
-1.  [WordPress Responsive Slider demo 1](http://huge-it.com/wordpress-responsive-slider-demo/#plugin_demo_wrapper) - Simple video
-11.  [WordPress Responsive Slider demo 1](http://huge-it.com/wordpress-responsive-slider-demo/#plugin_demo_wrapper) - Simple video
-2.  [WordPress Responsive Slider demo 2](http://huge-it.com/wordpress-wordpress-responsive-slider-demo-2-thumbnails/#plugin_demo_wrapper) - Thumbnails
-22.  [WordPress Responsive Slider demo 2](http://huge-it.com/wordpress-wordpress-responsive-slider-demo-2-thumbnails/#plugin_demo_wrapper) - Thumbnails
-3.  [WordPress Responsive Slider demo 3](http://huge-it.com/wordpress-responsive-slider-demo-3-no-controls/#plugin_demo_wrapper) - No controls
-32.  [WordPress Responsive Slider demo 4](http://huge-it.com/wordpress-responsive-slider-demo-4-elements/#plugin_demo_wrapper) - Elements
-4.  [WordPress Responsive Slider Admin Page](http://huge-it.com/wordpress-responsive-slider/)
+1.  [WordPress Responsive Slider demo 1](https://huge-it.com/wordpress-responsive-slider-demo/#plugin_demo_wrapper) - Simple video
+11.  [WordPress Responsive Slider demo 1](https://huge-it.com/wordpress-responsive-slider-demo/#plugin_demo_wrapper) - Simple video
+2.  [WordPress Responsive Slider demo 2](https://huge-it.com/wordpress-wordpress-responsive-slider-demo-2-thumbnails/#plugin_demo_wrapper) - Thumbnails
+22.  [WordPress Responsive Slider demo 2](https://huge-it.com/wordpress-wordpress-responsive-slider-demo-2-thumbnails/#plugin_demo_wrapper) - Thumbnails
+3.  [WordPress Responsive Slider demo 3](https://huge-it.com/wordpress-responsive-slider-demo-3-no-controls/#plugin_demo_wrapper) - No controls
+32.  [WordPress Responsive Slider demo 4](https://huge-it.com/wordpress-responsive-slider-demo-4-elements/#plugin_demo_wrapper) - Elements
+4.  [WordPress Responsive Slider Admin Page](https://huge-it.com/wordpress-responsive-slider/)
 
 
 == Frequently Asked Questions ==
@@ -150,9 +151,12 @@ Please try to submit the payment using another browser, otherwise feel free to c
 Custom arrows can be added in the Professional version of the plugin only. 
 
 
-If you think, that you found a bug in our [WordPress Responsive Slider](http://huge-it.com/wordpress-responsive-slider) plugin or have any question contact us at [info@huge-it.com](mailto:info@huge-it.com)
+If you think, that you found a bug in our [WordPress Responsive Slider](https://huge-it.com/wordpress-responsive-slider) plugin or have any question contact us at [info@huge-it.com](mailto:info@huge-it.com)
 
 == Changelog ==
+
+= 2.3.8 =
+* We have added 5 new social sharing buttons incuding Facebook, Twitter, G+, Pinterest, LinkedIn and Tumblr.
 
 = 2.3.7 =
 * 1) Added widget support on front end.
