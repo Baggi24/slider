@@ -350,6 +350,60 @@ function reslideDrawSlider() {
                 $Opacity:2
             }
             break;
+        case 16:
+            reslide_effect = {
+                $Duration: reslider["params"]["effect"]["duration"],
+                $Delay:20,
+                $Clip:12,
+                $SlideOut:true,
+                $Easing:{
+                    $Clip:$JssorEasing$.$EaseOutCubic,
+                    $Opacity:$JssorEasing$.$EaseLinear
+                },
+                $Assembly:260,
+                $Opacity:2
+            }
+            break;
+        case 17:
+            reslide_effect = {
+                $Duration: reslider["params"]["effect"]["duration"],
+                x:-1,
+                $Rows:6,
+                $Formation:$JssorSlideshowFormations$.$FormationStraight,
+                $ChessMode:{
+                    $Row:3
+                }
+            }
+            break;
+        case 18:
+            reslide_effect = {
+                $Duration: reslider["params"]["effect"]["duration"],
+                y:-1,
+                $Cols:12,
+                $Formation:$JssorSlideshowFormations$.$FormationStraight,
+                $ChessMode:{
+                    $Column:12
+                }
+            }
+            break;
+        case 19:
+            reslide_effect = {
+                $Duration: reslider["params"]["effect"]["duration"],
+                $Delay:100,
+                $Rows:7,
+                $Formation:$JssorSlideshowFormations$.$FormationStraight,
+                $Opacity:2
+            }
+            break;
+        case 20:
+            reslide_effect = {
+                $Duration: reslider["params"]["effect"]["duration"],
+                $Delay:100,
+                $Cols:10,
+                $Formation:$JssorSlideshowFormations$.$FormationStraight,
+                $Opacity:2
+            }
+            break;
     }
 
     var _SlideshowTransitions = [
