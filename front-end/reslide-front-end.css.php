@@ -33,7 +33,12 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
     width:35px;
     height:35px;
     margin-right:5px;
-    outline: none;    
+    outline: none;
+    box-shadow: none !important;
+}
+
+.share-buttons li,.share-buttons li a {
+    box-shadow: none !important;
 }
 
 a#share-facebook {
@@ -169,17 +174,18 @@ a#share-tumblr {
     left: <?php echo esc_html($title->style->left); ?>;
     border: <?php echo absint($title->style->border->width); ?>px solid #<?php echo sanitize_text_field($title->style->border->color); ?>;
     border-radius: <?php echo intval($title->style->border->radius); ?>px;
+    background: <?php list($r,$g,$b) = array_map('hexdec',str_split($title->style->background->color,2));
+                    $titleopacity = abs($title->style->opacity) / 100;
+                    echo 'rgba('.$r.','.$g.','.$b.','.$titleopacity.')'; ?>;
 }
 #slider<?php echo $sliderID ;?>_container .reslidetitle > div {
-    background: <?php echo sanitize_hex_color("#".$title->style->background->color); ?>;
-    opacity: <?php echo abs($title->style->opacity)/100;?>;
     filter: alpha(opacity=<?php echo abs($title->style->opacity); ?>);
 }
 #slider<?php echo $sliderID ;?>_container .reslidetitle > span {
     padding: 10px;
     text-align: center;
     font-size: <?php echo absint($title->style->font->size); ?>px;
-    color: <?php echo sanitize_hex_color("#".$title->style->color); ?>;
+    color: <?php echo sanitize_hex_color("#".esc_html($title->style->color)); ?>;
 }
 
 /*Description styles ***/
@@ -191,15 +197,16 @@ a#share-tumblr {
     left: <?php echo esc_html($description->style->left); ?>;
     border: <?php echo absint($description->style->border->width); ?>px solid <?php echo sanitize_hex_color("#".$description->style->border->color); ?>;
     border-radius: <?php echo absint($description->style->border->radius); ?>px;
+    background: <?php list($r,$g,$b) = array_map('hexdec',str_split($description->style->background->color,2));
+                    $description = abs($description->style->opacity) / 100;
+                    echo 'rgba('.$r.','.$g.','.$b.','.$description.')'; ?>;
 }
 #slider<?php echo $sliderID ;?>_container .reslidedescription > div {
-    background: <?php echo sanitize_hex_color("#".$description->style->background->color); ?>;
-    opacity: <?php echo abs($description->style->opacity)/100;?>;
     filter: alpha(opacity=<?php echo abs($description->style->opacity); ?>);
 }
 #slider<?php echo $sliderID ;?>_container .reslidedescription > span {
     font-size: <?php echo absint($description->style->font->size); ?>px;
-    color: <?php echo sanitize_hex_color("#".$description->style->color); ?>;
+    color: <?php echo sanitize_hex_color("#".esc_html($description->style->color)); ?>;
 }
 
 /* slide static elements ***/

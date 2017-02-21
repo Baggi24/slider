@@ -29,12 +29,12 @@ function reslide_edit_slide_view( $_slider, $_slides, $_mainslide ) { // Slider'
 			
 		// initialize slider values in slider admin page
 		var reslider = {
-			id: '<?php echo $_id;?>',
-			name: '<?php echo $_slider[0]->title;?>',
-			params: JSON.parse('<?php echo $paramsJson;?>'),
-			style: JSON.parse('<?php echo $styleJson;?>'),
-			custom: JSON.parse('<?php echo $customJson;?>'),
-			count: '<?php echo $count;?>',
+			id: '<?php echo esc_html($_id);?>',
+			name: '<?php echo esc_html($_slider[0]->title);?>',
+			params: JSON.parse('<?php echo esc_html($paramsJson);?>'),
+			style: JSON.parse('<?php echo esc_html($styleJson);?>'),
+			custom: JSON.parse('<?php echo esc_html($customJson);?>'),
+			count: '<?php echo esc_html($count);?>',
 			length: 0,
 
 			slides: {}

@@ -47,12 +47,12 @@ function reslider_front_end($_id,$_slider,$_reslides) {
 <!-- Construct js Slider -->
 <script>
 	var reslider<?php echo $sliderID;?>  = {
-		id: '<?php echo $sliderID;?>',
-		name: '<?php echo $_slider[0]->title;?>',
+		id: '<?php echo esc_html($sliderID);?>',
+		name: '<?php echo esc_html($_slider[0]->title);?>',
 		params:JSON.parse('<?php echo $paramsJson;?>'),
 		style:JSON.parse('<?php echo $styleJson;?>'),
 		custom:JSON.parse('<?php echo $customJson;?>'),
-		count: '<?php echo $count;?>',
+		count: '<?php echo esc_html($count);?>',
 		slides:{}
 	};
 <?php 
@@ -305,6 +305,21 @@ function reslider_front_end($_id,$_slider,$_reslides) {
 						case 15:
 							reslide_effect ={$Duration:reslider<?php echo $sliderID;?>["params"]["effect"]["duration"],$Delay:20,$Clip:3,$SlideOut:true,$Easing:{$Clip:$JssorEasing$.$EaseOutCubic,$Opacity:$JssorEasing$.$EaseLinear},$Assembly:260,$Opacity:2};
 							break;
+						case 16:
+							reslide_effect ={$Duration:reslider<?php echo $sliderID;?>["params"]["effect"]["duration"],$Delay:20,$Clip:12,$SlideOut:true,$Easing:{$Clip:$JssorEasing$.$EaseOutCubic,$Opacity:$JssorEasing$.$EaseLinear},$Assembly:260,$Opacity:2};
+							break;
+						case 17:
+							reslide_effect ={$Duration:reslider<?php echo $sliderID;?>["params"]["effect"]["duration"],x:-1,$Rows:6,$Formation:$JssorSlideshowFormations$.$FormationStraight,$ChessMode:{$Row:3}};
+							break;
+						case 18:
+							reslide_effect ={$Duration:reslider<?php echo $sliderID;?>["params"]["effect"]["duration"],y:-1,$Cols:12,$Formation:$JssorSlideshowFormations$.$FormationStraight,$ChessMode:{$Column:12}};
+							break;
+						case 19:
+							reslide_effect ={$Duration:reslider<?php echo $sliderID;?>["params"]["effect"]["duration"],$Delay:100,$Rows:7,$Formation:$JssorSlideshowFormations$.$FormationStraight,$Opacity:2};
+							break;
+						case 20:
+							reslide_effect ={$Duration:reslider<?php echo $sliderID;?>["params"]["effect"]["duration"],$Delay:100,$Cols:10,$Formation:$JssorSlideshowFormations$.$FormationStraight,$Opacity:2};
+							break;
 					};
 
 				
@@ -365,7 +380,7 @@ function reslider_front_end($_id,$_slider,$_reslides) {
 
              c_slider<?php echo $sliderID;?> = new $JssorSlider$(containerId, options);
         }		
-		 
+
 		jQuery(function($){
 			
 					(function initReslideSlider() {

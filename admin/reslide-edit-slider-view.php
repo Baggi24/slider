@@ -171,6 +171,7 @@ function reslide_edit_slider_view( $_row, $_id, $_slider ) {
                         <li rel="thumbnails"><a href="#"><?php _e('Thumbnails','reslide');?></a></li>
                         <li rel="bullets"><a href="#"><?php _e('Bullets','reslide');?></a></li>
                         <li rel="sharing"><a href="#"><?php _e('Social Sharing','reslide');?></a></li>
+                        <li rel="watermark"><a href="#"><?php _e('Watermark','reslide');?></a></li>
                         <li rel="shortcodes"><a href="#"><?php _e('Shortcode','reslide');?></a></li>
                     </ul>
                 </div>
@@ -288,6 +289,26 @@ function reslide_edit_slider_view( $_row, $_id, $_slider ) {
                                         <option
                                             value="15" <?php echo ( $params->effect->type == 15 ) ? "selected" : ""; ?>>
                                             <?php _e('Fade Clip out','reslide');?>
+                                        </option>
+                                        <option
+                                            value="16" <?php echo ( $params->effect->type == 16 ) ? "selected" : ""; ?>>
+                                            <?php _e('Fade Clip out V','reslide');?>
+                                        </option>
+                                        <option
+                                            value="17" <?php echo ( $params->effect->type == 17 ) ? "selected" : ""; ?>>
+                                            <?php _e('Horizontal Chess Stripe','reslide');?>
+                                        </option>
+                                        <option
+                                            value="18" <?php echo ( $params->effect->type == 18 ) ? "selected" : ""; ?>>
+                                            <?php _e('Vertical Chess Stripe','reslide');?>
+                                        </option>
+                                        <option
+                                            value="19" <?php echo ( $params->effect->type == 19 ) ? "selected" : ""; ?>>
+                                            <?php _e('Horizontal Fade Stripe','reslide');?>
+                                        </option>
+                                        <option
+                                            value="20" <?php echo ( $params->effect->type == 20 ) ? "selected" : ""; ?>>
+                                            <?php _e('Vertical Fade Stripe','reslide');?>
                                         </option>
                                     </select>
                                     <input type="hidden" name="params[effect][type]"
@@ -772,6 +793,93 @@ function reslide_edit_slider_view( $_row, $_id, $_slider ) {
 
                                     </form>
                                 </li>
+                            </ul>
+                        </li>
+                        <li class="watermark">
+                            <ul id="watermark-settings">
+                                <li class="params">
+                                    <label for="reslide-watermark"><?php _e('Watermark', 'reslide'); ?>:<span class="reslide-free" style="color:red;">&nbsp;(PRO)&nbsp;</span></label>
+                                    <input id="reslide-watermark" type="checkbox"
+                                           value="1" checked />
+                                </li>
+                                <li class="params">
+                                    <label for="reslide-watermark-text"><?php _e('Watermark Text', 'reslide'); ?>:<span class="reslide-free" style="color:red;">&nbsp;(PRO)&nbsp;</span></label>
+                                    <input id="reslide-watermark-text" class="reslide-watermark-input" type="text"
+                                           value="WaterMark" />
+                                </li>
+                                <li class="params">
+                                    <label for="reslide-watermark-textcolor"><?php _e('Text Color','reslide');?>:<span class="reslide-free" style="color:red;">&nbsp;(PRO)&nbsp;</span></label>
+                                    <form id="reslide-watermark-textcolor">
+                                        <input type="text" class="jscolor" id="params-watermark-textcolor"
+                                               rel="0" value="000">
+                                    </form>
+                                </li>
+                                <li class="params">
+                                    <label for="reslide-watermark-textfontsize"><?php _e('Text Font Size', 'reslide'); ?>:<span class="reslide-free" style="color:red;">&nbsp;(PRO)&nbsp;</span></label>
+                                    <input id="reslide-watermark-textfontsize" class="reslide-watermark-input" type="number"
+                                           value="16" />
+                                </li>
+                                <li class="params">
+                                    <label for="reslide-watermark-background"><?php _e('Container BG','reslide');?>:<span class="reslide-free" style="color:red;">&nbsp;(PRO)&nbsp;</span></label>
+                                    <form id="reslide-watermark-background">
+                                        <input type="text" class="jscolor" id="params-watermark-background"
+                                               rel="0" value="FFF">
+                                    </form>
+                                </li>
+                                <li class="params">
+                                    <label for="reslide-watermark-backgroundopacity"><?php _e('BG Opacity', 'reslide'); ?>:<span class="reslide-free" style="color:red;">&nbsp;(PRO)&nbsp;</span></label>
+                                    <input id="reslide-watermark-backgroundopacity" class="reslide-watermark-input reslide-watermark-backgroundopacity" type="number"
+                                           min="0" max="1" step="0.1" value="1" />
+                                </li>
+                                <li class="params">
+                                    <label for="reslide-watermark-containerwidth"><?php _e('Container Width', 'reslide'); ?>:<span class="reslide-free" style="color:red;">&nbsp;(PRO)&nbsp;</span></label>
+                                    <input id="reslide-watermark-containerwidth" class="reslide-watermark-input reslide-watermark-containerwidth" type="number" value="200" />
+                                </li>
+                                <li class="params">
+                                    <label for="reslide-watermark-opacity"><?php _e('Container Opacity', 'reslide'); ?>:<span class="reslide-free" style="color:red;">&nbsp;(PRO)&nbsp;</span></label>
+                                    <input id="reslide-watermark-opacity" class="reslide-watermark-input reslide-watermark-opacity" type="number"
+                                           min="0" max="1" step="0.1" value="1" />
+                                </li>
+                                <li class="params">
+                                    <label for="reslide-watermark-margin"><?php _e('Container Margin', 'reslide'); ?>:<span class="reslide-free" style="color:red;">&nbsp;(PRO)&nbsp;</span></label>
+                                    <input id="reslide-watermark-margin" class="reslide-watermark-input reslide-watermark-margin" type="number" value="10" />
+                                </li>
+                                <li class="params">
+                                    <label for="reslide-watermark-position"><?php _e('Position','reslide');?>:<span class="reslide-free" style="color:red;">&nbsp;(PRO)&nbsp;</span></label>
+                                    <form id="reslide-watermark-position">
+                                        <input type="radio" id="params-watermark-position1"
+                                               rel="1">
+                                        <input type="radio" id="params-watermark-position2"
+                                               rel="2">
+                                        <input type="radio" id="params-watermark-position3"
+                                               rel="3"><br>
+                                        <input type="radio" id="params-watermark-position4"
+                                               rel="4">
+                                        <input type="radio" id="params-watermark-position5"
+                                               rel="5" checked>
+                                        <input type="radio" id="params-watermark-position6"
+                                               rel="6"><br>
+                                        <input type="radio" id="params-watermark-position7"
+                                               rel="7">
+                                        <input type="radio" id="params-watermark-position8"
+                                               rel="8">
+                                        <input type="radio" id="params-watermark-position9"
+                                               rel="9">
+                                        <input type="hidden" id="params-watermark-position"
+                                               value="5">
+                                    </form>
+                                </li>
+                                <li class="params">
+                                    <label for="reslide-watermark-imgsrc"><?php _e('Image Source', 'reslide'); ?>:<span class="reslide-free" style="color:red;">&nbsp;(PRO)&nbsp;</span></label>
+                                    <div id="img-wrap">
+                                        <img src="" id="watermark_image" alt="No image found" />
+                                    </div>
+                                    <input type="button" class="button wp-media-buttons-icon"
+                                           id="watermark_image_btn" value="Change Image">
+                                    <input type="hidden" id="img_watermark_hidden"
+                                           value="">
+                                </li>
+
                             </ul>
                         </li>
                         <li class="shortcodes">

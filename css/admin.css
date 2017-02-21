@@ -1196,16 +1196,66 @@ a.delete-link {
     background: #F2F2F2
 }
 
-#arrow-settings > li.params, #thumbnail-settings > li.params, #bullet-settings > li.params, #sharing-settings > li.params {
+#watermark-settings > li.params > form {
+    width: 86%;
+    margin-left: 168px;
+    float: left;
+    box-sizing: border-box;
+}
+
+#img-wrap,
+#watermark_image_btn,
+input#reslide-watermark,
+input#reslide-watermark-text,
+input#reslide-watermark-textfontsize,
+input#reslide-watermark-containerwidth,
+input#reslide-watermark-opacity,
+input#reslide-watermark-margin,
+input#reslide-watermark-imgsrc,
+input#reslide-watermark-backgroundopacity {
+    margin-left: 168px !important;
+}
+
+#img-wrap {
+    width: 120px;
+    height: 120px;
+    background: #F1F1F1;
+}
+
+#img-wrap img {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+#watermark_image_btn {
+    margin-top: 10px;
+}
+
+input#reslide-watermark {
+    margin-top: 11px !important;
+}
+
+.reslide-watermark-input {
+    margin-top: 7px !important;
+}
+
+#arrow-settings > li.params, #thumbnail-settings > li.params, #bullet-settings > li.params, #watermark-settings > li.params, #sharing-settings > li.params {
     width: 100%;
     margin-top: 8px;
     float: left;
     position: relative;
     overflow: hidden;
+    min-height: 40px;
 }
 
-#arrow-settings > li.params > label, #thumbnail-settings > li.params > label, #bullet-settings > li.params > label, #sharing-settings > li.params > label {
-    width: 12%;
+#arrow-settings > li.params > label, #thumbnail-settings > li.params > label, #bullet-settings > li.params > label, #sharing-settings > li.params > label, #watermark-settings > li.params > label {
+    width: 143px;
     height: 40px;
     padding-left: 8px;
     float: left;
@@ -1216,14 +1266,14 @@ a.delete-link {
 }
 
 #arrow-settings > li.params > form, #thumbnail-settings > li.params > form, #bullet-settings > li.params > form, #sharing-settings > li.params > form {
-    width: 86%;
-    margin-left: 14%;
+    width: calc(100% - 143px);
+    margin-left: 168px;
     padding: 0 8px;
     float: left;
     box-sizing: border-box;
 }
 
-#arrow-settings > li.params > form > div, #thumbnail-settings > li.params > form > div, #bullet-settings > li.params > form > div, #sharing-settings > li.params > form > div {
+#arrow-settings > li.params > form > div, #thumbnail-settings > li.params > form > div, #watermark-settings > li.params > form > div, #bullet-settings > li.params > form > div, #sharing-settings > li.params > form > div {
     height: 40px;
     max-height: 40px;
     padding: 0 8px;
@@ -1237,11 +1287,11 @@ a.delete-link {
     line-height: 40px;
 }
 
-#arrow-settings > li.params > form > div:last-child, #thumbnail-settings > li.params > form > div:last-child, #bullet-settings > li.params > form > div:last-child, #sharing-settings > li.params > form > div:last-child {
+#arrow-settings > li.params > form > div:last-child, #thumbnail-settings > li.params > form > div:last-child, #watermark-settings > li.params > form > div:last-child, #bullet-settings > li.params > form > div:last-child, #sharing-settings > li.params > form > div:last-child {
     border: none;
 }
 
-#arrow-settings > li.params > form > div > label, #thumbnail-settings > li.params > form > div > label, #bullet-settings > li.params > form > div > label, #sharing-settings > li.params > form > div > label {
+#arrow-settings > li.params > form > div > label, #thumbnail-settings > li.params > form > div > label, #watermark-settings > li.params > form > div > label, #bullet-settings > li.params > form > div > label, #sharing-settings > li.params > form > div > label {
     float: left;
     display: block;
     line-height: 40px;
@@ -1330,7 +1380,7 @@ a.delete-link {
 
 ul#reslide-sharing-show {
     width: 86%;
-    margin-left: 14%;
+    margin-left: 168px;
     padding: 0 8px;
     float: left;
     box-sizing: border-box;
@@ -1418,12 +1468,16 @@ ul#reslide-sharing-show {
     margin-left: 20px;
 }
 
-#reslide_slider_edit #reslide-bullets-position {
+#reslide_slider_edit #reslide-bullets-position, #reslide_slider_edit #reslide-watermark-position {
     width: initial;
     padding: 2% 1% 1%;
     margin-top: -2%;
     border: none;
     background: #F1F1F1;
+}
+
+#reslide-watermark-background, #reslide-watermark-textcolor {
+    height: 40px;
 }
 
 #reslide_slider_edit #reslide-bulllets-orientation label {
