@@ -197,11 +197,10 @@ a#share-tumblr {
     left: <?php echo esc_html($description->style->left); ?>;
     border: <?php echo absint($description->style->border->width); ?>px solid <?php echo sanitize_hex_color("#".$description->style->border->color); ?>;
     border-radius: <?php echo absint($description->style->border->radius); ?>px;
-    background: <?php list($r,$g,$b) = array_map('hexdec',str_split($description->style->background->color,2));
-                    $description = abs($description->style->opacity) / 100;
-                    echo 'rgba('.$r.','.$g.','.$b.','.$description.')'; ?>;
 }
 #slider<?php echo $sliderID ;?>_container .reslidedescription > div {
+    background: <?php echo esc_html("#".$description->style->background->color); ?>;
+    opacity: <?php echo abs($description->style->opacity)/100;?>;
     filter: alpha(opacity=<?php echo abs($description->style->opacity); ?>);
 }
 #slider<?php echo $sliderID ;?>_container .reslidedescription > span {
