@@ -31,9 +31,9 @@ function reslide_edit_slide_view( $_slider, $_slides, $_mainslide ) { // Slider'
 		var reslider = {
 			id: '<?php echo esc_html($_id);?>',
 			name: '<?php echo esc_html($_slider[0]->title);?>',
-			params: JSON.parse('<?php echo esc_html($paramsJson);?>'),
-			style: JSON.parse('<?php echo esc_html($styleJson);?>'),
-			custom: JSON.parse('<?php echo esc_html($customJson);?>'),
+			params: JSON.parse('<?php echo $paramsJson;?>'),
+			style: JSON.parse('<?php echo $styleJson;?>'),
+			custom: JSON.parse('<?php echo $customJson;?>'),
 			count: '<?php echo esc_html($count);?>',
 			length: 0,
 
