@@ -4,7 +4,7 @@ Donate link: https://huge-it.com/wordpress-responsive-slider/
 Tags: slider, responsive slider, content slider, image slider, photo slider, slider plugin, layer slider, slideshow, wordpress slider, wordpress slideshow, gallery slider, slide,
 Requires at least: 3.0.1
 Tested up to: 4.7.2
-Stable tag: 2.3.8
+Stable tag: 2.4.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -52,6 +52,8 @@ Slider is fully responsive and mobile friendly. All your images will appear as b
 *  **Add Title Style** - Do more styling with the Responsive Slider on the title of your each image.
  
 *  **Create Description Style** -  Description Style section suggests choosing different effects and colors for the  slider images.
+
+*  **Social Sharing** - Navigate to your slides and click the Social Sharing option in the slider menu in order to add 6 social sharing icons to the slider. You can pick all 6 or pick couple from available Facebook, Twitter, G+, Pinterest, LinkedIn and Tumblr. Besides that the plugin includes 6 themes for social sharing buttons available.
 
 *  **Advanced Drag and Drop Options** -  Drag and Drop feature with some builder function, which you can use on your admin panel, allows you to change the positions of the responsive slider text, description, image, button and more.
 
@@ -154,6 +156,13 @@ Custom arrows can be added in the Professional version of the plugin only.
 If you think, that you found a bug in our [WordPress Responsive Slider](https://huge-it.com/wordpress-responsive-slider) plugin or have any question contact us at [info@huge-it.com](mailto:info@huge-it.com)
 
 == Changelog ==
+
+= 2.4.0 =
+* 1) We have added 5 new transition effects.
+* 2) We have added watermark option (Pro).
+
+= 2.3.9 =
+* We had to update the plugin once again, as the GitHub had some errors processing the updated file and cut couple of lines.
 
 = 2.3.8 =
 * We have added 5 new social sharing buttons incuding Facebook, Twitter, G+, Pinterest, LinkedIn and Tumblr.
