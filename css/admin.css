@@ -906,7 +906,7 @@ a.delete-link {
 }
 
 #reslide_slider_edit .settings .menu {
-    height: 36px;
+    height: 23px;
     padding: 0;
     padding-bottom: 6px;
     max-height: 36px;
@@ -973,7 +973,7 @@ a.delete-link {
 
 #reslide_slider_edit .settings .menu-content ul.main-content {
     width: 100%;
-    margin: 0;
+    margin: -4px 0 0 0;
     padding: 10px 0 0 0;
     padding-left: 1.5%;
     float: left;
@@ -999,8 +999,8 @@ a.delete-link {
     overflow: hidden;
     width: 100%;
     max-height: 40px;
-    height: 40px;
-    margin: 5px 0;
+    height: 32px;
+    margin: 1px 0;
 }
 
 .main-content #general-settings > li.style {
@@ -1011,21 +1011,21 @@ a.delete-link {
 
 #general-settings > li.style > label {
     height: 40px;
-    width: 10%;
+    width: 95px;
     padding-left: 8px;
     position: absolute;
     color: #fff;
     background: #14ABD7;
     text-align: left;
-    line-height: 40px;
+    line-height: 32px;
 }
 
 #general-settings > li.style > input {
-    width: 90%;
+    width: calc(100% - 95px);
     height: 40px;
     margin: 0;
-    padding-left: 2%;
-    margin-left: 10%;
+    padding-left: 15px;
+    margin-left: 95px;
     color: rgb(86, 88, 85);
 }
 
@@ -1048,6 +1048,20 @@ a.delete-link {
     position: absolute; /* 2 */
     top: 50%; /* 3 */
     transform: translate(0, -50%)
+}
+
+#reslide-bordercolor {
+    height: 32px !important;
+    max-height: 32px !important;
+    line-height: 32px;
+    margin: 6px 0;
+    padding: 0 10px;
+    vertical-align: inherit;
+    float: inherit;
+}
+
+.border_free_option {
+    width: 75px;
 }
 
 #general-settings > li.style.margin > div #reslide-margin-right {
@@ -1131,15 +1145,12 @@ a.delete-link {
 
 }
 
-#general-settings > li.params .reslide_styling, #reslide-custom-stylings {
+#general-settings > li.params .reslide_styling, #reslide-custom-stylings,
+#general-settings > li.params #reslide-custom-add, #reslide-custom-add {
     font-weight: 600;
     background: rgb(36, 183, 48);
 }
 
-#general-settings > li.params #reslide-custom-add, #reslide-custom-add {
-    font-weight: 600;
-    background: #4280FB;
-}
 
 #general-settings #reslide-custom-stylings, #general-settings-slide #reslide-custom-stylings {
     display: none;
@@ -1780,6 +1791,10 @@ body .popup-type img {
 #reslide-slider-construct #reslide-description-construct #reslide_remove {
     display: none !important;
     opacity: 0 !important;
+}
+
+#reslide-slider-construct {
+    overflow: visible !important;
 }
 
 .reslide_construct .properties {
@@ -2435,6 +2450,16 @@ body .popup-type img {
     color: rgb(179, 2, 2) !important;
     font-size: inherit;
     font-weight: 700;
+}
+
+.reslide_slider_view_wrapper .reslide-free img {
+    top: 2px;
+    position: relative;
+}
+
+#reslide-title-stylings-free, #reslide-description-stylings-free, #reslide-custom-add {
+    width: 60px;
+    text-align: center;
 }
 
 /*<<<<<<<<<backend-banner>>>>>>>>>>>>>>>*/

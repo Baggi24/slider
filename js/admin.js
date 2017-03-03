@@ -1109,7 +1109,12 @@ document.onkeydown = function (evt) {
             var value = jQuery(this).find(":selected").val();
             jQuery('#reslide-behavior + input').val(value);
         });
-        
+
+        jQuery('#reslide-sortimagesby').on('change', function () {
+            var value = jQuery(this).find(":selected").val();
+            jQuery('#reslide-sortimagesby + input').val(value);
+        });
+
         _reslide._('#reslide-effect-type').on('change', function () {
             var value = _reslide(this).value;
             _reslide._('#reslide-effect-type + input')[0].value = value;

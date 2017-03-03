@@ -350,9 +350,9 @@ function reslide_edit_slider_view( $_row, $_id, $_slider ) {
                                         echo "checked";
                                     } ?> />
                                     <div id="reslide-title-stylings-free" class="reslide_styling"
-                                         style="display:inline-block;">Style <i class="fa fa-pencil-square-o"
-                                                                                aria-hidden="true"></i><span class="reslide-free" style="color:red;">(PRO)&nbsp;</span></div>
-
+                                         style="display:inline-block;"><?php _e('Style', 'reslide'); ?>
+                                    </div>
+                                    <span class="reslide-free" style="color:red;"><img src="<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES . '/pro.png'; ?>" width='35' height='15' /></span>
                                     <input type="hidden" name="params[title][style][width]"
                                            value="<?php echo esc_attr($params->title->style->width); ?>">
                                     <input type="hidden" name="params[title][style][height]"
@@ -370,9 +370,9 @@ function reslide_edit_slider_view( $_row, $_id, $_slider ) {
                                         echo "checked";
                                     } ?> />
                                     <div id="reslide-description-stylings-free" class="reslide_styling"
-                                         style="display:inline-block;">Style <i class="fa fa-pencil-square-o"
-                                                                                aria-hidden="true"></i><span class="reslide-free" style="color:red;">(PRO)&nbsp;</span></div>
-
+                                         style="display:inline-block;"><?php _e('Style', 'reslide'); ?>
+                                        </div>
+                                    <span class="reslide-free" style="color:red;"><img src="<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES . '/pro.png'; ?>" width='35' height='15' /></span>
                                 </li>
                                 <li class="params custom">
                                     <label for="reslide-custom">Slider Custom Element:</label>
@@ -392,12 +392,47 @@ function reslide_edit_slider_view( $_row, $_id, $_slider ) {
                                     </select>
                                     <input type="hidden" id="reslide-custom-type" class="reslide_styling"
                                            name="params[custom][type]" value="<?php echo $params->custom->type; ?>">
-                                    <div id="reslide-custom-stylings" class="reslide_styling">Style <i
+                                    <div id="reslide-custom-stylings" class="reslide_styling"><?php _e('Style','reslide');?> <i
                                             class="fa fa-pencil-square-o" aria-hidden="true"></i></div>
                                     <div id="reslide-custom-add" class="reslide_drawelement free"
                                          rel="reslide_<?php echo $params->custom->type; ?>"
-                                         data="<?php echo esc_attr($params->custom->type); ?>" style="display:inline-block;">Add<span class="reslide-free" style="color:red;">(PRO)&nbsp;</span></div>
-
+                                         data="<?php echo esc_attr($params->custom->type); ?>" style="display:inline-block;"><?php _e('Add','reslide');?>
+                                    </div>
+                                    <span class="reslide-free" style="color:red;"><img src="<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES . '/pro.png'; ?>" width='35' height='15' /></span>
+                                </li>
+                                <li class="params">
+                                    <label for="reslide-bordersize"><?php _e('Border size','reslide');?>: <span class="reslide-free" style="color:red;"><img src="<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES . '/pro.png'; ?>" width='35' height='15' /></span></label>
+                                    <input class='border_free_option' type="number" value="0">
+                                </li>
+                                <li class="params">
+                                    <label for="reslide-bordercolor"><?php _e('Border color','reslide');?>: <span class="reslide-free" style="color:red;"><img src="<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES . '/pro.png'; ?>" width='35' height='15' /></span></label>
+                                    <form id="reslide-bordercolor">
+                                        <input type="text" class="jscolor border_free_option" id="params-bordercolor"
+                                              rel="0" value="000">
+                                    </form>
+                                </li>
+                                <li class="params">
+                                    <label for="reslide-borderradius"><?php _e('Border radius','reslide');?>: <span class="reslide-free" style="color:red;"><img src="<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES . '/pro.png'; ?>" width='35' height='15' /></span></label>
+                                    <input class='border_free_option' type="number" value="0">
+                                </li>
+                                <li class="params">
+                                    <label for="reslide-sortimagesby" name="params[sortimagesby]"><?php _e('Sort Images By', 'reslide'); ?>:</label>
+                                    <select id="reslide-sortimagesby">
+                                        <option
+                                            value="0" <?php echo ( $params->sortimagesby == 0 ) ? "selected" : ""; ?>>
+                                            <?php _e('None','reslide');?>
+                                        </option>
+                                        <option
+                                            value="1" <?php echo ( $params->sortimagesby == 1 ) ? "selected" : ""; ?>>
+                                            <?php _e('Name','reslide');?>
+                                        </option>
+                                        <option
+                                            value="2" <?php echo ( $params->sortimagesby == 2 ) ? "selected" : ""; ?>>
+                                            <?php _e('Random','reslide');?>
+                                        </option>
+                                    </select>
+                                    <input type="hidden" name="params[sortimagesby]"
+                                           value="<?php echo esc_attr($params->sortimagesby); ?>">
                                 </li>
                             </ul>
                             <div id="general-view">
@@ -494,7 +529,7 @@ function reslide_edit_slider_view( $_row, $_id, $_slider ) {
                                     </form>
                                 </li>
                                 <li class="params">
-                                    <label for="reslide-arrows-background">Arrows' styles:&nbsp;<span class="reslide-free" style="color:red;">(PRO)&nbsp;</span></label>
+                                    <label for="reslide-arrows-background">Arrows' styles:&nbsp;<span class="reslide-free" style="color:red;"><img src="<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES . '/pro1.png'; ?>" width='35' height='15' /></span></label>
                                     <form id="reslide-arrows-background">
                                         <span>
                                             <input type="radio" id="params-arrows-background1"
@@ -518,7 +553,7 @@ function reslide_edit_slider_view( $_row, $_id, $_slider ) {
                         <li class="thumbnails">
                             <ul id="thumbnail-settings">
                                 <li class="params">
-                                    <label for="reslide-thumbnails-show">Show thumbnails:<span class="reslide-free" style="color:red;">&nbsp;(PRO)&nbsp;</span></label>
+                                    <label for="reslide-thumbnails-show">Show thumbnails:<span class="reslide-free" style="color:red;"><img src="<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES . '/pro1.png'; ?>" width='35' height='15' /></span></label>
                                     <form id="reslide-thumbnails-show">
                                         <div>
                                             <label>Always:</label>
@@ -544,7 +579,7 @@ function reslide_edit_slider_view( $_row, $_id, $_slider ) {
                                     </form>
                                 </li>
                                 <li class="params">
-                                    <label for="reslide-thumbnails-positioning">Positioning:<span class="reslide-free" style="color:red;">&nbsp;(PRO)&nbsp;</span>
+                                    <label for="reslide-thumbnails-positioning">Positioning:<span class="reslide-free" style="color:red;"><img src="<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES . '/pro1.png'; ?>" width='35' height='15' /></span>
                                     </label>
                                     <form id="reslide-thumbnails-positioning">
                                         <div>
@@ -568,7 +603,7 @@ function reslide_edit_slider_view( $_row, $_id, $_slider ) {
                         <li class="bullets">
                             <ul id="bullet-settings">
                                 <li class="params">
-                                    <label for="reslide-bullets-show">Show bullets:<span class="reslide-free" style="color:red;">&nbsp;(PRO)&nbsp;</span></label>
+                                    <label for="reslide-bullets-show">Show bullets:<span class="reslide-free" style="color:red;"><img src="<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES . '/pro1.png'; ?>" width='35' height='15' /></span></label>
                                     <form id="reslide-bullets-show">
                                         <div>
                                             <label>Always:</label>
@@ -594,7 +629,7 @@ function reslide_edit_slider_view( $_row, $_id, $_slider ) {
                                     </form>
                                 </li>
                                 <li class="params">
-                                    <label for="reslide-bullets-position"> Position:<span class="reslide-free" style="color:red;">&nbsp;(PRO)&nbsp;</span></label>
+                                    <label for="reslide-bullets-position"> Position:<span class="reslide-free" style="color:red;"><img src="<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES . '/pro1.png'; ?>" width='35' height='15' /></span></label>
                                     <form id="reslide-bullets-position">
                                         <input type="radio" id="params-bullets-position0"
                                                name="params[bullets][style][position][free]" rel="0"
@@ -647,7 +682,7 @@ function reslide_edit_slider_view( $_row, $_id, $_slider ) {
                                     </form>
                                 </li>
                                 <li class="params">
-                                    <label for="reslide-bullets-background">Background:<span class="reslide-free" style="color:red;">&nbsp;(PRO)&nbsp;</span></label>
+                                    <label for="reslide-bullets-background">Background:<span class="reslide-free" style="color:red;"><img src="<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES . '/pro1.png'; ?>" width='35' height='15' /></span></label>
                                     <form id="reslide-bullets-background">
 										<span>
 										<label for="params-bullets-background-link">Color:</label>
@@ -664,7 +699,7 @@ function reslide_edit_slider_view( $_row, $_id, $_slider ) {
                                     </form>
                                 </li>
                                 <li class="params">
-                                    <label for="reslide-bullets-orientation">Orientation:<span class="reslide-free" style="color:red;">&nbsp;(PRO)&nbsp;</span></label>
+                                    <label for="reslide-bullets-orientation">Orientation:<span class="reslide-free" style="color:red;"><img src="<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES . '/pro1.png'; ?>" width='35' height='15' /></span></label>
                                     <form id="reslide-bullets-orientation">
                                         <div>
                                             <label for="params-bullets-orientation-horizontal">Horizontal:</label>
@@ -691,7 +726,7 @@ function reslide_edit_slider_view( $_row, $_id, $_slider ) {
                                     </form>
                                 </li>
                                 <li class="params">
-                                    <label for="reslide-bullets-space">Inline Space(px):<span class="reslide-free" style="color:red;">&nbsp;(PRO)&nbsp;</span></label>
+                                    <label for="reslide-bullets-space">Inline Space(px):<span class="reslide-free" style="color:red;"><img src="<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES . '/pro1.png'; ?>" width='35' height='15' /></span></label>
                                     <form id="reslide-bullets-space">
                                         <div>
                                             <label for="params-bullets-space-x">Horizontal:</label>
@@ -798,54 +833,54 @@ function reslide_edit_slider_view( $_row, $_id, $_slider ) {
                         <li class="watermark">
                             <ul id="watermark-settings">
                                 <li class="params">
-                                    <label for="reslide-watermark"><?php _e('Watermark', 'reslide'); ?>:<span class="reslide-free" style="color:red;">&nbsp;(PRO)&nbsp;</span></label>
+                                    <label for="reslide-watermark"><?php _e('Watermark', 'reslide'); ?>:<span class="reslide-free" style="color:red;"><img src="<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES . '/pro1.png'; ?>" width='35' height='15' /></span></label>
                                     <input id="reslide-watermark" type="checkbox"
                                            value="1" checked />
                                 </li>
                                 <li class="params">
-                                    <label for="reslide-watermark-text"><?php _e('Watermark Text', 'reslide'); ?>:<span class="reslide-free" style="color:red;">&nbsp;(PRO)&nbsp;</span></label>
+                                    <label for="reslide-watermark-text"><?php _e('Watermark Text', 'reslide'); ?>:<span class="reslide-free" style="color:red;"><img src="<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES . '/pro1.png'; ?>" width='35' height='15' /></span></label>
                                     <input id="reslide-watermark-text" class="reslide-watermark-input" type="text"
                                            value="WaterMark" />
                                 </li>
                                 <li class="params">
-                                    <label for="reslide-watermark-textcolor"><?php _e('Text Color','reslide');?>:<span class="reslide-free" style="color:red;">&nbsp;(PRO)&nbsp;</span></label>
+                                    <label for="reslide-watermark-textcolor"><?php _e('Text Color','reslide');?>:<span class="reslide-free" style="color:red;"><img src="<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES . '/pro1.png'; ?>" width='35' height='15' /></span></label>
                                     <form id="reslide-watermark-textcolor">
                                         <input type="text" class="jscolor" id="params-watermark-textcolor"
                                                rel="0" value="000">
                                     </form>
                                 </li>
                                 <li class="params">
-                                    <label for="reslide-watermark-textfontsize"><?php _e('Text Font Size', 'reslide'); ?>:<span class="reslide-free" style="color:red;">&nbsp;(PRO)&nbsp;</span></label>
+                                    <label for="reslide-watermark-textfontsize"><?php _e('Text Font Size', 'reslide'); ?>:<span class="reslide-free" style="color:red;"><img src="<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES . '/pro1.png'; ?>" width='35' height='15' /></span></label>
                                     <input id="reslide-watermark-textfontsize" class="reslide-watermark-input" type="number"
                                            value="16" />
                                 </li>
                                 <li class="params">
-                                    <label for="reslide-watermark-background"><?php _e('Container BG','reslide');?>:<span class="reslide-free" style="color:red;">&nbsp;(PRO)&nbsp;</span></label>
+                                    <label for="reslide-watermark-background"><?php _e('Container BG','reslide');?>:<span class="reslide-free" style="color:red;"><img src="<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES . '/pro1.png'; ?>" width='35' height='15' /></span></label>
                                     <form id="reslide-watermark-background">
                                         <input type="text" class="jscolor" id="params-watermark-background"
                                                rel="0" value="FFF">
                                     </form>
                                 </li>
                                 <li class="params">
-                                    <label for="reslide-watermark-backgroundopacity"><?php _e('BG Opacity', 'reslide'); ?>:<span class="reslide-free" style="color:red;">&nbsp;(PRO)&nbsp;</span></label>
+                                    <label for="reslide-watermark-backgroundopacity"><?php _e('BG Opacity', 'reslide'); ?>:<span class="reslide-free" style="color:red;"><img src="<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES . '/pro1.png'; ?>" width='35' height='15' /></span></label>
                                     <input id="reslide-watermark-backgroundopacity" class="reslide-watermark-input reslide-watermark-backgroundopacity" type="number"
                                            min="0" max="1" step="0.1" value="1" />
                                 </li>
                                 <li class="params">
-                                    <label for="reslide-watermark-containerwidth"><?php _e('Container Width', 'reslide'); ?>:<span class="reslide-free" style="color:red;">&nbsp;(PRO)&nbsp;</span></label>
+                                    <label for="reslide-watermark-containerwidth"><?php _e('Container Width', 'reslide'); ?>:<span class="reslide-free" style="color:red;"><img src="<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES . '/pro1.png'; ?>" width='35' height='15' /></span></label>
                                     <input id="reslide-watermark-containerwidth" class="reslide-watermark-input reslide-watermark-containerwidth" type="number" value="200" />
                                 </li>
                                 <li class="params">
-                                    <label for="reslide-watermark-opacity"><?php _e('Container Opacity', 'reslide'); ?>:<span class="reslide-free" style="color:red;">&nbsp;(PRO)&nbsp;</span></label>
+                                    <label for="reslide-watermark-opacity"><?php _e('Container Opacity', 'reslide'); ?>:<span class="reslide-free" style="color:red;"><img src="<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES . '/pro1.png'; ?>" width='35' height='15' /></span></label>
                                     <input id="reslide-watermark-opacity" class="reslide-watermark-input reslide-watermark-opacity" type="number"
                                            min="0" max="1" step="0.1" value="1" />
                                 </li>
                                 <li class="params">
-                                    <label for="reslide-watermark-margin"><?php _e('Container Margin', 'reslide'); ?>:<span class="reslide-free" style="color:red;">&nbsp;(PRO)&nbsp;</span></label>
+                                    <label for="reslide-watermark-margin"><?php _e('Container Margin', 'reslide'); ?>:<span class="reslide-free" style="color:red;"><img src="<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES . '/pro1.png'; ?>" width='35' height='15' /></span></label>
                                     <input id="reslide-watermark-margin" class="reslide-watermark-input reslide-watermark-margin" type="number" value="10" />
                                 </li>
                                 <li class="params">
-                                    <label for="reslide-watermark-position"><?php _e('Position','reslide');?>:<span class="reslide-free" style="color:red;">&nbsp;(PRO)&nbsp;</span></label>
+                                    <label for="reslide-watermark-position"><?php _e('Position','reslide');?>:<span class="reslide-free" style="color:red;"><img src="<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES . '/pro1.png'; ?>" width='35' height='15' /></span></label>
                                     <form id="reslide-watermark-position">
                                         <input type="radio" id="params-watermark-position1"
                                                rel="1">
@@ -870,7 +905,7 @@ function reslide_edit_slider_view( $_row, $_id, $_slider ) {
                                     </form>
                                 </li>
                                 <li class="params">
-                                    <label for="reslide-watermark-imgsrc"><?php _e('Image Source', 'reslide'); ?>:<span class="reslide-free" style="color:red;">&nbsp;(PRO)&nbsp;</span></label>
+                                    <label for="reslide-watermark-imgsrc"><?php _e('Image Source', 'reslide'); ?>:<span class="reslide-free" style="color:red;"><img src="<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES . '/pro1.png'; ?>" width='35' height='15' /></span></label>
                                     <div id="img-wrap">
                                         <img src="" id="watermark_image" alt="No image found" />
                                     </div>
