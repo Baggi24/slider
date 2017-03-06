@@ -4,7 +4,7 @@ Donate link: https://huge-it.com/wordpress-responsive-slider/
 Tags: slider, responsive slider, content slider, image slider, photo slider, slider plugin, layer slider, slideshow, wordpress slider, wordpress slideshow, gallery slider, slide,
 Requires at least: 3.0.1
 Tested up to: 4.7.2
-Stable tag: 2.4.0
+Stable tag: 2.4.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -156,6 +156,18 @@ Custom arrows can be added in the Professional version of the plugin only.
 If you think, that you found a bug in our [WordPress Responsive Slider](https://huge-it.com/wordpress-responsive-slider) plugin or have any question contact us at [info@huge-it.com](mailto:info@huge-it.com)
 
 == Changelog ==
+
+= 2.4.1 =
+* 1) We have made UI/UX customization in the back end of the plugin to bring it more user-friendly.
+* 2) We have added an option to add borders to Slider, set colors to borders, determine the size of them. (Pro)
+* 3) We have added "Sort Images By" option.
+
+**FIXED BUGS:**
+
+* 1) Slider is activating after click.
+* 2) Button styles doesn't changed in backgraund view.
+* 3) When the autoplay is disabled,after clicking the arrow it changes the first image to 3rd instead of 2nd.
+* 4)Button-fonts doesn't show in frontend view.
 
 = 2.4.0 =
 * 1) We have added 5 new transition effects.
