@@ -244,12 +244,18 @@ function reslider_front_end($_id,$_slider,$_reslides) {
 				}
 
 			});
-			
-		if(reslider<?php echo $sliderID;?>["params"]["rightclickprotection"]) {
-			jQuery('div[id*=slider]').bind("contextmenu",function(e) {
-				e.preventDefault();
-			});
-		}
+
+			if(reslider<?php echo $sliderID;?>["params"]["rightclickprotection"]) {
+				jQuery('#slider<?php echo $_slider[0]->id;?>_container').bind("contextmenu", function(e) {
+					e.preventDefault();
+				});
+
+				jQuery(document).keydown(function(e){
+					if(e.which === 123){
+						return false;
+					}
+				});
+			}
 			
 		var $PlayCondition = 1;
 		var c_slider<?php echo $sliderID;?>;	
