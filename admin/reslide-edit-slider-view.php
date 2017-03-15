@@ -167,6 +167,7 @@ function reslide_edit_slider_view( $_row, $_id, $_slider ) {
                 <div class="menu">
                     <ul>
                         <li rel="general"><a href="#" class="active"><?php _e('General','reslide');?></a></li>
+                        <li rel="styling"><a href="#"><?php _e('Styling','reslide');?></a></li>
                         <li rel="arrows"><a href="#"><?php _e('Arrows','reslide');?></a></li>
                         <li rel="thumbnails"><a href="#"><?php _e('Thumbnails','reslide');?></a></li>
                         <li rel="bullets"><a href="#"><?php _e('Bullets','reslide');?></a></li>
@@ -401,21 +402,6 @@ function reslide_edit_slider_view( $_row, $_id, $_slider ) {
                                     <span class="reslide-free" style="color:red;"><img src="<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES . '/pro.png'; ?>" width='35' height='15' /></span>
                                 </li>
                                 <li class="params">
-                                    <label for="reslide-bordersize"><?php _e('Border size','reslide');?>: <span class="reslide-free" style="color:red;"><img src="<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES . '/pro.png'; ?>" width='35' height='15' /></span></label>
-                                    <input class='border_free_option' type="number" value="0">
-                                </li>
-                                <li class="params">
-                                    <label for="reslide-bordercolor"><?php _e('Border color','reslide');?>: <span class="reslide-free" style="color:red;"><img src="<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES . '/pro.png'; ?>" width='35' height='15' /></span></label>
-                                    <form id="reslide-bordercolor">
-                                        <input type="text" class="jscolor border_free_option" id="params-bordercolor"
-                                              rel="0" value="000">
-                                    </form>
-                                </li>
-                                <li class="params">
-                                    <label for="reslide-borderradius"><?php _e('Border radius','reslide');?>: <span class="reslide-free" style="color:red;"><img src="<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES . '/pro.png'; ?>" width='35' height='15' /></span></label>
-                                    <input class='border_free_option' type="number" value="0">
-                                </li>
-                                <li class="params">
                                     <label for="reslide-sortimagesby" name="params[sortimagesby]"><?php _e('Sort Images By', 'reslide'); ?>:</label>
                                     <select id="reslide-sortimagesby">
                                         <option
@@ -505,6 +491,158 @@ function reslide_edit_slider_view( $_row, $_id, $_slider ) {
                                     <a id="reslide_remove" title="Remove Element"><i class="fa fa-remove"
                                                                                      aria-hidden="true"></i></a>
                                 </div>
+                        </li>
+                        <li class="styling">
+                            <ul>
+                                <li id="borderSettings">
+                                    <label id="border-settings" for="reslide-border"><?php _e('Border:','reslide');?></label>
+                                    <ul class="styling-settings">
+                                        <li class="params">
+                                            <label for="reslide-bordersize"><?php _e('Border size','reslide');?>: <span class="reslide-free" style="color:red;"><img src="<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES . '/pro.png'; ?>" width='35' height='15' /></span></label>
+                                            <input class='border_free_option' type="number" value="0">
+                                        </li>
+                                        <li class="params">
+                                            <label for="reslide-bordercolor"><?php _e('Border color','reslide');?>: <span class="reslide-free" style="color:red;"><img src="<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES . '/pro.png'; ?>" width='35' height='15' /></span></label>
+                                            <form id="reslide-bordercolor">
+                                                <input type="text" class="jscolor border_free_option" id="params-bordercolor"
+                                                       rel="0" value="000">
+                                            </form>
+                                        </li>
+                                        <li class="params">
+                                            <label for="reslide-borderradius"><?php _e('Border radius','reslide');?>: <span class="reslide-free" style="color:red;"><img src="<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES . '/pro.png'; ?>" width='35' height='15' /></span></label>
+                                            <input class='border_free_option' type="number" value="0">
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li id="imageFilterSettings" class="params">
+                                    <label id="image-filters"  for="reslide-image-filters"><?php _e('Image filters:','reslide');?></label>
+                                    <form id="reslide-image-filters">
+                                        <span>
+                                            <input type="radio" id="params-image-filters0"
+                                                   name="params[imagefilters]" rel="0"
+                                                   value='0' <?php if ( $params->imagefilters == '0' ) {
+                                                echo "checked";
+                                            } ?>>
+                                            <label for="params-image-filters0"><img title="No Filter"
+                                                                                    src="<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES . '/Default/1.jpg'; ?>"></label>
+										</span>
+                                        <span>
+                                            <input type="radio" id="params-image-filters1"
+                                                   name="params[imagefilters]" rel="1"
+                                                   value='1' <?php if ( $params->imagefilters == '1' ) {
+                                                echo "checked";
+                                            } ?>>
+                                            <label for="params-image-filters1"><img title="Grayscale"
+                                                                                    src="<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES . '/Default/1.jpg'; ?>"></label>
+										</span>
+                                        <span>
+                                            <input type="radio" id="params-image-filters2"
+                                                   name="params[imagefilters]" rel="2"
+                                                   value='2' <?php if ( $params->imagefilters == '2' ) {
+                                                echo "checked";
+                                            } ?>>
+                                            <label for="params-image-filters2"><img title="Sepia"
+                                                                                    src="<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES . '/Default/1.jpg'; ?>"></label>
+										</span>
+                                        <span>
+                                            <input type="radio" id="params-image-filters3"
+                                                   name="params[imagefilters]" rel="3"
+                                                   value='3' <?php if ( $params->imagefilters == '3' ) {
+                                                echo "checked";
+                                            } ?>>
+                                            <label for="params-image-filters3"><img title="Saturation"
+                                                                                    src="<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES . '/Default/1.jpg'; ?>"></label>
+										</span>
+                                        <span>
+                                            <input type="radio" id="params-image-filters4"
+                                                   name="params[imagefilters]" rel="4"
+                                                   value='4' <?php if ( $params->imagefilters == '4' ) {
+                                                echo "checked";
+                                            } ?>>
+                                            <label for="params-image-filters4"><img title="Hue-rotate"
+                                                                                    src="<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES . '/Default/1.jpg'; ?>"></label>
+										</span>
+                                        <span>
+                                            <input type="radio" id="params-image-filters5">
+                                            <label class="pro_option" for="params-image-filters5"><img title="Invert"
+                                                                                    src="<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES . '/Default/1.jpg'; ?>"></label>
+										</span>
+                                        <span>
+                                            <input type="radio" id="params-image-filters6">
+                                            <label class="pro_option" for="params-image-filters6"><img title="Opacity"
+                                                                                    src="<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES . '/Default/1.jpg'; ?>"></label>
+										</span>
+                                        <span>
+                                            <input type="radio" id="params-image-filters7">
+                                            <label class="pro_option" for="params-image-filters7"><img title="Brightness"
+                                                                                    src="<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES . '/Default/1.jpg'; ?>"></label>
+										</span>
+                                        <span>
+                                            <input type="radio" id="params-image-filters8">
+                                            <label class="pro_option" for="params-image-filters8"><img title="Contrast"
+                                                                                    src="<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES . '/Default/1.jpg'; ?>"></label>
+										</span>
+                                        <span>
+                                            <input type="radio" id="params-image-filters9">
+                                            <label class="pro_option" for="params-image-filters9"><img title="Blur"
+                                                                                    src="<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES . '/Default/1.jpg'; ?>"></label>
+										</span>
+                                        <span>
+                                            <input type="radio" id="params-image-filters10">
+                                            <label class="pro_option" for="params-image-filters10"><img title="Tint"
+                                                                                     src="<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES . '/Default/1.jpg'; ?>"></label>
+										</span>
+                                        <span>
+                                            <input type="radio" id="params-image-filters11">
+                                            <label class="pro_option" for="params-image-filters11"><img title="Tina"
+                                                                                     src="<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES . '/Default/1.jpg'; ?>"></label>
+										</span>
+                                        <span>
+                                            <input type="radio" id="params-image-filters12">
+                                            <label class="pro_option" for="params-image-filters12"><img title="Inkwell"
+                                                                                     src="<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES . '/Default/1.jpg'; ?>"></label>
+										</span>
+                                        <span>
+                                            <input type="radio" id="params-image-filters13">
+                                            <label class="pro_option" for="params-image-filters13"><img title="1977"
+                                                                                     src="<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES . '/Default/1.jpg'; ?>"></label>
+										</span>
+                                        <span>
+                                            <input type="radio" id="params-image-filters14">
+                                            <label class="pro_option" for="params-image-filters14"><img title="Aden"
+                                                                                     src="<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES . '/Default/1.jpg'; ?>"></label>
+										</span>
+                                        <span>
+                                            <input type="radio" id="params-image-filters15">
+                                            <label class="pro_option" for="params-image-filters15"><img title="Gingham"
+                                                                                     src="<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES . '/Default/1.jpg'; ?>"></label>
+										</span>
+                                        <span>
+                                            <input type="radio" id="params-image-filters16">
+                                            <label class="pro_option" for="params-image-filters16"><img title="Lofi"
+                                                                                     src="<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES . '/Default/1.jpg'; ?>"></label>
+										</span>
+                                        <span>
+                                            <input type="radio" id="params-image-filters17">
+                                            <label class="pro_option" for="params-image-filters17"><img title="Reyes"
+                                                                                     src="<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES . '/Default/1.jpg'; ?>"></label>
+										</span>
+                                        <span>
+                                           <input type="radio" id="params-image-filters18">
+                                            <label class="pro_option" for="params-image-filters18"><img title="Walden"
+                                                                                     src="<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES . '/Default/1.jpg'; ?>"></label>
+										</span>
+                                        <span>
+                                            <input type="radio" id="params-image-filters19">
+                                            <label class="pro_option" for="params-image-filters19"><img title="Xpro2"
+                                                                                     src="<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES . '/Default/1.jpg'; ?>"></label>
+										</span>
+                                        <input type="hidden" id="params-imagefilters" name="params[imagefilters]"
+                                               value="<?php echo $params->imagefilters; ?>">
+
+                                    </form>
+                                </li>
+                            </ul>
                         </li>
                         <li class="arrows">
                             <ul id="arrow-settings">

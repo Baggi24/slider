@@ -644,6 +644,165 @@ a.delete-link {
     margin-left: 22%
 }
 
+#reslide-image-filters input + label {
+    border: 3px solid #FFF;
+}
+
+#reslide-image-filters input:checked + label {
+    border: 3px solid #14ABD7;
+}
+
+#reslide-image-filters span {
+    margin: 0 5px 5px 0;
+}
+
+label#image-filters, label#border-settings {
+    width: 150px;
+}
+
+.styling-settings {
+    width: calc(100% - 170px);
+    left: 170px;
+    position: relative;
+}
+
+.styling-settings li {
+    width: 220px;
+    margin: 0;
+}
+
+.styling-settings input, .styling-settings form {
+    margin: 0 5px;
+}
+
+.styling-settings li, .styling-settings label {
+    float: left;
+    top: 5px;
+    position: relative;
+}
+
+#borderSettings {
+    height: 45px;
+}
+
+#reslide-image-filters {
+    width: calc(100% - 170px);
+    left: 170px;
+    position: relative;
+}
+
+#imageFilterSettings {
+    clear: both;
+}
+
+#reslide-image-filters input[type=radio] {
+    display: none;
+}
+
+#reslide-image-filters img {
+    width: 200px;
+    height: 100%;
+}
+
+#reslide-image-filters span, #reslide-image-filters label {
+    display: inline-block;
+}
+
+#reslide-image-filters span:nth-child(2) img{
+    -webkit-filter: grayscale(1);
+    filter: grayscale(1);
+}
+
+#reslide-image-filters span:nth-child(3) img{
+    -webkit-filter: sepia(1);
+    filter: sepia(1);
+}
+
+#reslide-image-filters span:nth-child(4) img{
+    -webkit-filter: saturate(4);
+    filter: saturate(4);
+}
+
+#reslide-image-filters span:nth-child(5) img{
+    -webkit-filter: hue-rotate(90deg);
+    filter: hue-rotate(90deg);
+}
+
+#reslide-image-filters span:nth-child(6) img{
+    -webkit-filter: invert(.8);
+    filter: invert(.8);
+}
+
+#reslide-image-filters span:nth-child(7) img{
+    -webkit-filter: opacity(.5);
+    filter: opacity(.5);
+}
+
+#reslide-image-filters span:nth-child(8) img{
+    -webkit-filter: brightness(.5);
+    filter: brightness(.5);
+}
+
+#reslide-image-filters span:nth-child(9) img{
+    -webkit-filter: contrast(3);
+    filter: contrast(3);
+}
+
+#reslide-image-filters span:nth-child(10) img{
+    -webkit-filter: blur(1px);
+    filter: blur(1px);
+}
+
+#reslide-image-filters span:nth-child(11) img{
+    -webkit-filter: sepia(1) hue-rotate(200deg);
+    filter: sepia(1) hue-rotate(200deg);
+}
+
+#reslide-image-filters span:nth-child(12) img{
+    -webkit-filter: contrast(1.4) saturate(1.8) sepia(.6);
+    filter: contrast(1.4) saturate(1.8) sepia(.6);
+}
+
+#reslide-image-filters span:nth-child(13) img{
+    -webkit-filter: grayscale(1) brightness(0.45) contrast(1.05);
+    filter: grayscale(1) brightness(0.45) contrast(1.05);
+}
+
+#reslide-image-filters span:nth-child(14) img{
+    -webkit-filter: contrast(110%) brightness(110%) contrast(130%);
+    filter: contrast(110%) brightness(110%) contrast(130%);
+}
+
+#reslide-image-filters span:nth-child(15) img{
+    -webkit-filter: contrast(90%) brightness(120%) contrast(85%) hue-rotate(20deg);
+    filter: contrast(90%) brightness(120%) contrast(85%) hue-rotate(20deg);
+}
+
+#reslide-image-filters span:nth-child(16) img{
+    -webkit-filter: contrast(100%) brightness(105%) contrast(100%) hue-rotate(270deg);
+    filter: contrast(100%) brightness(105%) contrast(100%) hue-rotate(270deg);
+}
+
+#reslide-image-filters span:nth-child(17) img{
+    -webkit-filter: contrast(150%) brightness(100%) contrast(110%);
+    filter: contrast(150%) brightness(100%) contrast(110%);
+}
+
+#reslide-image-filters span:nth-child(18) img{
+    -webkit-filter: contrast(85%) brightness(110%) contrast(75%) sepia(22%);
+    filter: contrast(85%) brightness(110%) contrast(75%) sepia(22%);
+}
+
+#reslide-image-filters span:nth-child(19) img{
+    -webkit-filter: contrast(100%) brightness(110%) contrast(160%) sepia(30%) hue-rotate(350deg);
+    filter: contrast(100%) brightness(110%) contrast(160%) sepia(30%) hue-rotate(350deg);
+}
+
+#reslide-image-filters span:nth-child(20) img{
+    -webkit-filter: contrast(100%) brightness(100%) contrast(100%) sepia(30%);
+    filter: contrast(100%) brightness(100%) contrast(100%) sepia(30%);
+}
+
 /*** end sidebar ***/
 
 #reslide_slider_edit {
@@ -1265,7 +1424,7 @@ input#reslide-watermark {
     min-height: 40px;
 }
 
-#arrow-settings > li.params > label, #thumbnail-settings > li.params > label, #bullet-settings > li.params > label, #sharing-settings > li.params > label, #watermark-settings > li.params > label {
+label#image-filters, label#border-settings, #arrow-settings > li.params > label, #thumbnail-settings > li.params > label, #bullet-settings > li.params > label, #sharing-settings > li.params > label, #watermark-settings > li.params > label {
     width: 143px;
     height: 40px;
     padding-left: 8px;
@@ -1274,6 +1433,10 @@ input#reslide-watermark {
     color: #fff;
     background: #14ABD7;
     line-height: 40px
+}
+
+label#image-filters, label#border-settings {
+    width: 150px;
 }
 
 #arrow-settings > li.params > form, #thumbnail-settings > li.params > form, #bullet-settings > li.params > form, #sharing-settings > li.params > form {

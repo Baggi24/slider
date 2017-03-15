@@ -1156,6 +1156,18 @@ document.onkeydown = function (evt) {
             });
         });
 
+        /*** image filters ***/
+        jQuery('#reslide-image-filters input[type="radio"]').on('change', function () {
+            if (jQuery(this).attr('checked')) {
+                jQuery('#params-imagefilters').val(jQuery(this).attr('rel'));
+                reslideGetSliderParams();
+            }
+        });
+
+        jQuery('.pro_option').on('click', function(){
+            return false;
+        });
+
     });
 })(jQuery);
 

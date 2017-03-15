@@ -116,6 +116,24 @@ a#share-tumblr {
 
 #slider<?php echo $sliderID;?>_container .reslide_slides img {
     display: none;
+<?php switch( $params->imagefilters ) {
+    case '1':
+        echo '-webkit-filter: grayscale(1);
+             filter: grayscale(1);';
+        break;
+    case '2':
+        echo '-webkit-filter: sepia(1);
+             filter: sepia(1);';
+        break;
+    case '3':
+        echo '-webkit-filter: saturate(4);
+                filter: saturate(4);';
+        break;
+    case '4':
+        echo '-webkit-filter: hue-rotate(90deg);
+            filter: hue-rotate(90deg);';
+        break;
+} ?>
 }
 #slider<?php echo $sliderID;?>_container .reslide_loading {
     position: absolute;
