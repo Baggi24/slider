@@ -1164,6 +1164,14 @@ document.onkeydown = function (evt) {
             }
         });
 
+        /*** image frames ***/
+        jQuery('#reslide-image-frames input[type="radio"]').on('change', function () {
+            if (jQuery(this).attr('checked')) {
+                jQuery('#params-imageframes').val(jQuery(this).attr('rel'));
+                reslideGetSliderParams();
+            }
+        });
+
         jQuery('.pro_option').on('click', function(){
             return false;
         });

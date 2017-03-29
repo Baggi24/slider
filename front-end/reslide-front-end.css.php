@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 }
 
 .socialIcons {
-    width: <?php echo  absint($style->width);?>px;
+    width: auto;
     margin: 0 auto
 }
 
@@ -114,6 +114,28 @@ a#share-tumblr {
     z-index: 9999;
 }
 
+#slider<?php echo $sliderID;?>_container .reslide_slides img[class*=image] {
+<?php
+switch( $params->imageframes ) {
+    case '1':
+        echo 'border-image: url("' . RESLIDE_PLUGIN_PATH_FRONT_IMAGES. '/image_frames/frame_1.png") 90 95 95 90 stretch stretch; 
+              border-style: inset;
+              border-width: 60px;';
+        break;
+    case '7':
+        echo 'border-image: url("' . RESLIDE_PLUGIN_PATH_FRONT_IMAGES. '/image_frames/frame_7.png") 93 92 87 92 stretch stretch; 
+              border-style: inset;
+              border-width: 60px;';
+        break;
+    case '8':
+        echo 'border-image: url("' . RESLIDE_PLUGIN_PATH_FRONT_IMAGES. '/image_frames/frame_8.png") 90 123 85 129 stretch stretch; 
+              border-style: inset;
+              border-width: 60px;';
+        break;
+}
+?>
+}
+
 #slider<?php echo $sliderID;?>_container .reslide_slides img {
     display: none;
 <?php switch( $params->imagefilters ) {
@@ -133,7 +155,7 @@ a#share-tumblr {
         echo '-webkit-filter: hue-rotate(90deg);
             filter: hue-rotate(90deg);';
         break;
-} ?>
+}?>
 }
 #slider<?php echo $sliderID;?>_container .reslide_loading {
     position: absolute;
@@ -188,13 +210,26 @@ a#share-tumblr {
 #slider<?php echo $sliderID ;?>_container .reslidetitle {
     width: <?php echo absint($title->style->width); ?>px;
     height: <?php echo absint($title->style->height); ?>px;
-    top: <?php echo esc_html($title->style->top); ?>;
-    left: <?php echo esc_html($title->style->left); ?>;
     border: <?php echo absint($title->style->border->width); ?>px solid #<?php echo sanitize_text_field($title->style->border->color); ?>;
     border-radius: <?php echo intval($title->style->border->radius); ?>px;
     background: <?php list($r,$g,$b) = array_map('hexdec',str_split($title->style->background->color,2));
                     $titleopacity = abs($title->style->opacity) / 100;
                     echo 'rgba('.$r.','.$g.','.$b.','.$titleopacity.')'; ?>;
+<?php
+ if((string)$params->imageframes == '0'){
+     echo 'top:'.esc_html($title->style->top).';';
+     echo 'left:'.esc_html($title->style->left).';';
+ } else {
+     if(absint($title->style->top) < 60){
+         echo 'top: 60px;';
+     } else {
+         echo 'top:'.esc_html($title->style->top).';';
+     }
+     if(absint($title->style->left) < 60){
+         echo 'left: 60px;';
+     }
+ }
+?>
 }
 #slider<?php echo $sliderID ;?>_container .reslidetitle > div {
     filter: alpha(opacity=<?php echo abs($title->style->opacity); ?>);
@@ -211,10 +246,23 @@ a#share-tumblr {
 #slider<?php echo $sliderID ;?>_container .reslidedescription {
     width: <?php echo absint($description->style->width); ?>px;
     height: <?php echo absint($description->style->height); ?>px;
-    top: <?php echo esc_html($description->style->top); ?>;
-    left: <?php echo esc_html($description->style->left); ?>;
     border: <?php echo absint($description->style->border->width); ?>px solid <?php echo sanitize_hex_color("#".$description->style->border->color); ?>;
     border-radius: <?php echo absint($description->style->border->radius); ?>px;
+<?php
+    if((string)$params->imageframes == '0'){
+        echo 'top:'.esc_html($description->style->top).';';
+        echo 'left:'.esc_html($description->style->left).';';
+    } else {
+        if(absint($description->style->top) < 60){
+            echo 'top: 60px;';
+        } else {
+            echo 'top:'.esc_html($description->style->top).';';
+        }
+        if(absint($description->style->left) < 60){
+            echo 'left: 60px;';
+        }
+    }
+?>
 }
 #slider<?php echo $sliderID ;?>_container .reslidedescription > div {
     background: <?php echo esc_html("#".$description->style->background->color); ?>;

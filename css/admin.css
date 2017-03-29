@@ -644,14 +644,17 @@ a.delete-link {
     margin-left: 22%
 }
 
+#reslide-image-frames input + label,
 #reslide-image-filters input + label {
     border: 3px solid #FFF;
 }
 
+#reslide-image-frames input:checked + label,
 #reslide-image-filters input:checked + label {
     border: 3px solid #14ABD7;
 }
 
+#reslide-image-frames span,
 #reslide-image-filters span {
     margin: 0 5px 5px 0;
 }
@@ -685,25 +688,26 @@ label#image-filters, label#border-settings {
     height: 45px;
 }
 
-#reslide-image-filters {
+#reslide-image-frames, #reslide-image-filters {
     width: calc(100% - 170px);
     left: 170px;
     position: relative;
 }
 
-#imageFilterSettings {
+#imageFrameSettings, #imageFilterSettings {
     clear: both;
 }
 
-#reslide-image-filters input[type=radio] {
+#reslide-image-frames input[type=radio], #reslide-image-filters input[type=radio] {
     display: none;
 }
 
-#reslide-image-filters img {
+#reslide-image-frames img, #reslide-image-filters img {
     width: 200px;
     height: 100%;
 }
 
+#reslide-image-frames span, #reslide-image-frames label,
 #reslide-image-filters span, #reslide-image-filters label {
     display: inline-block;
 }
@@ -1424,7 +1428,7 @@ input#reslide-watermark {
     min-height: 40px;
 }
 
-label#image-filters, label#border-settings, #arrow-settings > li.params > label, #thumbnail-settings > li.params > label, #bullet-settings > li.params > label, #sharing-settings > li.params > label, #watermark-settings > li.params > label {
+label#image-frames, label#image-filters, label#border-settings, #arrow-settings > li.params > label, #thumbnail-settings > li.params > label, #bullet-settings > li.params > label, #sharing-settings > li.params > label, #watermark-settings > li.params > label {
     width: 143px;
     height: 40px;
     padding-left: 8px;
@@ -1435,7 +1439,7 @@ label#image-filters, label#border-settings, #arrow-settings > li.params > label,
     line-height: 40px
 }
 
-label#image-filters, label#border-settings {
+label#image-frames, label#image-filters, label#border-settings {
     width: 150px;
 }
 

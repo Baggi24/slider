@@ -81,6 +81,12 @@ function reslide_edit_slider_view( $_row, $_id, $_slider ) {
                     <span class="video-pro reslide-free" style="color:red;">(PRO)&nbsp;</span>
                 </a>
             </div>
+            <div class="add_slide_container_video">
+                <a id="add_video">
+                    <p id="reslide_insert_video_input"><?php _e( 'Add Post', 'reslide' ); ?></p>
+                    <span class="video-pro reslide-free" style="color:red;">(PRO)&nbsp;</span>
+                </a>
+            </div>
             <div class="reslide_slider_images_list_wrapper">
                 <ul id="reslide_slider_images_list">
                     <?php if ( ! count( $_row ) ) {
@@ -513,6 +519,95 @@ function reslide_edit_slider_view( $_row, $_id, $_slider ) {
                                             <input class='border_free_option' type="number" value="0">
                                         </li>
                                     </ul>
+                                </li>
+                                <li id="imageFrameSettings" class="params">
+                                    <label id="image-frames"  for="reslide-image-frames"><?php _e('Image frames:','reslide');?></label>
+                                    <form id="reslide-image-frames">
+                                        <span>
+                                            <input type="radio" id="params-image-frames0"
+                                                   name="params[imageframes]" rel="0"
+                                                   value='0' <?php if ( (string)$params->imageframes == '0' ) {
+                                                echo "checked";
+                                            } ?>>
+                                            <label for="params-image-frames0"><img title="No Filter"
+                                                                                   src="<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES . '/image_frames/none.jpg'; ?>"></label>
+										</span>
+                                        <span>
+                                            <input type="radio" id="params-image-frames1"
+                                                   name="params[imageframes]" rel="1"
+                                                   value='1' <?php if ( (string)$params->imageframes == '1' ) {
+                                                echo "checked";
+                                            } ?>>
+                                            <label for="params-image-frames1"><img title="Grayscale"
+                                                                                   src="<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES . '/image_frames/frame_1.png'; ?>"></label>
+										</span>
+                                        <span>
+                                            <input type="radio" id="params-image-frames7"
+                                                   name="params[imageframes]" rel="7"
+                                                   value='7' <?php if ( (string)$params->imageframes == '7' ) {
+                                                echo "checked";
+                                            } ?>>
+                                            <label for="params-image-frames7"><img title="Brightness"
+                                                                                   src="<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES . '/image_frames/frame_7.png'; ?>"></label>
+										</span>
+                                        <span>
+                                            <input type="radio" id="params-image-frames8"
+                                                   name="params[imageframes]" rel="8"
+                                                   value='8' <?php if ( (string)$params->imageframes == '8' ) {
+                                                echo "checked";
+                                            } ?>>
+                                            <label for="params-image-frames8"><img title="Brightness"
+                                                                                   src="<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES . '/image_frames/frame_8.png'; ?>"></label>
+										</span>
+                                        <span>
+                                            <input type="radio" id="params-image-frames2"
+                                                   name="params[imageframes]" rel="2"
+                                                   value='2' <?php if ( (string)$params->imageframes == '2' ) {
+                                                echo "checked";
+                                            } ?>>
+                                            <label class="pro_option" for="params-image-frames2"><img title="Sepia"
+                                                                                   src="<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES . '/image_frames/frame_2.jpg'; ?>"></label>
+										</span>
+                                        <span>
+                                            <input type="radio" id="params-image-frames3"
+                                                   name="params[imageframes]" rel="3"
+                                                   value='3' <?php if ( (string)$params->imageframes == '3' ) {
+                                                echo "checked";
+                                            } ?>>
+                                            <label class="pro_option" for="params-image-frames3"><img title="Saturation"
+                                                                                   src="<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES . '/image_frames/frame_3.jpg'; ?>"></label>
+										</span>
+                                        <span>
+                                            <input type="radio" id="params-image-frames4"
+                                                   name="params[imageframes]" rel="4"
+                                                   value='4' <?php if ( (string)$params->imageframes == '4' ) {
+                                                echo "checked";
+                                            } ?>>
+                                            <label class="pro_option" for="params-image-frames4"><img title="Hue-rotate"
+                                                                                   src="<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES . '/image_frames/frame_4.jpg'; ?>"></label>
+										</span>
+                                        <span>
+                                            <input type="radio" id="params-image-frames5"
+                                                   name="params[imageframes]" rel="5"
+                                                   value='5' <?php if ( (string)$params->imageframes == '5' ) {
+                                                echo "checked";
+                                            } ?>>
+                                            <label class="pro_option" for="params-image-frames5"><img title="Invert"
+                                                                                   src="<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES . '/image_frames/frame_5.jpg'; ?>"></label>
+										</span>
+                                        <span>
+                                            <input type="radio" id="params-image-frames6"
+                                                   name="params[imageframes]" rel="6"
+                                                   value='6' <?php if ( (string)$params->imageframes == '6' ) {
+                                                echo "checked";
+                                            } ?>>
+                                            <label class="pro_option" for="params-image-frames6"><img title="Opacity"
+                                                                                   src="<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES . '/image_frames/frame_6.jpg'; ?>"></label>
+										</span>
+                                        <input type="hidden" id="params-imageframes" name="params[imageframes]"
+                                               value="<?php echo (string)$params->imageframes; ?>">
+
+                                    </form>
                                 </li>
                                 <li id="imageFilterSettings" class="params">
                                     <label id="image-filters"  for="reslide-image-filters"><?php _e('Image filters:','reslide');?></label>
