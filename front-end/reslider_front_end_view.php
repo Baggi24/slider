@@ -72,7 +72,7 @@ function reslider_front_end($_id,$_slider,$_reslides) {
 	}
 ?>
 </script>
-<div id="slider<?php echo $sliderID ;?>_container"  style="width: <?php echo  $style->width;?>px; height: <?php echo  $style->height;?>px;">
+<div id="slider<?php echo $sliderID ;?>_container" jssor-slider="false" style="width: <?php echo  $style->width;?>px; height: <?php echo  $style->height;?>px;">
     <div data-u="loading" class="reslide_loading">
 		<div></div>
     </div>
@@ -192,10 +192,44 @@ function reslider_front_end($_id,$_slider,$_reslides) {
                 </div>
                 <!-- Thumbnail Item Skin End -->
             </div>		
-	</div>		
+	</div>
        	<?php require( RESLIDE_PLUGIN_PATH_FRONTEND.'/reslide-front-end.css.php' ) ?>
         <script>
 			jQuery(window).load(function(){
+				var $width_, $height_, $k_;
+
+				$width_ = <?php echo absint($style->width);?>;
+				$height_ = <?php echo absint($style->height);?>;
+				$k_ = $width_ / $height_;
+
+				if($width_ > jQuery('#slider<?php echo $sliderID;?>_container').width()){
+					$width_ = jQuery('#slider<?php echo $sliderID;?>_container').width();
+					$height_ = $width_ / $k_;
+					if(<?php echo (string)$params->imageframes; ?> != '0'){ console.log(1);
+						jQuery('#slider<?php echo $sliderID ;?>_container .reslidetitle').css({
+							maxWidth: $width_ + 56 + 'px'
+						});
+						jQuery('#slider<?php echo $sliderID ;?>_container .reslidedescription').css({
+							maxWidth: $width_ + 56 + 'px'
+						});
+					}
+				} else {
+					if(<?php echo (string)$params->imageframes; ?> != '0'){
+						jQuery('#slider<?php echo $sliderID;?>_container .reslidetitle').css({
+							maxWidth: $width_ - 120 + 'px'
+						});
+
+						jQuery('#slider<?php echo $sliderID;?>_container .reslidedescription').css({
+							maxWidth: $width_ - 120 + 'px'
+						});
+					}
+				}
+
+				jQuery('#slider<?php echo $sliderID;?>_container').css({
+					width: $width_ + 'px',
+					height: $height_ + 'px'
+				});
+				
 				var shareButtons;
 				if (reslider<?php echo $sliderID;?>["params"]["sharing"]["show"]["facebook"] === 1 || reslider<?php echo $sliderID;?>["params"]["sharing"]["show"]["twitter"] === 1 || reslider<?php echo $sliderID;?>["params"]["sharing"]["show"]["googleplus"] === 1 || reslider<?php echo $sliderID;?>["params"]["sharing"]["show"]["pinterest"] === 1 || reslider<?php echo $sliderID;?>["params"]["sharing"]["show"]["linkedin"] === 1 || reslider<?php echo $sliderID;?>["params"]["sharing"]["show"]["tumblr"] === 1) {
 					jQuery('<div class="socialIcons"></div>').insertAfter('#slider<?php echo $sliderID;?>_container');
@@ -492,9 +526,7 @@ function reslider_front_end($_id,$_slider,$_reslides) {
 						c_slider<?php echo $sliderID;?>.$PrevPlay();
 					});							
 		});
-
-		<?php if($slide->type !== 'video'){ ?>
-
+			
 		if(+reslider<?php echo $sliderID;?>['params']['behavior'] === 0){
 
 			jQuery('#slider<?php echo $sliderID ;?>_container img[class*=image_]').each(function () {
@@ -557,9 +589,7 @@ function reslider_front_end($_id,$_slider,$_reslides) {
 				}
 			});
 		}
-
-		<?php } ?>
-        </script>
+		</script>
 	<?php
 	return ob_get_clean();
 }

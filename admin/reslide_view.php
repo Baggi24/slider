@@ -656,6 +656,7 @@ function reslide_edit_slide_view( $_slider, $_slides, $_mainslide ) { // Slider'
 			-ms-user-select: none;
 			user-select: none;
 			box-sizing: border-box;
+			max-width: <?php echo absint($style->width);?>px;
 		}
 
 		#reslide-description-construct {
@@ -681,6 +682,7 @@ function reslide_edit_slide_view( $_slider, $_slides, $_mainslide ) { // Slider'
 			-ms-user-select: none;
 			user-select: none;
 			box-sizing: border-box;
+			max-width: <?php echo absint($style->width);?>px;
 		}
 
 		#reslide-custom-construct {
