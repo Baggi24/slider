@@ -1,10 +1,10 @@
-=== Responsive Slider ===
+=== Image Slider - Responsive Slider ===
 Contributors: Huge-IT
 Donate link: https://huge-it.com/wordpress-responsive-slider/
-Tags: slider, responsive slider, content slider, image slider, photo slider, slider plugin, layer slider, slideshow, wordpress slider, wordpress slideshow, gallery slider, slide,
+Tags: slider, responsive slider, content slider, image slider, slideshow,
 Requires at least: 3.0.1
 Tested up to: 4.7.3
-Stable tag: 2.4.2
+Stable tag: 2.4.3
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -156,6 +156,16 @@ Custom arrows can be added in the Professional version of the plugin only.
 If you think, that you found a bug in our [WordPress Responsive Slider](https://huge-it.com/wordpress-responsive-slider) plugin or have any question contact us at [info@huge-it.com](mailto:info@huge-it.com)
 
 == Changelog ==
+
+= 2.4.3 =
+* 1) We have added post slider functionality, where users can showcase their posts in slider
+* 2) We have fixed multiple bugs including texts and buttons styles on front-end and admin area
+* 3) Fixed the bug with description and title to be fixed and not overlay the frame of image
+* 4) Fixed the issue where the next video button would stop the next track upon the click
+* 5) Fixed the issue when video info and options were not displayed properly
+* 6) We have added additional options for thumbnails of the slider
+* 7) We have fixed minor security issues with SQL by adding additional escapes 
+
 
 = 2.4.2 =
 * 1) We have added five popular filter-effects in order to give Instagram Style look to images by filtering them.
