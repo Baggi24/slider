@@ -196,82 +196,58 @@ function reslider_front_end($_id,$_slider,$_reslides) {
        	<?php require( RESLIDE_PLUGIN_PATH_FRONTEND.'/reslide-front-end.css.php' ) ?>
         <script>
 			jQuery(window).load(function(){
-				var $width_, $height_, $k_;
-
-				$width_ = <?php echo absint($style->width);?>;
-				$height_ = <?php echo absint($style->height);?>;
-				$k_ = $width_ / $height_;
-
-				if($width_ > jQuery('#slider<?php echo $sliderID;?>_container').width()){
-					$width_ = jQuery('#slider<?php echo $sliderID;?>_container').width();
-					$height_ = $width_ / $k_;
-					if(<?php echo (string)$params->imageframes; ?> != '0'){ console.log(1);
-						jQuery('#slider<?php echo $sliderID ;?>_container .reslidetitle').css({
-							maxWidth: $width_ + 56 + 'px'
-						});
-						jQuery('#slider<?php echo $sliderID ;?>_container .reslidedescription').css({
-							maxWidth: $width_ + 56 + 'px'
-						});
-					}
-				} else {
-					if(<?php echo (string)$params->imageframes; ?> != '0'){
-						jQuery('#slider<?php echo $sliderID;?>_container .reslidetitle').css({
-							maxWidth: $width_ - 120 + 'px'
-						});
-
-						jQuery('#slider<?php echo $sliderID;?>_container .reslidedescription').css({
-							maxWidth: $width_ - 120 + 'px'
-						});
-					}
+				
+				if(<?php echo (string)$params->imageframes; ?> != '0'){
+					jQuery('#slider<?php echo $sliderID ;?>_container .reslidetitle.isImage').css({
+						'width': 'calc(100% - 120px)'
+					});
+					jQuery('#slider<?php echo $sliderID ;?>_container .reslidedescription.isImage').css({
+						'width': 'calc(100% - 120px)'
+					});
 				}
-
-				jQuery('#slider<?php echo $sliderID;?>_container').css({
-					width: $width_ + 'px',
-					height: $height_ + 'px'
-				});
 				
 				var shareButtons;
 				if (reslider<?php echo $sliderID;?>["params"]["sharing"]["show"]["facebook"] === 1 || reslider<?php echo $sliderID;?>["params"]["sharing"]["show"]["twitter"] === 1 || reslider<?php echo $sliderID;?>["params"]["sharing"]["show"]["googleplus"] === 1 || reslider<?php echo $sliderID;?>["params"]["sharing"]["show"]["pinterest"] === 1 || reslider<?php echo $sliderID;?>["params"]["sharing"]["show"]["linkedin"] === 1 || reslider<?php echo $sliderID;?>["params"]["sharing"]["show"]["tumblr"] === 1) {
-					jQuery('<div class="socialIcons"></div>').insertAfter('#slider<?php echo $sliderID;?>_container');
+					jQuery('<div class="socialIcons<?php echo $sliderID;?>"></div>').insertAfter('#slider<?php echo $sliderID;?>_container');
 
 					var type = reslider<?php echo $sliderID;?>["params"]["sharing"]["type"];
 
-					shareButtons = '<ul class="share-buttons style_' + type + '"></ul>';
-					jQuery('.socialIcons').append(shareButtons);
+					shareButtons = '<ul class="share-buttons<?php echo $sliderID;?> style_' + type + '"></ul>';
+					jQuery('.socialIcons<?php echo $sliderID;?>').append(shareButtons);
 				}
 
 				if (reslider<?php echo $sliderID;?>["params"]["sharing"]["show"]["facebook"] === 1) {
-					jQuery('.share-buttons').append('<li><a title="Facebook" id="share-facebook" target="_blank"></a></li>');
+					jQuery('.share-buttons<?php echo $sliderID;?>').append('<li><a title="Facebook" id="share-facebook" target="_blank"></a></li>');
 					setTimeout(function(){
 						jQuery('#share-facebook').attr('href', 'https://www.facebook.com/sharer/sharer.php?u=' + (encodeURIComponent(window.location.href)));
 					}, 200);
 				}
 				if (reslider<?php echo $sliderID;?>["params"]["sharing"]["show"]["twitter"] === 1) {
-					jQuery('.share-buttons').append('<li><a title="Twitter" id="share-twitter" target="_blank"></a></li>');
+					jQuery('.share-buttons<?php echo $sliderID;?>').append('<li><a title="Twitter" id="share-twitter" target="_blank"></a></li>');
 					setTimeout(function(){
 						jQuery('#share-twitter').attr('href', 'https://twitter.com/intent/tweet?text=&url=' + (encodeURIComponent(window.location.href)));
 					}, 200);
 				}
 				if (reslider<?php echo $sliderID;?>["params"]["sharing"]["show"]["googleplus"] === 1) {
-					jQuery('.share-buttons').append('<li><a title="Pinterest" id="share-googleplus" target="_blank"></a></li>');
+					jQuery('.share-buttons<?php echo $sliderID;?>').append('<li><a title="Pinterest" id="share-googleplus" target="_blank"></a></li>');
 					setTimeout(function(){
 						jQuery('#share-googleplus').attr('href', 'https://plus.google.com/share?url=' + (encodeURIComponent(window.location.href)));
 					}, 200);
 				}
 				if (reslider<?php echo $sliderID;?>["params"]["sharing"]["show"]["pinterest"] === 1) {
-					jQuery('.share-buttons').append('<li><a title="Pinterest" id="share-pinterest" target="_blank"></a></li>');
+					jQuery('.share-buttons<?php echo $sliderID;?>').append('<li><a title="Pinterest" id="share-pinterest" target="_blank"></a></li>');
 					setTimeout(function(){
 						jQuery('#share-pinterest').attr('href', 'http://www.pinterest.com/pin/create/button/?url=' + (encodeURIComponent(window.location.href)));
 					}, 200);
 				}
 				if (reslider<?php echo $sliderID;?>["params"]["sharing"]["show"]["linkedin"] === 1) {
-					jQuery('.share-buttons').append('<li><a title="Linkedin" id="share-linkedin" target="_blank"></a></li>');
+					jQuery('.share-buttons<?php echo $sliderID;?>').append('<li><a title="Linkedin" id="share-linkedin" target="_blank"></a></li>');
 					setTimeout(function(){
 						jQuery('#share-linkedin').attr('href', 'http://www.linkedin.com/shareArticle?mini=true&url=' + (encodeURIComponent(window.location.href)));
 					}, 200);
 				}
 				if (reslider<?php echo $sliderID;?>["params"]["sharing"]["show"]["tumblr"] === 1) {
-					jQuery('.share-buttons').append('<li><a title="Tumblr" id="share-tumblr" target="_blank"></a></li></ul>');
+					jQuery('.share-buttons<?php echo $sliderID;?>').append('<li><a title="Tumblr" id="share-tumblr" target="_blank"></a></li></ul>');
 					setTimeout(function(){
 						jQuery('#share-tumblr').attr('href', 'http://www.tumblr.com/share/link?url=' + (encodeURIComponent(window.location.href)));
 					}, 200);

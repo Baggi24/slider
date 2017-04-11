@@ -15,12 +15,12 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
     overflow:hidden;
 }
 
-.socialIcons {
+.socialIcons<?php echo $sliderID;?> {
     width: auto;
-    margin: 0 auto
+    margin: 0 0 20px 0;
 }
 
-.share-buttons{
+.share-buttons<?php echo $sliderID;?>{
     list-style-type:none;
     position:relative;
     top:5px;
@@ -28,7 +28,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
     margin: 0 !important;
 }
 
-.share-buttons li,.share-buttons li a{
+.share-buttons<?php echo $sliderID;?> li,.share-buttons<?php echo $sliderID;?> li a{
     display:inline-block;
     width:35px;
     height:35px;
@@ -37,11 +37,11 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
     box-shadow: none !important;
 }
 
-.share-buttons li,.share-buttons li a {
+.share-buttons<?php echo $sliderID;?> li,.share-buttons<?php echo $sliderID;?> li a {
     box-shadow: none !important;
 }
 
-a#share-facebook {
+.share-buttons<?php echo $sliderID;?> a#share-facebook {
     display: block;
     position: absolute;
     width: 35px;
@@ -51,9 +51,9 @@ a#share-facebook {
     background-position: 0 0;
     background-size: 200px 35px;
     overflow: hidden;
-    z-index: 9999;
+    z-index: 999;
 }
-a#share-twitter {
+.share-buttons<?php echo $sliderID;?> a#share-twitter {
     display: block;
     position: absolute;
     width: 35px;
@@ -63,9 +63,9 @@ a#share-twitter {
     background-position: -35px 0;
     background-size: 200px 35px;
     overflow: hidden;
-    z-index: 9999;
+    z-index: 999;
 }
-a#share-googleplus {
+.share-buttons<?php echo $sliderID;?> a#share-googleplus {
     display: block;
     position: absolute;
     width: 35px;
@@ -75,9 +75,9 @@ a#share-googleplus {
     background-position: -67px 0;
     background-size: 200px 35px;
     overflow: hidden;
-    z-index: 9999;
+    z-index: 999;
 }
-a#share-pinterest {
+.share-buttons<?php echo $sliderID;?> a#share-pinterest {
     display: block;
     position: absolute;
     width: 35px;
@@ -87,9 +87,9 @@ a#share-pinterest {
     background-position: -99px 0;
     background-size: 200px 35px;
     overflow: hidden;
-    z-index: 9999;
+    z-index: 999;
 }
-a#share-linkedin {
+.share-buttons<?php echo $sliderID;?> a#share-linkedin {
     display: block;
     position: absolute;
     width: 35px;
@@ -99,9 +99,9 @@ a#share-linkedin {
     background-position: -131px 0;
     background-size: 200px 35px;
     overflow: hidden;
-    z-index: 9999;
+    z-index: 999;
 }
-a#share-tumblr {
+.share-buttons<?php echo $sliderID;?> a#share-tumblr {
     display: block;
     position: absolute;
     width: 35px;
@@ -111,7 +111,7 @@ a#share-tumblr {
     background-position: -164px 0;
     background-size: 200px 35px;
     overflow: hidden;
-    z-index: 9999;
+    z-index: 999;
 }
 
 #slider<?php echo $sliderID;?>_container .reslide_slides img[class*=image] {
@@ -223,7 +223,7 @@ switch( $params->imageframes ) {
      if(absint($title->style->top) < 60){
          echo 'top: 60px;';
      } else {
-         echo 'top:'.esc_html($title->style->top).';';
+         echo 'top:'.(esc_html($title->style->top)-60).'px;';
      }
      if(absint($title->style->left) < 60){
          echo 'left: 60px;';
@@ -256,7 +256,7 @@ switch( $params->imageframes ) {
         if(absint($description->style->top) < 60){
             echo 'top: 60px;';
         } else {
-            echo 'top:'.esc_html($description->style->top).';';
+            echo 'top:'.(esc_html($description->style->top) - 60).'px;';
         }
         if(absint($description->style->left) < 60){
             echo 'left: 60px;';
@@ -379,8 +379,8 @@ foreach($_reslides as $slide){
                 display: block;
                 position: absolute;
                 text-align: center;
-                top: 0px;
-                left: 0px;
+                top: 0;
+                left: 0;
                 text-decoration: none;
             }
             #slider<?php echo $sliderID ;?>_container  .slide<?php echo $sliderID ;?>_<?php echo $slide->id;?> 	.slide<?php echo $slide->id;?>button<?php echo $customSlide->id;?> .gg span {
@@ -440,8 +440,8 @@ foreach($_reslides as $slide){
             case 'h3':
         ?>
 #slider<?php echo $sliderID ;?>_container	.reslideh3<?php echo $custom->id;?> {
-    margin: 0px;
-    padding: 0px;
+    margin: 0;
+    padding: 0;
     z-index: 2;
     position: absolute;
     background: none;
@@ -491,7 +491,7 @@ foreach($_reslides as $slide){
     border: 2px solid rgb(0, 0, 36);
     top: 0;
     left: 0;
-    border-radius: 0px;
+    border-radius: 0;
     background: none;
     width: <?php echo $custom->style->width;?>px;
     height: <?php echo $custom->style->height;?>px;
@@ -506,8 +506,8 @@ foreach($_reslides as $slide){
     height: 100%;
     z-index: 2;
     position: absolute;
-    top: 0px;
-    left: 0px;
+    top: 0;
+    left: 0;
     opacity: <?php echo abs($custom->style->border->radius)/100;?>;
     filter: alpha(opacity=<?php echo abs($custom->style->opacity);?>);
     background: <?php echo sanitize_hex_color("#".$custom->style->background->color);?>;
@@ -689,7 +689,7 @@ body #slider<?php echo $sliderID ;?>_container .reslide_navigator div:hover { ba
 }
 
 * html #slider<?php echo $sliderID ;?>_container .reslide-thumbnail<?php echo $sliderID;?> .w {
-    width /**/: 62px;
-    height /**/: 32px;
+    width: 62px;
+    height: 32px;
 }
 </style>
