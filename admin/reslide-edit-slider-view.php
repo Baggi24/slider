@@ -30,6 +30,236 @@ function reslide_edit_slider_view( $_row, $_id, $_slider ) {
         $count ++;
     }; ?>
     <script>
+        jQuery(window).load(function(){
+            jQuery('#reslide-right-click-protection').on('change', function () {
+                if(jQuery('#reslide-right-click-protection').val() === '1') {
+                    jQuery('#reslide_slider_preview').bind("contextmenu", function(e) {
+                        e.preventDefault();
+                    });
+
+                    jQuery(document).keydown(function(e){
+                        if(e.which === 123){
+                            return false;
+                        }
+                    });
+                } else {
+                    jQuery('#reslide_slider_preview').unbind("contextmenu");
+                }
+            });
+            
+            if(+jQuery('#reslide-right-click-protection').val()) {
+                jQuery('#reslide_slider_preview').bind("contextmenu", function(e) {
+                    e.preventDefault();
+                });
+
+                jQuery(document).keydown(function(e){
+                    if(e.which === 123){
+                        return false;
+                    }
+                });
+            }
+
+            if (document.getElementById("reslide_preview")) {
+                document.getElementById("reslide_preview").addEventListener("click", function (e) {
+                    var $frame_val = jQuery('#params-imageframes').val(),
+                        $filter_val = jQuery('#params-imagefilters').val();
+
+                    switch ($frame_val) {
+                        case '0':
+                            setTimeout(function(){
+                                jQuery('div[id*=slider].reslide_slider_container_preview').css({
+                                    'border-width': '0'
+                                });
+                            },0);
+                            break;
+                        case '1':
+                            setTimeout(function(){
+                                jQuery('div[id*=slider].reslide_slider_container_preview').css({
+                                    'border-image': 'url("<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES; ?>/image_frames/frame_1.png") 100 103 103 100 stretch stretch',
+                                    'border-style': 'inset',
+                                    'border-width': '60px'
+                                });
+                            },0);
+                            break;
+                        case '7':
+                            setTimeout(function(){
+                                jQuery('div[id*=slider].reslide_slider_container_preview').css({
+                                    'border-image': 'url("<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES; ?>/image_frames/frame_7.png") 100 100 100 100 stretch stretch',
+                                    'border-style': 'inset',
+                                    'border-width': '60px'
+                                });
+                            },0);
+                            break;
+                        case '8':
+                            setTimeout(function(){
+                                jQuery('div[id*=slider].reslide_slider_container_preview').css({
+                                    'border-image': 'url("<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES; ?>/image_frames/frame_8.png") 100 135 100 140 stretch stretch',
+                                    'border-style': 'inset',
+                                    'border-width': '60px'
+                                });
+                            },0);
+                            break;
+                    }
+
+                    switch ($filter_val) {
+                        case '1':
+                            setTimeout(function(){
+                                jQuery('.reslide_slider_container_preview .reslideitem img').css({
+                                    '-webkit-filter': 'grayscale(1)',
+                                    'filter': 'grayscale(1)'
+                                });
+                            },0);
+                            break;
+                        case '2':
+                            setTimeout(function(){
+                                jQuery('.reslide_slider_container_preview .reslideitem img').css({
+                                    '-webkit-filter': 'sepia(1)',
+                                    'filter': 'sepia(1)'
+                                });
+                            },0);
+                            break;
+                        case '3':
+                            setTimeout(function(){
+                                jQuery('.reslide_slider_container_preview .reslideitem img').css({
+                                    '-webkit-filter': 'saturate(4)',
+                                    'filter': 'saturate(4)'
+                                });
+                            },0);
+                            break;
+                        case '4':
+                            setTimeout(function(){
+                                jQuery('.reslide_slider_container_preview .reslideitem img').css({
+                                    '-webkit-filter': 'hue-rotate(90deg)',
+                                    'filter': 'hue-rotate(90deg)'
+                                });
+                            },0);
+                            break;
+                        case '5':
+                            setTimeout(function(){
+                                jQuery('.reslide_slider_container_preview .reslideitem img').css({
+                                    '-webkit-filter': 'invert(.8)',
+                                    'filter': 'invert(.8)'
+                                });
+                            },0);
+                            break;
+                        case '6':
+                            setTimeout(function(){
+                                jQuery('.reslide_slider_container_preview .reslideitem img').css({
+                                    '-webkit-filter': 'opacity(.5)',
+                                    'filter': 'opacity(.5)'
+                                });
+                            },0);
+                            break;
+                        case '7':
+                            setTimeout(function(){
+                                jQuery('.reslide_slider_container_preview .reslideitem img').css({
+                                    '-webkit-filter': 'brightness(.5)',
+                                    'filter': 'brightness(.5)'
+                                });
+                            },0);
+                            break;
+                        case '8':
+                            setTimeout(function(){
+                                jQuery('.reslide_slider_container_preview .reslideitem img').css({
+                                    '-webkit-filter': 'contrast(3)',
+                                    'filter': 'contrast(3)'
+                                });
+                            },0);
+                            break;
+                        case '9':
+                            setTimeout(function(){
+                                jQuery('.reslide_slider_container_preview .reslideitem img').css({
+                                    '-webkit-filter': 'blur(1px)',
+                                    'filter': 'blur(1px)'
+                                });
+                            },0);
+                            break;
+                        case '10':
+                            setTimeout(function(){
+                                jQuery('.reslide_slider_container_preview .reslideitem img').css({
+                                    '-webkit-filter': 'sepia(1) hue-rotate(200deg)',
+                                    'filter': 'sepia(1) hue-rotate(200deg)'
+                                });
+                            },0);
+                            break;
+                        case '11':
+                            setTimeout(function(){
+                                jQuery('.reslide_slider_container_preview .reslideitem img').css({
+                                    '-webkit-filter': 'contrast(1.4) saturate(1.8) sepia(.6)',
+                                    'filter': 'contrast(1.4) saturate(1.8) sepia(.6)'
+                                });
+                            },0);
+                            break;
+                        case '12':
+                            setTimeout(function(){
+                                jQuery('.reslide_slider_container_preview .reslideitem img').css({
+                                    '-webkit-filter': 'grayscale(1) brightness(0.45) contrast(1.05)',
+                                    'filter': 'grayscale(1) brightness(0.45) contrast(1.05)'
+                                });
+                            },0);
+                            break;
+                        case '13':
+                            setTimeout(function(){
+                                jQuery('.reslide_slider_container_preview .reslideitem img').css({
+                                    '-webkit-filter': 'contrast(110%) brightness(110%) contrast(130%)',
+                                    'filter': 'contrast(110%) brightness(110%) contrast(130%)'
+                                });
+                            },0);
+                            break;
+                        case '14':
+                            setTimeout(function(){
+                                jQuery('.reslide_slider_container_preview .reslideitem img').css({
+                                    '-webkit-filter': 'contrast(90%) brightness(120%) contrast(85%) hue-rotate(20deg)',
+                                    'filter': 'contrast(90%) brightness(120%) contrast(85%) hue-rotate(20deg)'
+                                });
+                            },0);
+                            break;
+                        case '15':
+                            setTimeout(function(){
+                                jQuery('.reslide_slider_container_preview .reslideitem img').css({
+                                    '-webkit-filter': 'contrast(100%) brightness(105%) contrast(100%) hue-rotate(270deg)',
+                                    'filter': 'contrast(100%) brightness(105%) contrast(100%) hue-rotate(270deg)'
+                                });
+                            },0);
+                            break;
+                        case '16':
+                            setTimeout(function(){
+                                jQuery('.reslide_slider_container_preview .reslideitem img').css({
+                                    '-webkit-filter': 'contrast(150%) brightness(100%) contrast(110%)',
+                                    'filter': 'contrast(150%) brightness(100%) contrast(110%)'
+                                });
+                            },0);
+                            break;
+                        case '17':
+                            setTimeout(function(){
+                                jQuery('.reslide_slider_container_preview .reslideitem img').css({
+                                    '-webkit-filter': 'contrast(85%) brightness(110%) contrast(75%) sepia(22%)',
+                                    'filter': 'contrast(85%) brightness(110%) contrast(75%) sepia(22%)'
+                                });
+                            },0);
+                            break;
+                        case '18':
+                            setTimeout(function(){
+                                jQuery('.reslide_slider_container_preview .reslideitem img').css({
+                                    '-webkit-filter': 'contrast(100%) brightness(110%) contrast(160%) sepia(30%) hue-rotate(350deg)',
+                                    'filter': 'contrast(100%) brightness(110%) contrast(160%) sepia(30%) hue-rotate(350deg)'
+                                });
+                            },0);
+                            break;
+                        case '19':
+                            setTimeout(function(){
+                                jQuery('.reslide_slider_container_preview .reslideitem img').css({
+                                    '-webkit-filter': 'contrast(100%) brightness(100%) contrast(100%) sepia(30%)',
+                                    'filter': 'contrast(100%) brightness(100%) contrast(100%) sepia(30%)'
+                                });
+                            },0);
+                            break;
+                    }
+                });
+            }
+            
+        });
+        
         const FRONT_IMAGES = '<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES;?>';
         const _IMAGES = '<?php echo RESLIDE_PLUGIN_PATH_IMAGES;?>';
 
@@ -427,8 +657,10 @@ function reslide_edit_slider_view( $_row, $_id, $_slider ) {
                                            value="<?php echo esc_attr($params->sortimagesby); ?>">
                                 </li>
                             </ul>
-                            <div id="general-view">
-                                <div id="reslide-slider-construct">
+                            <div id="general-view" style="height: <?php echo esc_attr($style->height) + 250; ?>px;">
+                                <div class="ruler">
+                                    <span class="ruler_text"></span>
+                                    <div id="reslide-slider-construct">
                                     <div id="reslide-construct-vertical"></div>
                                     <div id="reslide-construct-horizontal"></div>
                                     <div id="reslide-title-construct" data="title" class="reslide_construct">
@@ -496,6 +728,7 @@ function reslide_edit_slider_view( $_row, $_id, $_slider ) {
                                     </div>
                                     <a id="reslide_remove" title="Remove Element"><i class="fa fa-remove"
                                                                                      aria-hidden="true"></i></a>
+                                </div>
                                 </div>
                         </li>
                         <li class="styling">
@@ -1268,14 +1501,13 @@ function reslide_edit_slider_view( $_row, $_id, $_slider ) {
                 background-position: <?php echo esc_attr($params->arrows->style->background->right);?>;
             }
 
-            /*** title ***/
-            .reslidetitle {
+            .reslidetitle, .reslidedescription {
                 box-sizing: border-box;
                 padding: 1%;
                 overflow: hidden;
             }
 
-            .reslidetitle h3 {
+            .reslidetitle h3, .reslidedescription h3 {
                 margin: 0;
                 padding: 0;
                 word-wrap: break-word;
@@ -1617,13 +1849,14 @@ function reslide_edit_slider_view( $_row, $_id, $_slider ) {
             opacity: 1;
             top: 10%;
             left: 5%;
-            z-index: 10000;
+            z-index: 999999999;
             box-sizing: border-box;
         }
 
         /*** title styling***/
 
         #reslide_slider_title_styling .reslide_content .reslide_title {
+            background-color: <?php echo sanitize_hex_color("#".$params->title->style->background->color);?>;
             border-width: <?php echo absint($params->title->style->border->width);?>px;
             border-color: <?php echo sanitize_hex_color("#".$params->title->style->border->color);?>;
             border-radius: <?php echo absint($params->title->style->border->radius);?>px;
@@ -1635,8 +1868,11 @@ function reslide_edit_slider_view( $_row, $_id, $_slider ) {
             overflow: hidden;
         }
 
+        #reslide_slider_title_styling .reslide_content .reslide_title:hover {
+            background-color: <?php echo sanitize_hex_color("#".$params->title->style->background->hover);?>;
+        }
+
         #reslide_slider_title_styling .reslide_content .reslide_title .reslide_title_child {
-            background: <?php echo sanitize_hex_color("#".$params->title->style->background->color);?>;
             opacity: <?php echo abs($params->title->style->opacity)/100;?>;
             filter: alpha(opacity=<?php echo abs($params->title->style->opacity);?>);
         }
@@ -1655,6 +1891,10 @@ function reslide_edit_slider_view( $_row, $_id, $_slider ) {
             overflow: hidden;
         }
 
+        #reslide_slider_description_styling .reslide_content .reslide_description:hover {
+            background: <?php echo sanitize_hex_color("#".$params->description->style->background->hover);?>;
+        }
+        
         /*** title styling***/
         .reslide-custom-styling .reslide_content .reslide_custom .reslide_img {
             box-sizing: border-box;
@@ -1682,14 +1922,24 @@ function reslide_edit_slider_view( $_row, $_id, $_slider ) {
             height: 100%;
         }
 
+        .ruler {
+            width: 100%;
+            height: <?php echo absint($style->height) + 50;?>px;
+            position: relative;
+            overflow: hidden;
+            top: 15px;
+            clear: both;
+        }
+        
         #reslide-slider-construct {
+            margin: 17px;
             width: <?php echo absint($style->width);?>px;
             height: <?php echo absint($style->height);?>px;
             position: relative;
             background-size: 100% 100%;
             background-repeat: no-repeat;
             overflow: hidden;
-            background: rgba(223, 223, 223, 0.36);
+            background: rgba(223, 223, 223, 0.56);
             background-size: 100% 100%;
             background-repeat: no-repeat;
             box-sizing: border-box;
@@ -1926,6 +2176,137 @@ function reslide_edit_slider_view( $_row, $_id, $_slider ) {
         #reslide-description-construct #reslide_remove {
             opacity: 0;
         }
+
+        div[id*=slider].reslide_slider_container_preview {
+        <?php
+            switch( (string)$params->imageframes ) {
+        case '1':
+            echo 'border-image: url("' . RESLIDE_PLUGIN_PATH_FRONT_IMAGES. '/image_frames/frame_1.png") 100 103 103 100 stretch stretch; 
+                  border-style: inset;
+                  border-width: 60px;';
+            break;
+        case '2':
+            echo 'border-image: url("' . RESLIDE_PLUGIN_PATH_FRONT_IMAGES. '/image_frames/frame_2.png") 100 100 100 100 stretch stretch; 
+                  border-style: inset;
+                  border-width: 60px;';
+            break;
+        case '3':
+            echo 'border-image: url("' . RESLIDE_PLUGIN_PATH_FRONT_IMAGES. '/image_frames/frame_3.png") 100 100 100 100 stretch stretch; 
+                  border-style: inset;
+                  border-width: 60px;';
+            break;
+        case '4':
+            echo 'border-image: url("' . RESLIDE_PLUGIN_PATH_FRONT_IMAGES. '/image_frames/frame_4.png") 100 100 100 100 stretch stretch; 
+                  border-style: inset;
+                  border-width: 60px;';
+            break;
+        case '5':
+            echo 'border-image: url("' . RESLIDE_PLUGIN_PATH_FRONT_IMAGES. '/image_frames/frame_5.png") 100 100 100 100 stretch stretch; 
+                  border-style: inset;
+                  border-width: 60px;';
+            break;
+        case '6':
+            echo 'border-image: url("' . RESLIDE_PLUGIN_PATH_FRONT_IMAGES. '/image_frames/frame_6.png") 100 100 100 100 stretch stretch; 
+                  border-style: inset;
+                  border-width: 60px;';
+            break;
+        case '7':
+            echo 'border-image: url("' . RESLIDE_PLUGIN_PATH_FRONT_IMAGES. '/image_frames/frame_7.png") 100 100 100 100 stretch stretch; 
+                  border-style: inset;
+                  border-width: 60px;';
+            break;
+        case '8':
+            echo 'border-image: url("' . RESLIDE_PLUGIN_PATH_FRONT_IMAGES. '/image_frames/frame_8.png") 100 135 100 140 stretch stretch; 
+                  border-style: inset;
+                  border-width: 60px;';
+            break;
+        }
+        ?>
+        }
+
+        .reslide_slider_preview .reslideitem img {
+        <?php
+            switch( (string)$params->imagefilters ) {
+            case '1':
+                echo '-webkit-filter: grayscale(1);
+                     filter: grayscale(1);';
+                break;
+            case '2':
+                echo '-webkit-filter: sepia(1);
+                     filter: sepia(1);';
+                break;
+            case '3':
+                echo '-webkit-filter: saturate(4);
+                        filter: saturate(4);';
+                break;
+            case '4':
+                echo '-webkit-filter: hue-rotate(90deg);
+                    filter: hue-rotate(90deg);';
+                break;
+            case '5':
+                echo '-webkit-filter: invert(.8);
+                    filter: invert(.8);';
+                break;
+            case '6':
+                echo '-webkit-filter: opacity(.5);
+                    filter: opacity(.5);';
+                break;
+            case '7':
+                echo '-webkit-filter: brightness(.5);
+                    filter: brightness(.5);';
+                break;
+            case '8':
+                echo '-webkit-filter: contrast(3);
+                    filter: contrast(3);';
+                break;
+            case '9':
+                echo '-webkit-filter: blur(1px);
+                    filter: blur(1px);';
+                break;
+            case '10':
+                echo '-webkit-filter: sepia(1) hue-rotate(200deg);
+                    filter: sepia(1) hue-rotate(200deg);';
+                break;
+            case '11':
+                echo '-webkit-filter: contrast(1.4) saturate(1.8) sepia(.6);
+                    filter: contrast(1.4) saturate(1.8) sepia(.6);';
+                break;
+            case '12':
+                echo '-webkit-filter: grayscale(1) brightness(0.45) contrast(1.05);
+                    filter: grayscale(1) brightness(0.45) contrast(1.05);';
+                break;
+            case '13':
+                echo '-webkit-filter: contrast(110%) brightness(110%) contrast(130%);
+                    filter: contrast(110%) brightness(110%) contrast(130%);';
+                break;
+            case '14':
+                echo '-webkit-filter: contrast(90%) brightness(120%) contrast(85%) hue-rotate(20deg);
+                    filter: contrast(90%) brightness(120%) contrast(85%) hue-rotate(20deg);';
+                break;
+            case '15':
+                echo '-webkit-filter: contrast(100%) brightness(105%) contrast(100%) hue-rotate(270deg);
+                    filter: contrast(100%) brightness(105%) contrast(100%) hue-rotate(270deg);';
+                break;
+            case '16':
+                echo '-webkit-filter: contrast(150%) brightness(100%) contrast(110%);
+                    filter: contrast(150%) brightness(100%) contrast(110%);';
+                break;
+            case '17':
+                echo '-webkit-filter: contrast(85%) brightness(110%) contrast(75%) sepia(22%);
+                    filter: contrast(85%) brightness(110%) contrast(75%) sepia(22%);';
+                break;
+            case '18':
+                echo '-webkit-filter: contrast(100%) brightness(110%) contrast(160%) sepia(30%) hue-rotate(350deg);
+                    filter: contrast(100%) brightness(110%) contrast(160%) sepia(30%) hue-rotate(350deg);';
+                break;
+            case '19':
+                echo '-webkit-filter: contrast(100%) brightness(100%) contrast(100%) sepia(30%);
+                     filter: contrast(100%) brightness(100%) contrast(100%) sepia(30%);';
+                break;
+        }
+        ?>
+        }
+
     </style>
     <?php
 }
