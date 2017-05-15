@@ -79,27 +79,48 @@ function reslider_front_end($_id,$_slider,$_reslides) {
 			<div></div>
 		</div>
 		  <!-- Slides Container -->
-			<div data-u="slides" class="reslide_slides">
+			<div data-u="slides" class="<?php if ((int)$params->lightbox == 1) { echo "rslider_lightbox_" . $sliderID; }?> reslide_slides">
 			<?php foreach($_reslides as $slide){
 						if($slide->published == 0) continue;
 
 					$customSlide = json_decode($slide->custom);
 				?>
 				<div class="slide<?php echo $sliderID ;?>_<?php echo $slide->id;?>">
-					<?php if(!empty($slide->image_link)){ ?>
-						<a href="<?php echo reslide_text_sanitize($slide->image_link);?>" <?php if($slide->image_link_new_tab){ echo 'target="_blank"'; }?>>
-							<img class="image_<?php echo $slide->id; ?>" src="<?php  echo esc_url($slide->thumbnail);?>" alt="<?php  echo esc_attr($slide->thumbnail);?>"/>
+					<?php if ((int)$params->lightbox == 1) { ?>
+						<a href="<?php echo esc_url( $slide->thumbnail ); ?>">
+							<img src="<?php echo esc_url( $slide->thumbnail ); ?>" alt="<?php echo reslide_text_sanitize($slide->title);?>"  class="image_<?php echo $slide->id; ?>" />
 						</a>
-					<?php } else { ?>
-						<img class="image_<?php echo $slide->id; ?>" src="<?php  echo esc_url($slide->thumbnail);?>" alt="<?php  echo esc_attr($slide->thumbnail);?>"/>
-					<?php } ?>
-					<?php if($slide->title AND $params->title->show) {
-					?>
-						<div class="reslidetitle">
-							<div></div>
-							<span><?php echo reslide_text_sanitize($slide->title);?></span>
-						</div>
-					<?php } ?>
+						<img data-u="thumb" src="<?php echo esc_url( $slide->thumbnail ); ?>"
+							 alt="<?php echo reslide_text_sanitize($slide->title);?>"/>
+					<?php } else {
+						if (!empty($slide->image_link)) { ?>
+							<a href="<?php echo reslide_text_sanitize($slide->image_link); ?>" <?php if ($slide->image_link_new_tab) {
+								echo 'target="_blank"';
+							} ?>>
+								<img class="image_<?php echo $slide->id; ?>"
+									 src="<?php echo esc_url($slide->thumbnail); ?>"
+									 alt="<?php echo esc_attr($slide->thumbnail); ?>"/>
+							</a>
+						<?php } else { ?>
+							<img class="image_<?php echo $slide->id; ?>" src="<?php echo esc_url($slide->thumbnail); ?>"
+								 alt="<?php echo esc_attr($slide->thumbnail); ?>"/>
+						<?php }
+					}
+					if($slide->title AND $params->title->show) {
+						if ( ! empty( $slide->image_link ) && (int)$params->lightbox == 1 ) { ?>
+							<a href="<?php echo reslide_text_sanitize( $slide->image_link ); ?>" class="title_url" <?php if ( $slide->image_link_new_tab ) { echo 'target="_blank"'; } ?>>
+								<div class="reslidetitle isImage">
+									<div></div>
+									<span><?php echo reslide_text_sanitize($slide->title);?></span>
+								</div>
+							</a>
+						<?php } else { ?>
+							<div class="reslidetitle isImage">
+								<div></div>
+								<span><?php echo reslide_text_sanitize($slide->title);?></span>
+							</div>
+						<?php }
+					} ?>
 					<?php if($slide->description  AND $params->description->show) {
 							?>
 
@@ -124,7 +145,7 @@ function reslider_front_end($_id,$_slider,$_reslides) {
 						?>
 						<button  class = "slide<?php echo $slide->id;?>button<?php echo $customSlide->id;?> reslidebutton reslide_any">
 							<div></div>
-							<a class="gg" href="<?php echo esc_url($customSlide->link);?>"><span><?php echo esc_html($customSlide->text); ?></span></a>
+							<a class="gg title_url" href="<?php echo esc_url($customSlide->link);?>"><span><?php echo esc_html($customSlide->text); ?></span></a>
 						</button>
 						<?php
 							break;
@@ -155,7 +176,7 @@ function reslider_front_end($_id,$_slider,$_reslides) {
 						?>
 						<button data-u="any"  class="reslidebutton<?php echo $custom->id;?> reslidebutton reslide_any">
 							<div></div>
-							<a class="gg" href="<?php echo esc_url($custom->link);?>"><span><?php echo esc_html($custom->text);?></span></a>
+							<a class="gg title_url" href="<?php echo esc_url($custom->link);?>"><span><?php echo esc_html($custom->text);?></span></a>
 						</button>
 						<?php
 							break;
@@ -352,7 +373,9 @@ function reslider_front_end($_id,$_slider,$_reslides) {
                 $AutoPlay: (reslider<?php echo $sliderID;?>["params"]["autoplay"]==1)?true:false,                                   //[Optional] Whether to auto play, to enable slideshow, this option must be set to true, default value is false
 				$SlideDuration: 500,
 	            $PauseOnHover: reslider<?php echo $sliderID;?>["params"]["pauseonhover"],
-				$AutoPlayInterval: reslider<?php echo $sliderID;?>["params"]["effect"]["interval"],   
+				$AutoPlayInterval: reslider<?php echo $sliderID;?>["params"]["effect"]["interval"],
+				$ArrowKeyNavigation: <?php echo ((int)$params->lightbox == 1) ? 0 : 1; ?>,
+
 				//$AutoPlaySteps : -1,			
 	//[Optional] Specifies default duration (swipe) for slide in milliseconds, default value is 500
 		
@@ -557,6 +580,14 @@ function reslider_front_end($_id,$_slider,$_reslides) {
 				}
 			});
 		}
+
+			jQuery(window).load(function(){
+				jQuery('.rslider_lightbox_<?php echo $sliderID ;?>').lightbox({
+					slideAnimationType: '<?php echo (string)$params->slide_effect; ?>',
+					arrows: '<?php echo (string)$params->arrows_style; ?>',
+					openCloseType: '<?php echo (string)$params->open_close_effect; ?>'
+				});
+			});
 		</script>
 	<?php
 	return ob_get_clean();

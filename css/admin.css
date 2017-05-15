@@ -204,6 +204,51 @@ footer, header, .hgroup, menu, nav, section {
     margin-top: 14px;
 }
 
+#reslide-arrows_style {
+    width: 99px;
+}
+
+#view-image_frame {
+    width: 12px;
+}
+
+#view-image_frame, #view-style-block {
+    position: relative;
+    top: -45px;
+    left: 180px;
+    padding: 0  0 0 20px;
+    background: url(../images/view.style.png) left center no-repeat;
+}
+
+#view-image_frame ul, #view-style-block ul {
+    display: none;
+    z-index: 1000;
+    position: absolute;
+    left: 35px;
+    top: 0;
+}
+
+#view-image_frame:hover ul, #view-style-block:hover ul {
+    display: block;
+}
+
+#view-image_frame ul li, #view-style-block ul li {
+    display: none;
+    position: absolute;
+    top: -7px;
+    width: 115px;
+    border: 1px solid #888;
+    background: white;
+}
+
+#view-image_frame ul li.active, #view-style-block ul li.active {
+    display: block;
+}
+
+#view-image_frame ul li img, #view-style-block ul li img {
+    width: 100%;
+}
+
 /* Ruler start */
 
 span.ruler_text {

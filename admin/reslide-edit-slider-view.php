@@ -571,7 +571,7 @@ function reslide_edit_slider_view( $_row, $_id, $_slider ) {
                                            value="<?php echo esc_attr($params->behavior); ?>">
                                 </li>
                                 <li class="params">
-                                    <label for="reslide-effect-duration"><?php _e('Change Speed', 'reslide'); ?>:</label>
+                                    <label for="reslide-effect-duration"><?php _e('Speed', 'reslide'); ?>:</label>
                                     <input type="number" name="params[effect][duration]"
                                            value="<?php echo esc_attr($params->effect->duration); ?>">
                                 </li>
@@ -612,7 +612,7 @@ function reslide_edit_slider_view( $_row, $_id, $_slider ) {
                                     <span class="reslide-free" style="color:red;"><img src="<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES . '/pro.png'; ?>" width='35' height='15' /></span>
                                 </li>
                                 <li class="params custom">
-                                    <label for="reslide-custom"><?php _e('Slider Custom Element:','reslide');?></label>
+                                    <label for="reslide-custom"><?php _e('Custom Element:','reslide');?></label>
                                     <select id="reslide-custom">
                                         <option
                                             value="text" <?php echo ( esc_attr($params->custom->type) == 'text' ) ? "selected" : ""; ?>>
@@ -638,7 +638,7 @@ function reslide_edit_slider_view( $_row, $_id, $_slider ) {
                                     <span class="reslide-free" style="color:red;"><img src="<?php echo RESLIDE_PLUGIN_PATH_FRONT_IMAGES . '/pro.png'; ?>" width='35' height='15' /></span>
                                 </li>
                                 <li class="params">
-                                    <label for="reslide-sortimagesby" name="params[sortimagesby]"><?php _e('Sort Images By', 'reslide'); ?>:</label>
+                                    <label for="reslide-sortimagesby" name="params[sortimagesby]"><?php _e('Sort By', 'reslide'); ?>:</label>
                                     <select id="reslide-sortimagesby">
                                         <option
                                             value="0" <?php echo ( esc_attr($params->sortimagesby) == 0 ) ? "selected" : ""; ?>>
@@ -655,6 +655,121 @@ function reslide_edit_slider_view( $_row, $_id, $_slider ) {
                                     </select>
                                     <input type="hidden" name="params[sortimagesby]"
                                            value="<?php echo esc_attr($params->sortimagesby); ?>">
+                                </li>
+                                <li class="params">
+                                    <label for="reslide-lightbox"><?php _e('Lightbox', 'reslide'); ?>:</label><input id="reslide-lightbox"
+                                                                                                                     type="checkbox" name="params[lightbox]"
+                                                                                                                     value="<?php echo esc_attr($params->lightbox); ?>" <?php checked( $params->lightbox ); ?> />
+                                </li>
+                                <li class="params" <?php if((int)$params->lightbox == 0){echo 'style="display: none;"';}?>>
+                                    <label for="reslide-slide_effect" name="params[slide_effect]"><?php _e('Slide Effect:', 'reslide'); ?></label>
+                                    <select id="reslide-slide_effect">
+                                        <option value="effect_1" <?php echo ( $params->slide_effect == 'effect_1' ) ? "selected" : ""; ?>>
+                                            <?php _e('Effect 1','reslide');?>
+                                        </option>
+                                        <option value="effect_2" <?php echo ( $params->slide_effect == 'effect_2' ) ? "selected" : ""; ?>>
+                                            <?php _e('Effect 2','reslide');?>
+                                        </option>
+                                        <option value="effect_3" <?php echo ( $params->slide_effect == 'effect_3' ) ? "selected" : ""; ?>>
+                                            <?php _e('Effect 3','reslide');?>
+                                        </option>
+                                        <option value="effect_4" <?php echo ( $params->slide_effect == 'effect_4' ) ? "selected" : ""; ?>>
+                                            <?php _e('Effect 4','reslide');?>
+                                        </option>
+                                        <option value="effect_5" <?php echo ( $params->slide_effect == 'effect_5' ) ? "selected" : ""; ?>>
+                                            <?php _e('Effect 5','reslide');?>
+                                        </option>
+                                        <option value="effect_6" <?php echo ( $params->slide_effect == 'effect_6' ) ? "selected" : ""; ?>>
+                                            <?php _e('Effect 6','reslide');?>
+                                        </option>
+                                        <option value="effect_7" <?php echo ( $params->slide_effect == 'effect_7' ) ? "selected" : ""; ?>>
+                                            <?php _e('Effect 7','reslide');?>
+                                        </option>
+                                        <option value="effect_8" <?php echo ( $params->slide_effect == 'effect_8' ) ? "selected" : ""; ?>>
+                                            <?php _e('Effect 8','reslide');?>
+                                        </option>
+                                        <option value="effect_9" <?php echo ( $params->slide_effect == 'effect_9' ) ? "selected" : ""; ?>>
+                                            <?php _e('Effect 9','reslide');?>
+                                        </option>
+                                        <option value="effect_10" <?php echo ( $params->slide_effect == 'effect_10' ) ? "selected" : ""; ?>>
+                                            <?php _e('Effect 10','reslide');?>
+                                        </option>
+                                    </select>
+                                    <input type="hidden" name="params[slide_effect]"
+                                           value="<?php echo esc_attr($params->slide_effect); ?>">
+                                </li>
+                                <li class="params" <?php if((int)$params->lightbox == 0){echo 'style="display: none;"';}?>>
+                                    <label for="reslide-open_close_effect" name="params[open_close_effect]"><?php _e('Open/Close Effect:', 'reslide'); ?></label>
+                                    <select id="reslide-open_close_effect">
+                                        <option value="none" <?php echo ( $params->open_close_effect == 'none' ) ? "selected" : ""; ?>>
+                                            <?php _e('None','reslide');?>
+                                        </option>
+                                        <option value="unfold" <?php echo ( $params->open_close_effect == 'unfold' ) ? "selected" : ""; ?>>
+                                            <?php _e('UnFold','reslide');?>
+                                        </option>
+                                        <option value="unfold_r" <?php echo ( $params->open_close_effect == 'unfold_r' ) ? "selected" : ""; ?>>
+                                            <?php _e('UnFold R','reslide');?>
+                                        </option>
+                                        <option value="blowup" <?php echo ( $params->open_close_effect == 'blowup' ) ? "selected" : ""; ?>>
+                                            <?php _e('BlowUp','reslide');?>
+                                        </option>
+                                        <option value="blowup_r" <?php echo ( $params->open_close_effect == 'blowup_r' ) ? "selected" : ""; ?>>
+                                            <?php _e('BlowUp R','reslide');?>
+                                        </option>
+                                        <option value="roadrunner" <?php echo ( $params->open_close_effect == 'roadrunner' ) ? "selected" : ""; ?>>
+                                            <?php _e('RoadRunner','reslide');?>
+                                        </option>
+                                        <option value="roadrunner_r" <?php echo ( $params->open_close_effect == 'roadrunner_r' ) ? "selected" : ""; ?>>
+                                            <?php _e('RoadRunner R','reslide');?>
+                                        </option>
+                                        <option value="runner" <?php echo ( $params->open_close_effect == 'runner' ) ? "selected" : ""; ?>>
+                                            <?php _e('Runner','reslide');?>
+                                        </option>
+                                        <option value="runner_r" <?php echo ( $params->open_close_effect == 'runner_r' ) ? "selected" : ""; ?>>
+                                            <?php _e('Runner R','reslide');?>
+                                        </option>
+                                        <option value="rotate" <?php echo ( $params->open_close_effect == 'rotate' ) ? "selected" : ""; ?>>
+                                            <?php _e('Rotate','reslide');?>
+                                        </option>
+                                        <option value="rotate_r" <?php echo ( $params->open_close_effect == 'rotate_r' ) ? "selected" : ""; ?>>
+                                            <?php _e('Rotate R','reslide');?>
+                                        </option>
+                                    </select>
+                                    <input type="hidden" name="params[open_close_effect]"
+                                           value="<?php echo esc_attr($params->open_close_effect); ?>">
+                                </li>
+                                <li class="params" style="border-right: none;width:340px; <?php if((int)$params->lightbox == 0){echo 'display: none;"';}?>">
+                                    <label for="reslide-arrows_style" name="params[arrows_style]"><?php _e('Arrows Style:', 'reslide'); ?></label>
+                                    <select id="reslide-arrows_style">
+                                        <option value="arrows_1" <?php echo ( $params->arrows_style == 'arrows_1' ) ? "selected" : ""; ?>>
+                                            <?php _e('Arrows 1','reslide');?>
+                                        </option>
+                                        <option value="arrows_2" <?php echo ( $params->arrows_style == 'arrows_2' ) ? "selected" : ""; ?>>
+                                            <?php _e('Arrows 2','reslide');?>
+                                        </option>
+                                        <option value="arrows_3" <?php echo ( $params->arrows_style == 'arrows_3' ) ? "selected" : ""; ?>>
+                                            <?php _e('Arrows 3','reslide');?>
+                                        </option>
+                                        <option value="arrows_4" <?php echo ( $params->arrows_style == 'arrows_4' ) ? "selected" : ""; ?>>
+                                            <?php _e('Arrows 4','reslide');?>
+                                        </option>
+                                        <option value="arrows_5" <?php echo ( $params->arrows_style == 'arrows_5' ) ? "selected" : ""; ?>>
+                                            <?php _e('Arrows 5','reslide');?>
+                                        </option>
+                                        <option value="arrows_6" <?php echo ( $params->arrows_style == 'arrows_6' ) ? "selected" : ""; ?>>
+                                            <?php _e('Arrows 6','reslide');?>
+                                        </option>
+                                    </select>
+                                    <input type="hidden" name="params[arrows_style]"
+                                           value="<?php echo esc_attr($params->arrows_style); ?>">
+                                    <div id="view-image_frame">
+                                        <ul><li data-id="arrows_1" <?php if($params->arrows_style == 'arrows_1') echo 'class="active"'; ?>><img src="<?php echo RESLIDE_PLUGIN_PATH_IMAGES .  '/arrows/slightbox_arrows1.png' ?>"></li></ul>
+                                        <ul><li data-id="arrows_2" <?php if($params->arrows_style == 'arrows_2') echo 'class="active"'; ?>><img src="<?php echo RESLIDE_PLUGIN_PATH_IMAGES .  '/arrows/slightbox_arrows2.png' ?>"></li></ul>
+                                        <ul><li data-id="arrows_3" <?php if($params->arrows_style == 'arrows_3') echo 'class="active"'; ?>><img src="<?php echo RESLIDE_PLUGIN_PATH_IMAGES .  '/arrows/slightbox_arrows3.png' ?>"></li></ul>
+                                        <ul><li data-id="arrows_4" <?php if($params->arrows_style == 'arrows_4') echo 'class="active"'; ?>><img src="<?php echo RESLIDE_PLUGIN_PATH_IMAGES .  '/arrows/slightbox_arrows4.png' ?>"></li></ul>
+                                        <ul><li data-id="arrows_5" <?php if($params->arrows_style == 'arrows_5') echo 'class="active"'; ?>><img src="<?php echo RESLIDE_PLUGIN_PATH_IMAGES .  '/arrows/slightbox_arrows5.png' ?>"></li></ul>
+                                        <ul><li data-id="arrows_6" <?php if($params->arrows_style == 'arrows_6') echo 'class="active"'; ?>><img src="<?php echo RESLIDE_PLUGIN_PATH_IMAGES .  '/arrows/slightbox_arrows6.png' ?>"></li></ul>
+                                    </div>
                                 </li>
                             </ul>
                             <div id="general-view" style="height: <?php echo esc_attr($style->height) + 250; ?>px;">
