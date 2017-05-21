@@ -1,5 +1,4 @@
 <?php
-
 /*
 Plugin Name: Huge IT Responsive Slider
 Plugin URI: https://huge-it.com/wordpress-responsive-slider
@@ -522,7 +521,8 @@ function reslide_frontend_scripts() {
 		wp_enqueue_script( 'jquery' );
 	}
 	wp_enqueue_script( 'reslide_jssor_front', RESLIDE_PLUGIN_PATH_JS . '/jssor.js' );
-	wp_enqueue_script( 'reslide_helper_script_front_end', RESLIDE_PLUGIN_PATH_JS . '/helper.js' );
+	wp_enqueue_script( 'reslide_helper_script_front_end', RESLIDE_PLUGIN_PATH_JS . '/helper.js' );	
+	wp_enqueue_script( 'reslide_rslightbox', RESLIDE_PLUGIN_PATH_JS . '/rslightbox.js' );
 }
 
 /**
@@ -910,7 +910,7 @@ INSERT INTO `$table` (`title`, `sliderid`, `published`, `slide`, `description`, 
 			array(
 				'title'=>'First Slider',
 				'type'=>'simple',
-				'params'=>'{"imageframes":"0","imagefilters":"0","sortimagesby":"0","sharing":{"show":{"facebook":0,"twitter":0,"googleplus":0,"pinterest":0,"linkedin":0,"tumblr":0},"type":0},"autoplay":1,"pauseonhover":1,"rightclickprotection":1,"behavior":"0","effect":{"type":3,"duration":1500,"interval":1000},"thumbnails":{"show":0,"positioning":0},"custom":{"type":"text"},"title":{"show":1,"position":"1","style":{"width":213,"height":61,"left":"571.375px","top":"14.7031px","color":"FFFFFF","opacity":0,"font":{"size":18},"border":{"color":"FFFFFF","width":1,"radius":2},"background":{"color":"FFFFFF","hover":"30FF4F"}}},"description":{"show":1,"position":"1","style":{"width":768,"height":116,"left":"16.375px","top":"345.703px","color":"FFFFFF","opacity":80,"font":{"size":14},"border":{"color":"3478FF","width":0,"radius":2},"background":{"color":"000000","hover":"000000"}}},"arrows":{"show":2,"type":1,"style":{"background":{"width":"49","height":"49","left":"91px 46px","right":"-44px 1px","hover":{"left":"91px 46px","right":"-44px 1px"}}}},"bullets":{"show":0,"type":"0","position":0,"autocenter":"0","rows":1,"s_x":10,"s_y":10,"orientation":1,"style":{"background":{"width":"60","height":"60","color":{"hover":"646464","active":"30FF4F","link":"CCCCCC"}},"position":{"top":"16px","left":"10px"}}}}',
+				'params'=>'{"lightbox":"0","slide_effect":"effect_1","open_close_effect":"none","arrows_style":"arrows_1","imageframes":"0","imagefilters":"0","sortimagesby":"0","sharing":{"show":{"facebook":0,"twitter":0,"googleplus":0,"pinterest":0,"linkedin":0,"tumblr":0},"type":0},"autoplay":1,"pauseonhover":1,"rightclickprotection":1,"behavior":"0","effect":{"type":3,"duration":1500,"interval":1000},"thumbnails":{"show":0,"positioning":0},"custom":{"type":"text"},"title":{"show":1,"position":"1","style":{"width":213,"height":61,"left":"571.375px","top":"14.7031px","color":"FFFFFF","opacity":0,"font":{"size":18},"border":{"color":"FFFFFF","width":1,"radius":2},"background":{"color":"FFFFFF","hover":"30FF4F"}}},"description":{"show":1,"position":"1","style":{"width":768,"height":116,"left":"16.375px","top":"345.703px","color":"FFFFFF","opacity":80,"font":{"size":14},"border":{"color":"3478FF","width":0,"radius":2},"background":{"color":"000000","hover":"000000"}}},"arrows":{"show":2,"type":1,"style":{"background":{"width":"49","height":"49","left":"91px 46px","right":"-44px 1px","hover":{"left":"91px 46px","right":"-44px 1px"}}}},"bullets":{"show":0,"type":"0","position":0,"autocenter":"0","rows":1,"s_x":10,"s_y":10,"orientation":1,"style":{"background":{"width":"60","height":"60","color":{"hover":"646464","active":"30FF4F","link":"CCCCCC"}},"position":{"top":"16px","left":"10px"}}}}',
 				'time'=>'2016-05-02 10:58:58',
 				'slide'=>'NULL',
 				'style'=>'{"background":"blue;","border":"1px solid red;","color":"yellow","width":"800","height":"480","marginLeft":"0","marginRight":"0","marginTop":"0","marginBottom":"0"}',
@@ -1072,6 +1072,19 @@ INSERT INTO `$table` (`title`, `sliderid`, `published`, `slide`, `description`, 
 				RESLIDE_TABLE_SLIDERS,
 				array( 'params' =>  $new_param6),
 				array( 'id' => $row6->id )
+			);
+		}
+	}
+	
+	$query7 = "SELECT id, params FROM ".RESLIDE_TABLE_SLIDERS;
+	$rows7 = $wpdb->get_results($query7);
+	foreach($rows7 as $row7){
+		if( strpos( $row7->params, 'lightbox' ) === false ) {
+			$new_param7 = substr_replace( $row7->params, '"lightbox":"0","slide_effect":"effect_1","open_close_effect":"none","arrows_style":"arrows_1",', 1, 0 );
+			$wpdb->update(
+				RESLIDE_TABLE_SLIDERS,
+				array( 'params' =>  $new_param7),
+				array( 'id' => $row7->id )
 			);
 		}
 	}

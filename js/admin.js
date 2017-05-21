@@ -674,11 +674,32 @@ jQuery(document).ready(function(){
     jQuery('label').on('click', function(){
         jQuery(this).parent().find('input').click();
     });
+
+    jQuery('#view-image_frame ul li[data-id="' + jQuery('#reslide-arrows_style option[selected="selected"]').val() + '"]').addClass('active');
+
+    jQuery('#reslide-arrows_style').change(function() {
+        var $strt = jQuery(this).val();
+        jQuery('#view-image_frame ul li').removeClass('active');
+        jQuery('#view-image_frame ul li[data-id="' + $strt + '"]').addClass('active');
+    });
+
 });
 
 /* Ruler end */
 
 jQuery(window).load(function(){
+    jQuery('#reslide-lightbox').on('change', function(){
+        if(jQuery('select[id*="slide_effect"]').parent('li').css('display') === 'none'){
+            jQuery('select[id*="slide_effect"]').parent('li').css('display', 'block');
+            jQuery('select[id*="open_close_effect"]').parent('li').css('display', 'block');
+            jQuery('select[id*="arrows_style"]').parent('li').css('display', 'block');
+        } else {
+            jQuery('select[id*="slide_effect"]').parent('li').css('display', 'none');
+            jQuery('select[id*="open_close_effect"]').parent('li').css('display', 'none');
+            jQuery('select[id*="arrows_style"]').parent('li').css('display', 'none');
+        }
+    });
+    
     var $scale,$translateX, $translateY;
 
     jQuery('.ruler').width(+reslider["style"]["width"] + 100);
@@ -1859,7 +1880,26 @@ document.onkeydown = function (evt) {
             var value = jQuery(this).find(":selected").val();
             jQuery('#reslide-sortimagesby + input').val(value);
         });
+        
+        jQuery('#reslide-lightbox').on('change', function () {
+            jQuery(this).attr('checked') ? jQuery(this).val(1) : jQuery(this).val(0);
+        });
 
+        jQuery('#reslide-slide_effect').on('change', function () {
+            var value = jQuery(this).find(":selected").val();
+            jQuery('#reslide-slide_effect + input').val(value);
+        });
+
+        jQuery('#reslide-open_close_effect').on('change', function () {
+            var value = jQuery(this).find(":selected").val();
+            jQuery('#reslide-open_close_effect + input').val(value);
+        });
+
+        jQuery('#reslide-arrows_style').on('change', function () {
+            var value = jQuery(this).find(":selected").val();
+            jQuery('#reslide-arrows_style + input').val(value);
+        });
+        
         _reslide._('#reslide-effect-type').on('change', function () {
             var value = _reslide(this).value;
             _reslide._('#reslide-effect-type + input')[0].value = value;
