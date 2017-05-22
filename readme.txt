@@ -3,8 +3,8 @@ Contributors: Huge-IT
 Donate link: https://huge-it.com/wordpress-responsive-slider/
 Tags: slider, responsive slider, content slider, image slider, slideshow,
 Requires at least: 3.0.1
-Tested up to: 4.7.4
-Stable tag: 2.4.4
+Tested up to: 4.7.5
+Stable tag: 2.4.5
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -190,6 +190,9 @@ There are 6 share buttons style in the slider plugin and you can pick the one th
 If you think, that you found a bug in our [WordPress Responsive Slider](https://huge-it.com/wordpress-responsive-slider) plugin or have any question contact us at [info@huge-it.com](mailto:info@huge-it.com)
 
 == Changelog ==
+
+= 2.4.5 =
+* 1. We have added functional lightbox to slider , allowing users to enable lighbox for sliders.
 
 = 2.4.4 =
 * We have changed the structure of the admin panel to appear more user friendly on big monitors, now the navigation in the admin panel appears user friendly.
