@@ -1196,21 +1196,21 @@ function reslide_edit_slider_view( $_row, $_id, $_slider ) {
                                         <div>
                                             <label><?php _e('Always:','reslide');?></label>
                                             <input type="radio" name="params[bullets][show]"
-                                                   value="2" <?php if ( esc_attr($params->arrows->show) == '2' ) {
+                                                   value="2" <?php if ( esc_attr($params->bullets->show) == '2' ) {
                                                 echo "checked";
                                             } ?> >
                                         </div>
                                         <div>
                                             <label><?php _e('Hover:','reslide');?></label>
                                             <input type="radio" name="params[bullets][show]"
-                                                   value="2" <?php if ( esc_attr($params->arrows->show) == '1' ) {
+                                                   value="1" <?php if ( esc_attr($params->bullets->show) == '1' ) {
                                                 echo "checked";
                                             } ?>>
                                         </div>
                                         <div>
                                             <label><?php _e('Never:','reslide');?></label>
                                             <input type="radio" name="params[bullets][show]"
-                                                   value="2" <?php if ( esc_attr($params->arrows->show) == '0' ) {
+                                                   value="0" <?php if ( esc_attr($params->bullets->show) == '0' ) {
                                                 echo "checked";
                                             } ?>>
                                         </div>

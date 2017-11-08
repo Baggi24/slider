@@ -491,7 +491,7 @@ function reslider_front_end($_id,$_slider,$_reslides) {
 						}
 						jQuery('#slider<?php echo $_slider[0]->id;?>_container .reslide_slides img').css('display','block');
 
-						init_c_slider<?php echo $sliderID;?>("slider<?php echo $_slider[0]->id;?>_container");
+//						init_c_slider<?php //echo $sliderID;?>//("slider<?php //echo $_slider[0]->id;?>//_container");
 
 					})();
 				    function ScaleSlider() {
@@ -587,6 +587,8 @@ function reslider_front_end($_id,$_slider,$_reslides) {
 					arrows: '<?php echo (string)$params->arrows_style; ?>',
 					openCloseType: '<?php echo (string)$params->open_close_effect; ?>'
 				});
+
+                init_c_slider<?php echo $sliderID;?>("slider<?php echo $_slider[0]->id;?>_container");
 			});
 		</script>
 	<?php
