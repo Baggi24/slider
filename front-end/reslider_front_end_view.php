@@ -17,7 +17,7 @@ function reslider_front_end($_id,$_slider,$_reslides) {
 		}
 	}
 	if(!$_slider) {
-		echo '<h3 style="color: #FF0011;">R-slider '.$_id.' does not exist</h3>';
+		echo '<h3 style="color: #FF0011;">'. __('R-slider', 'reslide') . ' ' . $_id. ' ' . __('does not exist', 'reslide');'</h3>';
 		return;
 	}
 	$sliderID = intval($_slider[0]->id);
@@ -30,11 +30,11 @@ function reslider_front_end($_id,$_slider,$_reslides) {
 	$styleJson = deleteSpacesNewlines($_slider[0]->style);
 	$customJson = deleteSpacesNewlines($_slider[0]->custom);
 	if(!$sliderID) {
-		echo '<h3 style="color: #FF0011;">R-slider '.$_id.' was removed</h3>';
+		echo '<h3 style="color: #FF0011;">'. __('R-slider', 'reslide') . ' ' .$_id. ' ' . __('was removed', 'reslide');'</h3>';
 		return;
 	}
 	if(!count($_reslides)) {
-		echo '<h3 style="color: #FF0011;">R-slider '.$_id.' has not any image </h3>';
+		echo '<h3 style="color: #FF0011;">'. __('R-slider', 'reslide') . ' ' .$_id. ' ' . __('has not any image', 'reslide');'</h3>';
 		return;
 	}	
 	 $count = 0;

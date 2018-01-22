@@ -3,8 +3,8 @@ Contributors: Huge-IT
 Donate link: https://huge-it.com/wordpress-responsive-slider/
 Tags: slider, responsive slider, content slider, image slider, slideshow,
 Requires at least: 3.0.1
-Tested up to: 4.7.5
-Stable tag: 2.4.5
+Tested up to: 4.9.1
+Stable tag: 2.4.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -191,8 +191,12 @@ If you think, that you found a bug in our [WordPress Responsive Slider](https://
 
 == Changelog ==
 
+= 2.4.6 =
+* 1) Fixed an issue with SSL licenses
+* 2) Fixed bullet options functionality
+
 = 2.4.5 =
-* 1. We have added functional lightbox to slider , allowing users to enable lighbox for sliders.
+* 1) We have added functional lightbox to slider , allowing users to enable lighbox for sliders.
 
 = 2.4.4 =
 * We have changed the structure of the admin panel to appear more user friendly on big monitors, now the navigation in the admin panel appears user friendly.

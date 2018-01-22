@@ -128,8 +128,8 @@ function reslide_edit_slide_view( $_slider, $_slides, $_mainslide ) { // Slider'
 			<div class="header">
 				<div><h3><?php echo reslide_text_sanitize( $_mainslide[0]->title ); ?></h3></div>
 				<div class="slider-preview-options">
-					<a id="reslide_preview" data="slide<?php echo $_mainslide[0]->id; ?>" href="#">Preview</a>
-					<a id="save_custom_slide" href="#">Save Slide</a>
+					<a id="reslide_preview" data="slide<?php echo $_mainslide[0]->id; ?>" href="#"><?php _e('Preview', 'reslide'); ?></a>
+					<a id="save_custom_slide" href="#"><?php _e('Save Slide', 'reslide'); ?></a>
 				</div>
 			</div>
 			<div class="settings">
@@ -138,29 +138,29 @@ function reslide_edit_slide_view( $_slider, $_slides, $_mainslide ) { // Slider'
 						<li class="general active">
 							<ul id="general-settings-slide" class="params custom slide">
 								<li class="reslide-slide-title">
-									<label for="reslide-slide-title">Title</label>
+									<label for="reslide-slide-title"><?php _e('Title', 'reslide'); ?></label>
 									<input type="text" id="reslide-slide-title"
 									       value="<?php echo wp_unslash( $_mainslide[0]->title ); ?>"/><br/>
 								</li>
 								<li class="reslide-slide-description">
-									<label for="reslide-slide-description">Description</label>
+									<label for="reslide-slide-description"><?php _e('Description', 'reslide'); ?></label>
 									<textarea type="text"
 									          id="reslide-slide-description"><?php echo reslide_text_sanitize( $_mainslide[0]->description ); ?></textarea>
 								</li>
 								<li class="reslide-slide-image_link">
-									<label for="reslide-slide-image_link">URL</label>
+									<label for="reslide-slide-image_link"><?php _e('URL', 'reslide'); ?></label>
 									<input type="text" id="reslide-slide-image_link"
 									       value="<?php echo wp_unslash( $_mainslide[0]->image_link); ?>"/><br/>
 								</li>
 								<li class="reslide-slide-image_link_new_tab">
-									<span for="reslide-slide-image_link_new_tab">Open in new tab</span>
+									<span for="reslide-slide-image_link_new_tab"><?php _e('Open in new tab', 'reslide'); ?></span>
 									<input id="reslide-slide-image_link_new_tab" type="checkbox"
 									       value="<?php echo esc_attr( $_mainslide[0]->image_link_new_tab ); ?>" <?php if ( $_mainslide[0]->image_link_new_tab ) {
 										echo "checked";
 									} ?> />
 								</li>
 								<li class="reslide-custom">
-									<label for="reslide-custom">Slide Element:</label>
+									<label for="reslide-custom"><?php _e('Slide Element:', 'reslide'); ?></label>
 									<select id="reslide-custom">
 										<option
 											value="text" <?php echo ( $params->custom->type == 'text' ) ? "selected" : ""; ?>>
@@ -175,12 +175,12 @@ function reslide_edit_slide_view( $_slider, $_slides, $_mainslide ) { // Slider'
 											Image
 										</option>
 									</select>
-									<div id="reslide-custom-stylings">Style <i class="fa fa-pencil-square-o"
+									<div id="reslide-custom-stylings"><?php _e('Style ', 'reslide'); ?><i class="fa fa-pencil-square-o"
 									                                           aria-hidden="true"></i></div>
 									<div id="reslide-custom-add" class="reslide_drawelement free"
 									     rel="reslide_<?php echo $params->custom->type; ?>"
 									     data="<?php echo $params->custom->type; ?>" style="display:inline-block;">
-										Add<span class="reslide-free" style="color:red;">&nbsp;(PRO)&nbsp;</span></div>
+										<?php _e('Add', 'reslide'); ?><span class="reslide-free" style="color:red;">&nbsp;<?php _e(' (PRO)', 'reslide'); ?>&nbsp;</span></div>
 								</li>
 							</ul>
 							<div id="general-view">
@@ -188,10 +188,10 @@ function reslide_edit_slide_view( $_slider, $_slides, $_mainslide ) { // Slider'
 									<div id="reslide-construct-vertical"></div>
 									<div id="reslide-construct-horizontal"></div>
 									<div id="reslide-title-construct" data="title">
-										<div style="margin-left:5px;color:#565855">Title</div>
+										<div style="margin-left:5px;color:#565855"><?php _e('Title', 'reslide'); ?></div>
 									</div>
 									<div id="reslide-description-construct" data="description">
-										<div style="margin-left:5px;color:#565855">Description</div>
+										<div style="margin-left:5px;color:#565855"><?php _e('Description', 'reslide'); ?></div>
 									</div>
 									<?php
 									$button  = - 1;
@@ -260,10 +260,10 @@ function reslide_edit_slide_view( $_slider, $_slides, $_mainslide ) { // Slider'
 			<input class="title" name="title" value=""/>
 			<input class="description" name="description" value=""/>
 			<div class="content">
-				<span id="logo">Logo</span>
+				<span id="logo"><?php _e('Logo', 'reslide'); ?></span>
 				<div class="contents"></div>
 			</div>
-			<div class="close">X</div>
+			<div class="close"><?php _e('X', 'reslide'); ?></div>
 		</div>
 	</div>
 	<div id="reslide_slider_preview_popup"></div>
@@ -371,7 +371,7 @@ function reslide_edit_slide_view( $_slider, $_slides, $_mainslide ) { // Slider'
 					       rel="0" value="<?php echo esc_attr( $custom->text ); ?>">
 					<?php if ( $custom->type == 'button' ) { ?>
 						<span class="size">
-							<label>Button url:</label>
+							<label><?php _e('Button url:', 'reslide'); ?></label>
 							<input class="link" type="text"
 							       name="custom[<?php echo $custom->type . $custom->id; ?>][link]" rel="0" value="<?php echo ($custom->link?$custom->link:'#');?>">
 							</span>
@@ -397,49 +397,49 @@ function reslide_edit_slide_view( $_slider, $_slides, $_mainslide ) { // Slider'
 					<input type="hidden" name="custom[<?php echo $custom->type . $custom->id; ?>][style][font]" rel="0"
 					       value="{}">
 				<span class=" color">
-				<label for="custom-background-color-link">Background Color:</label>									
+				<label for="custom-background-color-link"><?php _e('Background Color:', 'reslide'); ?></label>
 				<input type="text" class="jscolor" id="custom-bullets-background-color-link"
 				       name="custom[<?php echo $custom->type . $custom->id; ?>][style][background][color]" rel="#"
 				       value="<?php echo esc_attr($custom->style->background->color); ?>">
 				</span class="border-width">
 				<span class=" color">
-				<label for="custom-background-color-hover">Hover Color:</label>																			
+				<label for="custom-background-color-hover"><?php _e('Hover Color:', 'reslide'); ?></label>
 				<input type="text" class="jscolor" id="custom-bullets-background-color-hover"
 				       name="custom[<?php echo $custom->type . $custom->id; ?>][style][background][hover]" rel="#"
 				       value="<?php echo esc_attr($custom->style->background->hover); ?>">
 				</span>
 				<span class=" color">
-				<label for="custom-background-opacity">Opacity:</label>																			
+				<label for="custom-background-opacity"><?php _e('Opacity:', 'reslide'); ?></label>
 				<input type="number" id="custom-background-opacity"
 				       name="custom[<?php echo $custom->type . $custom->id; ?>][style][opacity]" rel="0"
 				       value="<?php echo esc_attr($custom->style->opacity); ?>">%
 				</span>
 				<span class=" size">
-				<label for="custom-border-size">Border:</label>																			
+				<label for="custom-border-size"><?php _e('Border:', 'reslide'); ?></label>
 				<input type="number" id="custom-border-width"
 				       name="custom[<?php echo $custom->type . $custom->id; ?>][style][border][width]" rel="px"
 				       value="<?php echo esc_attr($custom->style->border->width); ?>">
 				</span>
 				<span class="color">
-				<label for="custom-border-color">Border Color:</label>																			
+				<label for="custom-border-color"><?php _e('Border Color:', 'reslide'); ?></label>
 				<input type="text" class="jscolor" id="custom-custom-border-color"
 				       name="custom[<?php echo $custom->type . $custom->id; ?>][style][border][color]" rel="#"
 				       value="<?php echo esc_attr($custom->style->border->color); ?>">
 				</span>
 				<span class=" size">
-				<label for="custom-background-radius">Border Radius:</label>																			
+				<label for="custom-background-radius"><?php _e('Border Radius:', 'reslide'); ?></label>
 				<input type="number" id="custom-custom-border-radius"
 				       name="custom[<?php echo $custom->type . $custom->id; ?>][style][border][radius]" rel="px"
 				       value="<?php echo esc_attr($custom->style->border->radius); ?>">%
 				</span>
 				<span class="size">
-				<label for="custom-font-size">Font Size:</label>																			
+				<label for="custom-font-size"><?php _e('Font Size:', 'reslide'); ?></label>
 				<input type="number" id="custom-font-size"
 				       name="custom[<?php echo $custom->type . $custom->id; ?>][style][font][size]" rel="px"
 				       value="<?php echo esc_attr($custom->style->font->size); ?>">
 				</span>
 				<span class="color">
-				<label for="custom-font-color">Font Color:</label>																			
+				<label for="custom-font-color"><?php _e('Font Color:', 'reslide'); ?></label>
 				<input type="text" class="jscolor" id="custom-font-color"
 				       name="custom[<?php echo $custom->type . $custom->id; ?>][style][color]" rel="#"
 				       value="<?php echo esc_attr($custom->style->color); ?>">
@@ -499,25 +499,25 @@ function reslide_edit_slide_view( $_slider, $_slides, $_mainslide ) { // Slider'
 					       name="custom[<?php echo $custom->type . $custom->id; ?>][style][left]" rel="0"
 					       value="<?php echo esc_attr($custom->style->left); ?>">
 			<span class=" color">
-			<label for="custom-background-opacity">Opacity:</label>																			
+			<label for="custom-background-opacity"><?php _e('Opacity:', 'reslide'); ?></label>
 			<input type="number" id="custom-background-opacity"
 			       name="custom[<?php echo $custom->type . $custom->id; ?>][style][opacity]" rel="0"
 			       value="<?php echo esc_attr($custom->style->opacity); ?>">%
 			</span>
 			<span class="border-width size">
-			<label for="custom-custom-border-size">Border:</label>																			
+			<label for="custom-custom-border-size"><?php _e('Border:', 'reslide'); ?></label>
 			<input type="number" id="custom-custom-border-width"
 			       name="custom[<?php echo $custom->type . $custom->id; ?>][style][border][width]" rel="px"
 			       value="<?php echo esc_attr($custom->style->border->width); ?>">
 			</span>		
 			<span class="border-color color">			
-			<label for="custom-custom-border-color">Border Color:</label>																			
+			<label for="custom-custom-border-color"><?php _e('Border Color:', 'reslide'); ?></label>
 			<input type="text" class="jscolor" id="custom-custom-border-color"
 			       name="custom[<?php echo $custom->type . $custom->id; ?>][style][border][color]" rel="#"
 			       value="<?php echo esc_attr($custom->style->border->color); ?>">
 			</span>									
 			<span class="border-radius size">									
-			<label for="custom-custom-background-radius">Border Radius:</label>	
+			<label for="custom-custom-background-radius"><?php _e('Border Radius:', 'reslide'); ?></label>
 			<input type="number" id="custom-custom-border-radius"
 			       name="custom[<?php echo $custom->type . $custom->id; ?>][style][border][radius]" rel="px"
 			       value="<?php echo esc_attr($custom->style->border->radius); ?>">

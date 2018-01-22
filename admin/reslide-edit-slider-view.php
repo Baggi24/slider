@@ -339,8 +339,7 @@ function reslide_edit_slider_view( $_row, $_id, $_slider ) {
                                                 allowfullscreen=""></iframe>
                                     </a>
                                     <b>
-                                        <a href="#" class="quick_edit" data-slide-id="<?php echo $rows->id; ?>">Quick
-                                            Edit</a></b>
+                                        <a href="#" class="quick_edit" data-slide-id="<?php echo $rows->id; ?>"><?php _e('Quick Edit', 'reslide'); ?></a></b>
                                 </li>
                                 <?php
                                 break;
@@ -1528,7 +1527,7 @@ function reslide_edit_slider_view( $_row, $_id, $_slider ) {
             <input class="title" name="title" value=""/>
             <input class="description" name="description" value=""/>
             <div class="content">
-                <span id="logo">Logo</span>
+                <span id="logo"><?php _e('Logo', 'reslide'); ?></span>
                 <div class="contents">
 
                 </div>
@@ -1693,7 +1692,7 @@ function reslide_edit_slider_view( $_row, $_id, $_slider ) {
         <div class="reslide_content">
             <div class="reslide_title">
                 <div class="reslide_title_child"></div>
-                <span class="title">Title</span>
+                <span class="title"><?php _e('Title', 'reslide'); ?></span>
             </div>
         </div>
     </div>
@@ -1757,7 +1756,7 @@ function reslide_edit_slider_view( $_row, $_id, $_slider ) {
         <div class="reslide_content">
             <div class="reslide_description">
                 <div class="reslide_description_child"></div>
-                <span class="description">description</span>
+                <span class="description"><?php _e('description', 'reslide'); ?></span>
             </div>
         </div>
     </div>
@@ -1780,7 +1779,7 @@ function reslide_edit_slider_view( $_row, $_id, $_slider ) {
                            rel="0" value="<?php echo esc_attr( $custom->text ); ?>">
                     <?php if ( $custom->type == 'button' ) { ?>
                         <span class="size">
-							<label>Button url:</label>
+							<label><?php _e('Button url:', 'reslide'); ?></label>
 							<input class="link" type="text"
                                    name="custom[<?php echo $custom->type . $custom->id; ?>][link]" rel="0" value="<?php echo ($custom->link?$custom->link:'#');?>">
 							</span>

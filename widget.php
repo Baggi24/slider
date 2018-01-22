@@ -7,7 +7,7 @@ class Hugeit_ReSlider_Widget extends WP_Widget {
         parent::__construct(
             'hugeit_reslider_widget',
             'Huge IT Responsive Slider',
-            array('description' => __('Huge IT Responsive Slider', 'R-slider'),)
+            array('description' => __('Huge IT Responsive Slider', 'reslide'),)
         );
     }
 
@@ -58,13 +58,13 @@ class Hugeit_ReSlider_Widget extends WP_Widget {
         }
         ?>
         <p>
-            <label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:'); ?></label>
+            <label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:', 'reslide'); ?></label>
             <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>"
                    name="<?php echo $this->get_field_name('title'); ?>" type="text"
                    value="<?php echo esc_attr($title); ?>"/>
         </p>
         <label
-            for="<?php echo $this->get_field_id('sliderid'); ?>"><?php _e('Select Responsive Slider:', 'R-slider'); ?></label>
+            for="<?php echo $this->get_field_id('sliderid'); ?>"><?php _e('Select Responsive Slider:', 'reslide'); ?></label>
         <select id="<?php echo $this->get_field_id('sliderid'); ?>"
                 name="<?php echo $this->get_field_name('sliderid'); ?>">
             <?php

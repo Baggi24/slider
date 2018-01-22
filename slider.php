@@ -3,11 +3,12 @@
 Plugin Name: Huge IT Responsive Slider
 Plugin URI: https://huge-it.com/wordpress-responsive-slider
 Description: Create the most stunning sliders for your mobile friendly website with Huge-IT Responsive Slider.
-Version: 2.4.5
+Version: 2.4.6
 Author: Huge-IT
 Author URI: https://huge-it.com/
 License: GNU/GPLv3 https://www.gnu.org/licenses/gpl-3.0.html
 Text Domain: reslide
+Domain Path: /languages
 */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -83,7 +84,7 @@ function reslide_text_sanitize($_str ) {
 function reslide_add_media_button($context) {
 	$container_id = 'reslide_slider_insert_popup';
 	$title = __("Insert Responsive Slider","reslide");
-  	$context .=  '<a href="#TB_inline?width=600&inlineId='.$container_id.'" title="'.$title.'" id="insert-reslider-media" class="thickbox button"><img src="' . plugins_url( 'images/edit-icon1.png', __FILE__ ) . '">Add Slider</a>';
+  	$context .=  '<a href="#TB_inline?width=600&inlineId='.$container_id.'" title="'.$title.'" id="insert-reslider-media" class="thickbox button"><img src="' . plugins_url( 'images/edit-icon1.png', __FILE__ ) . '">' . __('Add Slider', 'reslide') . '</a>';
 	return $context;
 }
 
@@ -110,7 +111,7 @@ function reslide_media_button_popup() {
 		<div style="margin-top:20px">
 			<label for="R-slider" style="margin-right:20px"><b><?php _e( 'Choose Responsive Slider', 'reslide' ); ?></b></label>
 			<select id="R-slider" name="ss" class="">
-				<option value="0">Responsive Sliders</option>
+				<option value="0"><?php _e('Responsive Sliders', 'reslide'); ?></option>
 				<?php
 				if ( $row ) {
 					foreach ( $row as $rows ) { ?>
@@ -302,8 +303,8 @@ function reslide_free_version_banner() {
 	<div class="free_version_banner" <?php if( isset($_COOKIE['reslideFreeBannerShow']) && $_COOKIE['reslideFreeBannerShow'] == "no" ){ echo 'style="display:none"'; } ?> >
 		<a class="close_free_banner">+</a>
 		<img class="manual_icon" src="<?php echo $path_site2; ?>/icon-user-manual.png" alt="user manual" />
-		<p class="usermanual_text">If you have any difficulties in using the options, Follow the link to <a href="//huge-it.com/wordpress-responsive-slider-user-manual/" target="_blank">User Manual</a></p>
-		<a class="get_full_version" href="//huge-it.com/wordpress-responsive-slider/" target="_blank">GET THE FULL VERSION</a>
+		<p class="usermanual_text"><?php _e('If you have any difficulties in using the options, Follow the link to ', 'reslide'); ?><a href="//huge-it.com/wordpress-responsive-slider-user-manual/" target="_blank"><?php _e('User Manual', 'reslide'); ?></a></p>
+		<a class="get_full_version" href="//huge-it.com/wordpress-responsive-slider/" target="_blank"><?php _e('GET THE FULL VERSION', 'reslide'); ?></a>
 		<a href="//huge-it.com" target="_blank"><img class="huge_it_logo" src="<?php echo $path_site2; ?>/Huge-It-logo.png"/></a>
 		<div style="clear: both;"></div>
 		<div class="hg_social_link_buttons">
@@ -313,12 +314,12 @@ function reslide_free_version_banner() {
 			<a target="_blank" class="yt"  href="https://www.youtube.com/channel/UCueCH_ulkgQZhSuc0L5rS5Q"></a>
 		</div>
 		<div class="hg_view_plugins_block">
-			<a target="_blank"  href="https://wordpress.org/support/plugin/slider/reviews/">Rate Us</a>
-			<a target="_blank"  href="http://huge-it.com/wordpress-responsive-slider-demo/">Full Demo</a>
-			<a target="_blank"  href="http://huge-it.com/wordpress-responsive-slider-faq/">FAQ</a>
-			<a target="_blank"  href="http://huge-it.com/contact-us/">Contact Us</a>
+			<a target="_blank"  href="https://wordpress.org/support/plugin/slider/reviews/"><?php _e('Rate Us', 'reslide'); ?></a>
+			<a target="_blank"  href="http://huge-it.com/wordpress-responsive-slider-demo/"><?php _e('Full Demo', 'reslide'); ?></a>
+			<a target="_blank"  href="http://huge-it.com/wordpress-responsive-slider-faq/"><?php _e('FAQ', 'reslide'); ?></a>
+			<a target="_blank"  href="http://huge-it.com/contact-us/"><?php _e('Contact Us', 'reslide'); ?></a>
 		</div>
-		<div  class="description_text"><p>This is the LITE version of the plugin. Click "GET THE FULL VERSION" for more advanced options. We appreciate every customer.</p></div>
+		<div  class="description_text"><p><?php _e('This is the LITE version of the plugin. Click "GET THE FULL VERSION" for more advanced options. We appreciate every customer.', 'reslide'); ?></p></div>
 		<div style="clear: both;"></div>
 	</div>
 	<?php
@@ -351,90 +352,90 @@ function reslide_slider_licensing(){
 		<p class="textLicense">
 			<?php _e('You are using the Lite version of the Responsive Slider for WordPress. If you want to get more awesome options,
 			 advanced features, settings to customize every area of the plugin, then check out the Full License. The full version
-			  of the plugin is available in 3 different packages of one-time payment.','reslider'); ?>
+			  of the plugin is available in 3 different packages of one-time payment.','reslide'); ?>
 		</p>
-		<a target="_blank" href="http://huge-it.com/wordpress-responsive-slider/" class="button-primary"><?php _e('Purchase a License', 'reslider'); ?></a>
+		<a target="_blank" href="http://huge-it.com/wordpress-responsive-slider/" class="button-primary"><?php _e('Purchase a License', 'reslide'); ?></a>
 		<div class="licensing">
 			<div class="licensing-block">
 				<div class="licens">
 					<a href="http://huge-it.com/wordpress-responsive-slider/" target="_blank">
 						<span class="icon unlimited-slider"></span>
-						<span class="text"><?php _e('unlimited slider','reslider'); ?></span>
+						<span class="text"><?php _e('unlimited slider','reslide'); ?></span>
 					</a>
 				</div>
 				<div class="licens">
 					<a href="http://huge-it.com/wordpress-responsive-slider/" target="_blank">
 						<span class="icon youtube"></span>
-						<span class="text"><?php _e('Youtube video sliders','reslider'); ?></span>
+						<span class="text"><?php _e('Youtube video sliders','reslide'); ?></span>
 					</a>
 				</div>
 				<div class="licens">
 					<a href="http://huge-it.com/wordpress-responsive-slider/" target="_blank">
 						<span class="icon vimeo"></span>
-						<span class="text"><?php _e('Vimeo video sliders','reslider'); ?></span>
+						<span class="text"><?php _e('Vimeo video sliders','reslide'); ?></span>
 					</a>
 				</div>
 				<div class="licens">
 					<a href="http://huge-it.com/wordpress-responsive-slider/" target="_blank">
 						<span class="icon description"></span>
-						<span class="text"><?php _e('Title and Description styles','reslider'); ?></span>
+						<span class="text"><?php _e('Title and Description styles','reslide'); ?></span>
 					</a>
 				</div>
 				<div class="licens">
 					<a href="http://huge-it.com/wordpress-responsive-slider/" target="_blank">
 						<span class="icon thumbnail-navigation"></span>
-						<span class="text"><?php _e('Slider’s Thumbnail navigation','reslider'); ?></span>
+						<span class="text"><?php _e('Slider’s Thumbnail navigation','reslide'); ?></span>
 					</a>
 				</div>
 				<div class="licens">
 					<a href="http://huge-it.com/wordpress-responsive-slider/" target="_blank">
 						<span class="icon custom-thumbnails"></span>
-						<span class="text"><?php _e('Slider custom thumbnails','reslider'); ?></span>
+						<span class="text"><?php _e('Slider custom thumbnails','reslide'); ?></span>
 					</a>
 				</div>
 				<div class="licens">
 					<a href="http://huge-it.com/wordpress-responsive-slider/" target="_blank">
 						<span class="icon custom-buttons"></span>
-						<span class="text"><?php _e('Slide custom buttons','reslider'); ?></span>
+						<span class="text"><?php _e('Slide custom buttons','reslide'); ?></span>
 					</a>
 				</div>
 				<div class="licens">
 					<a href="http://huge-it.com/wordpress-responsive-slider/" target="_blank">
 						<span class="icon custom-texts"></span>
-						<span class="text"><?php _e('Slide custom texts','reslider'); ?></span>
+						<span class="text"><?php _e('Slide custom texts','reslide'); ?></span>
 					</a>
 				</div>
 				<div class="licens">
 					<a href="http://huge-it.com/wordpress-responsive-slider/" target="_blank">
 						<span class="icon arrows"></span>
-						<span class="text"><?php _e('20+ arrows styles','reslider'); ?></span>
+						<span class="text"><?php _e('20+ arrows styles','reslide'); ?></span>
 					</a>
 				</div>
 				<div class="licens">
 					<a href="http://huge-it.com/wordpress-responsive-slider/" target="_blank">
 						<span class="icon bullets"></span>
-						<span class="text"><?php _e('bullets customisation','reslider'); ?></span>
+						<span class="text"><?php _e('bullets customisation','reslide'); ?></span>
 					</a>
 				</div>
 				<div class="licens">
 					<a href="http://huge-it.com/wordpress-responsive-slider/" target="_blank">
 						<span class="icon full-video"></span>
-						<span class="text"><?php _e('Full video Settings','reslider'); ?></span>
+						<span class="text"><?php _e('Full video Settings','reslide'); ?></span>
 					</a>
 				</div>
 				<div class="licens">
 					<a href="http://huge-it.com/wordpress-responsive-slider/" target="_blank">
 						<span class="icon advanced"></span>
-						<span class="text"><?php _e('advanced customization','reslider'); ?></span>
+						<span class="text"><?php _e('advanced customization','reslide'); ?></span>
 					</a>
 				</div>
 			</div>
 		</div>
-		<p class="textLicense"><?php _e('After the purchasing the commercial version follow this steps:','reslider'); ?></p>
+		<p class="textLicense"><?php _e('After the purchasing the commercial version follow this steps:','reslide'); ?></p>
 		<ol class="textLicense">
-			<li class="textLicense"><?php _e('Deactivate Huge-IT Responsive Slider Plugin','reslider'); ?></li>
-			<li class="textLicense"><?php _e('Delete Huge-IT Responsive Slider Plugin','reslider'); ?></li>
-			<li class="textLicense"><?php _e('Install the downloaded commercial version of the plugin','reslider'); ?></li>
+			<li class="textLicense"><?php _e('Deactivate Huge-IT Responsive Slider Plugin','reslide'); ?></li>
+			<li class="textLicense"><?php _e('Delete Huge-IT Responsive Slider Plugin','reslide'); ?></li>
+			<li class="textLicense"><?php _e('Install the downloaded commercial version of the plugin','reslide'); ?></li>
 		</ol>
 	</div>
 	<?php
